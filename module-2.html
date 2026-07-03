@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ActiveTigger · Module 2 — Université Paris 1 Panthéon-Sorbonne</title>
+
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css" id="base-theme">
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/plugin/highlight/monokai.css">
+  <!-- Thème de marque Paris 1 (chargé en dernier pour primer) -->
+  <link rel="stylesheet" href="css/paris1-theme.css">
+  <style>
+    /* pied de page légèrement plus bas, propre à ce module */
+    .reveal .slide-footer { bottom: 6px; }
+    /* logo agrandi sans changer la hauteur globale du footer :
+       la marge négative compense le surcroît de hauteur de l'image */
+    .reveal .slide-footer img { height: 38px; margin-top: -6px; margin-bottom: -6px; }
+    /* marge de sécurité : contenu un peu plus dense pour ne jamais
+       chevaucher le footer (padding-bottom de la diapo = 78px) */
+    .reveal section.content-slide { font-size: .88em; }
+  </style>
+</head>
+<body>
+<a class="menu-back" href="index.html">← Menu</a>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ============ 1. DIAPO DE TITRE ============ -->
+    <section class="title-slide" data-background-color="#00386E">
+      <div class="brand-logo-chip"><img src="assets/logo-paris1.png" alt="Université Paris 1 Panthéon-Sorbonne"></div>
+      <span class="kicker">Cycle de formations IA pour les SHS · Module&nbsp;2</span>
+      <h1 style="font-size:1.5em;margin-top:90px">Mobiliser petits et grands modèles de langage dans les démarches de recherche en&nbsp;SHS&nbsp;: de la théorie à la mise en œuvre avec le logiciel ActiveTigger</h1>
+      <p class="subtitle">Exploration, annotation, classification&nbsp;: l'analyse de corpus textuels assistée par l'IA</p>
+      <p class="meta">Université Paris 1 Panthéon-Sorbonne · Vendredi 10 juillet 2026</p>
+    </section>
+
+    <!-- ============ OBJECTIFS PÉDAGOGIQUES ============ -->
+    <section class="content-slide">
+      <h2>Objectifs pédagogiques</h2>
+      <div class="cols">
+        <div class="card gold compact fragment fade-in">
+          <h3><span class="pill gold small">Comprendre</span>&nbsp; Repères conceptuels</h3>
+          <ul>
+            <li class="fragment">Comprendre les principales <strong>approches d'analyse de corpus textuels</strong> avec l'IA.</li>
+            <li class="fragment">Distinguer les usages de l'<strong>apprentissage supervisé</strong> et <strong>non supervisé</strong>.</li>
+            <li class="fragment">Distinguer les grandes familles de modèles&nbsp;: <strong>BERT</strong>, <strong>LLM</strong>, modèles spécialisés, ouverts ou propriétaires.</li>
+          </ul>
+        </div>
+        <div class="card purple compact fragment fade-in">
+          <h3><span class="pill purple small">Pratiquer</span>&nbsp; Mise en œuvre avec ActiveTigger</h3>
+          <p class="fragment">Mettre en œuvre ces notions avec le logiciel expérimental <strong>ActiveTigger</strong>&nbsp;:</p>
+          <ul>
+            <li class="fragment"><strong>Entraîner, évaluer, améliorer</strong> un classifieur à partir d'un corpus annoté.</li>
+            <li class="fragment"><strong>Comparer</strong> BERT et LLM&nbsp;: performances, coûts, cas d'usage.</li>
+            <li class="fragment">Utiliser ActiveTigger pour <strong>explorer, annoter, automatiser</strong>.</li>
+            <li class="fragment"><strong>Identifier</strong> les méthodes adaptées à son corpus et à sa question de recherche.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 3. GABARIT : TITRE + SOUS-TITRE + BULLET POINTS ============ -->
+    <section class="content-slide">
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p class="key-idea fragment" style="text-align:left;margin:0 0 .6em;max-width:100%">
+        Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+      </p>
+      <div class="cols">
+        <div>
+          <ul>
+            <li class="fragment">Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit.</li>
+            <li class="fragment">Ut enim ad minim veniam, quis <strong>nostrud exercitation</strong> ullamco laboris.</li>
+            <li class="fragment">Duis aute irure dolor in <strong>reprehenderit</strong> in voluptate <em>velit esse</em>.</li>
+            <li class="fragment">Excepteur sint occaecat <strong>cupidatat non proident</strong>, sunt in culpa.</li>
+          </ul>
+        </div>
+        <div class="col-narrow">
+          <div class="card teal fragment">
+            <h3>À retenir</h3>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 4. GABARIT : DEUX RUBRIQUES (comparaison) ============ -->
+    <section class="content-slide">
+      <h2>Lorem ipsum <span class="muted" style="font-weight:400">vs</span> dolor sit amet</h2>
+
+      <div class="phases">
+        <div class="phase left">
+          <h3>Rubrique A</h3>
+          <span class="state">sous-titre / contexte</span>
+          <ul>
+            <li class="fragment">Lorem ipsum dolor sit amet</li>
+            <li class="fragment">Consectetur adipiscing elit</li>
+            <li class="fragment">Sed do eiusmod tempor incididunt</li>
+          </ul>
+        </div>
+
+        <div class="vs">≠</div>
+
+        <div class="phase right">
+          <h3>Rubrique B</h3>
+          <span class="state">sous-titre / contexte</span>
+          <ul>
+            <li class="fragment">Ut enim ad minim veniam</li>
+            <li class="fragment">Quis nostrud exercitation ullamco</li>
+            <li class="fragment">Duis aute irure dolor in reprehenderit</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 5. GABARIT : IMAGE / CAPTURE D'ÉCRAN ============ -->
+    <section class="content-slide image-slide">
+      <h2 style="align-self:flex-start">Lorem ipsum&nbsp;: illustration</h2>
+      <div style="width:80%;max-width:620px;height:300px;border:2px dashed var(--p1-teal);
+                  border-radius:10px;background:var(--p1-light);color:var(--p1-grey);
+                  display:flex;align-items:center;justify-content:center;text-align:center;
+                  font-size:.85em;padding:1em">
+        Emplacement image / capture d'écran<br>(à insérer — ex. interface ActiveTigger)
+      </div>
+      <p class="img-cite">Légende de l'image — source à préciser</p>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 6. GABARIT : CITATION ============ -->
+    <section class="content-slide">
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem&nbsp;:</p>
+      <blockquote>« Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+        consectetur, adipisci velit, sed quia non numquam. »</blockquote>
+      <p class="muted">→ Ut enim ad minima veniam, quis nostrum <strong>exercitationem</strong> ullam corporis suscipit laboriosam.</p>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 7. GABARIT : INTERCALAIRE DE SECTION ============ -->
+    <section class="section-slide" data-background-color="#ED9B27">
+      <span class="num">2.</span>
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
+    </section>
+
+  </div>
+</div>
+
+<script type="module">
+  import Reveal from './node_modules/reveal.js/dist/reveal.mjs';
+  import Highlight from './node_modules/reveal.js/dist/plugin/highlight.mjs';
+  import Notes from './node_modules/reveal.js/dist/plugin/notes.mjs';
+
+  const deck = new Reveal({
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    center: false,          // contenu aligné en haut → le pied de page reste ancré en bas
+    hash: true,
+    slideNumber: false,
+    transition: 'fade',
+    plugins: [Highlight, Notes],
+  });
+  deck.initialize().then(() => {
+    // Pour chaque diapo de contenu : insère le logo à gauche du pied de page
+    // et renseigne le numéro de diapo à droite (évite de répéter le HTML).
+    [...document.querySelectorAll('.slides > section')].forEach((s, i) => {
+      const footer = s.querySelector('.slide-footer');
+      if (!footer) return;
+      const logo = document.createElement('img');
+      logo.src = 'assets/logo-paris1.png';
+      logo.alt = 'Université Paris 1 Panthéon-Sorbonne';
+      footer.prepend(logo);
+      const num = footer.querySelector('.num');
+      if (num) num.textContent = (i + 1);
+    });
+
+    // Avancer en cliquant n'importe où sur la diapo (révèle ligne par ligne,
+    // puis passe à la diapo suivante). Les liens et les flèches restent actifs.
+    document.querySelector('.reveal').addEventListener('click', (e) => {
+      if (e.target.closest('a, button, .controls, .progress, .slide-number, .navigate-left, .navigate-right')) return;
+      deck.next();
+    });
+  });
+</script>
+</body>
+</html>
