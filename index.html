@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kit de survie IA · Module 1 — Université Paris 1 Panthéon-Sorbonne</title>
+
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css" id="base-theme">
+  <link rel="stylesheet" href="node_modules/reveal.js/dist/plugin/highlight/monokai.css">
+  <!-- Thème de marque Paris 1 (chargé en dernier pour primer) -->
+  <link rel="stylesheet" href="css/paris1-theme.css">
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ============ 1. DIAPO DE TITRE ============ -->
+    <section class="title-slide" data-background-color="#00386E">
+      <div class="brand-logo-chip"><img src="assets/logo-paris1.png" alt="Université Paris 1 Panthéon-Sorbonne"></div>
+      <span class="kicker">Cycle de formations IA pour les SHS · Module&nbsp;1</span>
+      <h1>Modèles de langage, modèles conversationnels, modèles&nbsp;agentiques</h1>
+      <p class="subtitle">Kit de survie pour le chercheur en sciences humaines et sociales<br>
+        <span style="font-weight:400;color:rgba(255,255,255,.8)">En personne&nbsp;/&nbsp;En ligne</span></p>
+      <p class="meta">Université Paris 1 Panthéon-Sorbonne · 2026</p>
+    </section>
+
+    <!-- ============ OBJECTIF DE LA FORMATION ============ -->
+    <section class="content-slide">
+      <h2>Objectif de la formation</h2>
+      <div class="cols">
+        <div class="card gold fragment fade-in">
+          <h3><span class="pill gold">Module 1</span>&nbsp; Points de repères</h3>
+          <ul>
+            <li class="fragment">Comprendre les <strong>fondamentaux des LLM</strong> et des systèmes informatiques qui en sont issus.</li>
+            <li class="fragment">Assigner un <strong>rôle au LLM</strong> dans le processus de recherche.</li>
+            <li class="fragment">S'interroger sur les conditions qui permettent de les <strong>intégrer à la démarche scientifique</strong>.</li>
+          </ul>
+        </div>
+        <div class="card purple fragment fade-in">
+          <h3><span class="pill purple">Module 2</span>&nbsp; Mise en œuvre</h3>
+          <p class="fragment">Mettre en œuvre ces notions pour l'<strong>analyse de corpus textuels</strong> avec le logiciel expérimental <strong>ActiveTigger</strong>&nbsp;:</p>
+          <ul>
+            <li class="fragment">exploration de corpus,</li>
+            <li class="fragment">annotation,</li>
+            <li class="fragment">classification, <em>distant reading</em> avec IA générative.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ DÉFINITIONS ============ -->
+    <section class="content-slide">
+      <h2>Définitions</h2>
+      <div class="cols">
+        <div style="flex:1.15">
+          <dl class="deflist">
+            <div class="def">
+              <dt>Intelligence artificielle</dt>
+              <dd style="font-size:.78em">Catégorie socialement utilisée pour désigner les
+                technologies informatiques qui automatisent des tâches auparavant associées à
+                l'intelligence humaine ou animale. Historiquement mobile (<em>AI Effect</em>).</dd>
+            </div>
+          </dl>
+          <p class="callout fragment" style="font-size:.8em;margin-top:.4em">
+            <span class="sym">≠</span> concept<br>
+            <span class="sym">=</span> <strong>représentation au contenu fluctuant</strong>,
+            accompagnée d'un imaginaire</p>
+        </div>
+        <div class="card fragment" style="flex:.85">
+          <h3>Des concepts techniques, eux, solides</h3>
+          <p style="font-size:.8em">Ceux sur lesquels on peut réellement s'appuyer&nbsp;:</p>
+          <ul>
+            <li>les <strong>réseaux de neurones profonds</strong> (<em>deep learning</em>)&nbsp;;</li>
+            <li>l'<strong>attention</strong> / les <em>transformers</em>&nbsp;;</li>
+            <li>les <strong>grands modèles de langage</strong> <span class="muted">(→ « IA » employée en ce sens)</span>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ EXPÉRIENCE : INTERAGIR AVEC UN LLM ============ -->
+    <section class="content-slide">
+      <h2>Expérience&nbsp;: interagissons directement avec un LLM</h2>
+      <div class="cols">
+        <div style="flex:1.05">
+          <p><strong>Interface d'expérimentation</strong>&nbsp;:<br>
+            <a href="#" class="exp-link" id="playground-link">→ lien fourni en séance</a></p>
+          <ul>
+            <li class="fragment">Se connecter avec le mot de passe <code id="playground-pass">(fourni en séance)</code></li>
+            <li class="fragment">Sélection de LLM peu «&nbsp;transformés&nbsp;»</li>
+            <li class="fragment">Paramètres présentés en séance&nbsp;2</li>
+          </ul>
+        </div>
+        <div style="flex:.95">
+          <img src="img/llm_hunting.png" alt="Illustration humoristique : un chasseur tente d'attraper au filet une créature « LLM »"
+               style="width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,56,110,.15)">
+        </div>
+      </div>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ TROIS QUESTIONS ============ -->
+    <section class="content-slide">
+      <h2>Trois questions</h2>
+      <div class="cols">
+        <div style="flex:1.3">
+          <ol class="qlist" style="font-size:.92em">
+            <li class="fragment">Pourquoi / comment l'IA <strong>répond-elle</strong> au lieu de
+              «&nbsp;continuer du texte&nbsp;»&nbsp;?</li>
+            <li class="fragment">Pourquoi les LLM ne <strong>préservent-ils pas l'état</strong> de la
+              conversation — et comment les IA commerciales le préservent-elles&nbsp;?</li>
+            <li class="fragment">Pourquoi le <strong>ton / l'orientation</strong> du texte généré
+              est-il spécifique au regard des masses de texte trouvées en ligne&nbsp;?</li>
+          </ol>
+        </div>
+        <div style="flex:.7">
+          <img src="img/llm_question.png" alt="Illustration humoristique : un chasseur perplexe, point d'interrogation au-dessus de la tête, face à une créature « LLM »"
+               style="width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,56,110,.15)">
+        </div>
+      </div>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ SCHÉMA : CADRE GÉNÉRAL DU MACHINE LEARNING ============ -->
+    <section class="content-slide">
+      <h2>Le cadre général du machine learning</h2>
+
+      <div class="ml-schema">
+        <div class="ml-box">Entrée<small>les données</small></div>
+        <div class="ml-arrow">→</div>
+        <div class="ml-box model">Modèle</div>
+        <div class="ml-arrow">→</div>
+        <div class="ml-box">Sortie<small>un choix</small></div>
+      </div>
+
+      <div class="ml-params fragment">
+        <div class="down">↓</div>
+        <span class="tag">Paramètres</span>
+      </div>
+
+      <div class="ml-ex">
+        <div class="ml-ex-row head"><span class="in">Entrée</span><span class="ar"></span><span class="out">Sortie</span></div>
+        <div class="ml-ex-row fragment"><span class="in">une image</span><span class="ar">→</span><span class="out">une classification</span></div>
+        <div class="ml-ex-row fragment"><span class="in">un son</span><span class="ar">→</span><span class="out">un phonème</span></div>
+        <div class="ml-ex-row fragment"><span class="in">un texte</span><span class="ar">→</span><span class="out">le prochain mot</span></div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ DEUX PHASES OPPOSÉES ============ -->
+    <section class="content-slide">
+      <h2>Les limites du paradigme « machine learning »</h2>
+
+      <div class="phases">
+        <div class="phase left">
+          <h3>Phase d'entraînement</h3>
+          <span class="state">le modèle évolue</span>
+          <ul>
+            <li class="fragment">Environnement technique dédié</li>
+            <li class="fragment">« Absorption » d'informations</li>
+            <li class="fragment">Pas de service rendu</li>
+          </ul>
+        </div>
+
+        <div class="vs">vs</div>
+
+        <div class="phase right">
+          <h3>Phase d'inférence</h3>
+          <span class="state">le modèle est figé</span>
+          <ul>
+            <li class="fragment">Environnement technique différent</li>
+            <li class="fragment">Modèle figé (<em>knowledge cutoff</em>)</li>
+            <li class="fragment">Service utile rendu</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ COUCHES DU RÉSEAU ============ -->
+    <section class="content-slide">
+      <h2>Une connaissance répartie dans les couches</h2>
+
+      <svg class="nn" viewBox="0 0 1000 330" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <g class="nn-edges">
+<line x1="140" y1="80" x2="330" y2="50"/><line x1="140" y1="80" x2="330" y2="110"/><line x1="140" y1="80" x2="330" y2="170"/><line x1="140" y1="80" x2="330" y2="230"/><line x1="140" y1="80" x2="330" y2="290"/>
+<line x1="140" y1="140" x2="330" y2="50"/><line x1="140" y1="140" x2="330" y2="110"/><line x1="140" y1="140" x2="330" y2="170"/><line x1="140" y1="140" x2="330" y2="230"/><line x1="140" y1="140" x2="330" y2="290"/>
+<line x1="140" y1="200" x2="330" y2="50"/><line x1="140" y1="200" x2="330" y2="110"/><line x1="140" y1="200" x2="330" y2="170"/><line x1="140" y1="200" x2="330" y2="230"/><line x1="140" y1="200" x2="330" y2="290"/>
+<line x1="140" y1="260" x2="330" y2="50"/><line x1="140" y1="260" x2="330" y2="110"/><line x1="140" y1="260" x2="330" y2="170"/><line x1="140" y1="260" x2="330" y2="230"/><line x1="140" y1="260" x2="330" y2="290"/>
+<line x1="330" y1="50" x2="520" y2="50"/><line x1="330" y1="50" x2="520" y2="110"/><line x1="330" y1="50" x2="520" y2="170"/><line x1="330" y1="50" x2="520" y2="230"/><line x1="330" y1="50" x2="520" y2="290"/>
+<line x1="330" y1="110" x2="520" y2="50"/><line x1="330" y1="110" x2="520" y2="110"/><line x1="330" y1="110" x2="520" y2="170"/><line x1="330" y1="110" x2="520" y2="230"/><line x1="330" y1="110" x2="520" y2="290"/>
+<line x1="330" y1="170" x2="520" y2="50"/><line x1="330" y1="170" x2="520" y2="110"/><line x1="330" y1="170" x2="520" y2="170"/><line x1="330" y1="170" x2="520" y2="230"/><line x1="330" y1="170" x2="520" y2="290"/>
+<line x1="330" y1="230" x2="520" y2="50"/><line x1="330" y1="230" x2="520" y2="110"/><line x1="330" y1="230" x2="520" y2="170"/><line x1="330" y1="230" x2="520" y2="230"/><line x1="330" y1="230" x2="520" y2="290"/>
+<line x1="330" y1="290" x2="520" y2="50"/><line x1="330" y1="290" x2="520" y2="110"/><line x1="330" y1="290" x2="520" y2="170"/><line x1="330" y1="290" x2="520" y2="230"/><line x1="330" y1="290" x2="520" y2="290"/>
+<line x1="520" y1="50" x2="710" y2="50"/><line x1="520" y1="50" x2="710" y2="110"/><line x1="520" y1="50" x2="710" y2="170"/><line x1="520" y1="50" x2="710" y2="230"/><line x1="520" y1="50" x2="710" y2="290"/>
+<line x1="520" y1="110" x2="710" y2="50"/><line x1="520" y1="110" x2="710" y2="110"/><line x1="520" y1="110" x2="710" y2="170"/><line x1="520" y1="110" x2="710" y2="230"/><line x1="520" y1="110" x2="710" y2="290"/>
+<line x1="520" y1="170" x2="710" y2="50"/><line x1="520" y1="170" x2="710" y2="110"/><line x1="520" y1="170" x2="710" y2="170"/><line x1="520" y1="170" x2="710" y2="230"/><line x1="520" y1="170" x2="710" y2="290"/>
+<line x1="520" y1="230" x2="710" y2="50"/><line x1="520" y1="230" x2="710" y2="110"/><line x1="520" y1="230" x2="710" y2="170"/><line x1="520" y1="230" x2="710" y2="230"/><line x1="520" y1="230" x2="710" y2="290"/>
+<line x1="520" y1="290" x2="710" y2="50"/><line x1="520" y1="290" x2="710" y2="110"/><line x1="520" y1="290" x2="710" y2="170"/><line x1="520" y1="290" x2="710" y2="230"/><line x1="520" y1="290" x2="710" y2="290"/>
+<line x1="710" y1="50" x2="900" y2="80"/><line x1="710" y1="50" x2="900" y2="140"/><line x1="710" y1="50" x2="900" y2="200"/><line x1="710" y1="50" x2="900" y2="260"/>
+<line x1="710" y1="110" x2="900" y2="80"/><line x1="710" y1="110" x2="900" y2="140"/><line x1="710" y1="110" x2="900" y2="200"/><line x1="710" y1="110" x2="900" y2="260"/>
+<line x1="710" y1="170" x2="900" y2="80"/><line x1="710" y1="170" x2="900" y2="140"/><line x1="710" y1="170" x2="900" y2="200"/><line x1="710" y1="170" x2="900" y2="260"/>
+<line x1="710" y1="230" x2="900" y2="80"/><line x1="710" y1="230" x2="900" y2="140"/><line x1="710" y1="230" x2="900" y2="200"/><line x1="710" y1="230" x2="900" y2="260"/>
+<line x1="710" y1="290" x2="900" y2="80"/><line x1="710" y1="290" x2="900" y2="140"/><line x1="710" y1="290" x2="900" y2="200"/><line x1="710" y1="290" x2="900" y2="260"/>
+        </g>
+<circle class="nn-node" cx="140" cy="80" r="14"/><circle class="nn-node" cx="140" cy="140" r="14"/><circle class="nn-node" cx="140" cy="200" r="14"/><circle class="nn-node" cx="140" cy="260" r="14"/>
+<circle class="nn-node" cx="330" cy="50" r="14"/><circle class="nn-node" cx="330" cy="110" r="14"/><circle class="nn-node" cx="330" cy="170" r="14"/><circle class="nn-node" cx="330" cy="230" r="14"/><circle class="nn-node" cx="330" cy="290" r="14"/>
+<circle class="nn-node" cx="520" cy="50" r="14"/><circle class="nn-node" cx="520" cy="110" r="14"/><circle class="nn-node" cx="520" cy="170" r="14"/><circle class="nn-node" cx="520" cy="230" r="14"/><circle class="nn-node" cx="520" cy="290" r="14"/>
+<circle class="nn-node" cx="710" cy="50" r="14"/><circle class="nn-node" cx="710" cy="110" r="14"/><circle class="nn-node" cx="710" cy="170" r="14"/><circle class="nn-node" cx="710" cy="230" r="14"/><circle class="nn-node" cx="710" cy="290" r="14"/>
+<circle class="nn-node" cx="900" cy="80" r="14"/><circle class="nn-node" cx="900" cy="140" r="14"/><circle class="nn-node" cx="900" cy="200" r="14"/><circle class="nn-node" cx="900" cy="260" r="14"/>
+
+        <!-- zone fine-tuning : couches superficielles (les dernières) -->
+        <g class="fragment" data-fragment-index="1">
+          <rect class="ft-zone" x="666" y="20" width="262" height="290" rx="18"/>
+<circle class="nn-gold" cx="710" cy="50" r="14"/><circle class="nn-gold" cx="710" cy="110" r="14"/><circle class="nn-gold" cx="710" cy="170" r="14"/><circle class="nn-gold" cx="710" cy="230" r="14"/><circle class="nn-gold" cx="710" cy="290" r="14"/>
+<circle class="nn-gold" cx="900" cy="80" r="14"/><circle class="nn-gold" cx="900" cy="140" r="14"/><circle class="nn-gold" cx="900" cy="200" r="14"/><circle class="nn-gold" cx="900" cy="260" r="14"/>
+        </g>
+      </svg>
+
+      <div class="nn-labels">
+        <div class="nn-lab left">
+          <strong>Premières couches</strong>
+          <small>connaissances fondamentales</small>
+        </div>
+        <div class="nn-lab right">
+          <strong>Dernières couches</strong>
+          <small>connaissances plus spécifiques</small>
+        </div>
+      </div>
+
+      <p class="ft-caption fragment" data-fragment-index="1">
+        <span class="tag-gold">Fine-tuning</span>
+        réentraîner uniquement les couches superficielles (les dernières)
+      </p>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ EST-CE QU'UN MODÈLE RÉPOND ? ============ -->
+    <section class="content-slide">
+      <h2>Est-ce qu'un modèle « répond » ?</h2>
+
+      <p style="margin:0">On fine-tune le modèle sur des données de ce type :</p>
+
+      <div class="cols" style="gap:2.2em">
+        <div style="flex:1.15">
+<pre class="chat-template"><span class="tok">&lt;|system|&gt;</span>
+<span class="said">You are a helpful assistant.</span>
+<span class="tok">&lt;|user|&gt;</span>
+<span class="said">Quelle est la capitale de la France ?</span>
+<span class="tok">&lt;|assistant|&gt;</span>
+<span class="gen">Paris.</span></pre>
+        </div>
+
+        <div style="flex:.85">
+          <ul style="font-size:.86em;margin:0;padding-left:1.1em">
+            <li class="fragment" style="margin:.45em 0">Format « <strong>instruction</strong> » ou « <strong>conversation</strong> » appris durant le <strong>fine-tuning</strong>.</li>
+            <li class="fragment" style="margin:.45em 0">Le modèle ne « répond » pas&nbsp;: il <strong>continue du texte</strong> selon un modèle de dialogue.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ PERSISTANCE DE L'ÉTAT ============ -->
+    <section class="content-slide">
+      <h2>D'où vient la persistance de l'état conversationnel&nbsp;?</h2>
+
+      <svg class="conv" viewBox="0 0 1000 430" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/>
+          </marker>
+        </defs>
+
+        <!-- Utilisateur -->
+        <circle class="ico-fill" cx="95" cy="150" r="30"/>
+        <path class="ico-fill" d="M45,260 Q45,192 95,192 Q145,192 145,260 Z"/>
+        <text class="lbl" x="95" y="320" text-anchor="middle">User</text>
+
+        <!-- Modèle (réseau) -->
+        <g>
+          <line class="net-l" x1="860" y1="110" x2="860" y2="220"/>
+          <line class="net-l" x1="915" y1="110" x2="915" y2="220"/>
+          <line class="net-l" x1="970" y1="110" x2="970" y2="220"/>
+          <line class="net-l" x1="860" y1="110" x2="915" y2="165"/>
+          <line class="net-l" x1="915" y1="110" x2="860" y2="165"/>
+          <line class="net-l" x1="915" y1="110" x2="970" y2="165"/>
+          <line class="net-l" x1="970" y1="110" x2="915" y2="165"/>
+          <line class="net-l" x1="860" y1="165" x2="915" y2="220"/>
+          <line class="net-l" x1="915" y1="165" x2="860" y2="220"/>
+          <line class="net-l" x1="915" y1="165" x2="970" y2="220"/>
+          <line class="net-l" x1="970" y1="165" x2="915" y2="220"/>
+          <rect class="net-n" x="851" y="101" width="18" height="18" rx="3"/>
+          <rect class="net-n" x="906" y="101" width="18" height="18" rx="3"/>
+          <rect class="net-n" x="961" y="101" width="18" height="18" rx="3"/>
+          <circle class="net-n" cx="860" cy="165" r="10"/>
+          <circle class="net-n" cx="915" cy="165" r="10"/>
+          <circle class="net-n" cx="970" cy="165" r="10"/>
+          <rect class="net-n" x="851" y="211" width="18" height="18" rx="3"/>
+          <rect class="net-n" x="906" y="211" width="18" height="18" rx="3"/>
+          <rect class="net-n" x="961" y="211" width="18" height="18" rx="3"/>
+        </g>
+
+        <!-- Échange -->
+        <g class="fragment" data-fragment-index="1">
+          <text class="msg" x="500" y="62" text-anchor="middle"><tspan class="n">1.</tspan> Bonjour, mon nom est James</text>
+          <line class="flow" x1="235" y1="88" x2="775" y2="88" marker-end="url(#arrow)"/>
+        </g>
+        <g class="fragment" data-fragment-index="2">
+          <text class="msg" x="500" y="155" text-anchor="middle"><tspan class="n">2.</tspan> Bonjour James, comment puis-je vous aider&nbsp;?</text>
+          <line class="flow" x1="775" y1="181" x2="235" y2="181" marker-end="url(#arrow)"/>
+        </g>
+        <g class="fragment" data-fragment-index="3">
+          <text class="msg" x="500" y="248" text-anchor="middle"><tspan class="n">3.</tspan> Quel est mon nom&nbsp;?</text>
+          <line class="flow" x1="235" y1="274" x2="775" y2="274" marker-end="url(#arrow)"/>
+        </g>
+        <g class="fragment" data-fragment-index="4">
+          <text class="msg" x="500" y="341" text-anchor="middle"><tspan class="n">4.</tspan> Je ne sais pas quel est votre nom</text>
+          <line class="flow" x1="775" y1="367" x2="235" y2="367" marker-end="url(#arrow)"/>
+        </g>
+      </svg>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ PERSISTANCE DE L'ÉTAT (Q&A SYSTEM) ============ -->
+    <section class="content-slide">
+      <h2>D'où vient la persistance de l'état conversationnel&nbsp;?</h2>
+
+      <svg class="conv" viewBox="0 0 1440 470" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/>
+          </marker>
+        </defs>
+
+        <!-- Utilisateur -->
+        <circle class="ico-fill" cx="85" cy="110" r="26"/>
+        <path class="ico-fill" d="M40,210 Q40,150 85,150 Q130,150 130,210 Z"/>
+        <text class="lbl" x="85" y="248" text-anchor="middle">User</text>
+
+        <!-- Q&A system (fenêtre applicative) -->
+        <g>
+          <rect class="win" x="580" y="116" width="170" height="104" rx="10"/>
+          <line class="bar" x1="580" y1="144" x2="750" y2="144"/>
+          <circle cx="597" cy="130" r="4" fill="#e0564f"/>
+          <circle cx="611" cy="130" r="4" fill="#e6b04a"/>
+          <circle cx="625" cy="130" r="4" fill="#5fbf63"/>
+          <rect class="bar" x="600" y="180" width="120" height="24" rx="12"/>
+          <circle class="bar" cx="702" cy="192" r="5"/>
+          <line class="bar" x1="706" y1="196" x2="712" y2="202"/>
+        </g>
+        <text class="lbl" x="665" y="278" text-anchor="middle"><tspan>Q</tspan><tspan>&#38;A system</tspan></text>
+
+        <!-- Modèle (réseau) -->
+        <g>
+          <line class="net-l" x1="1300" y1="110" x2="1300" y2="210"/>
+          <line class="net-l" x1="1340" y1="110" x2="1340" y2="210"/>
+          <line class="net-l" x1="1380" y1="110" x2="1380" y2="210"/>
+          <line class="net-l" x1="1300" y1="110" x2="1340" y2="160"/>
+          <line class="net-l" x1="1340" y1="110" x2="1300" y2="160"/>
+          <line class="net-l" x1="1340" y1="110" x2="1380" y2="160"/>
+          <line class="net-l" x1="1380" y1="110" x2="1340" y2="160"/>
+          <line class="net-l" x1="1300" y1="160" x2="1340" y2="210"/>
+          <line class="net-l" x1="1340" y1="160" x2="1300" y2="210"/>
+          <line class="net-l" x1="1340" y1="160" x2="1380" y2="210"/>
+          <line class="net-l" x1="1380" y1="160" x2="1340" y2="210"/>
+          <rect class="net-n" x="1291" y="101" width="18" height="18" rx="3"/>
+          <rect class="net-n" x="1331" y="101" width="18" height="18" rx="3"/>
+          <rect class="net-n" x="1371" y="101" width="18" height="18" rx="3"/>
+          <circle class="net-n" cx="1300" cy="160" r="10"/>
+          <circle class="net-n" cx="1340" cy="160" r="10"/>
+          <circle class="net-n" cx="1380" cy="160" r="10"/>
+          <rect class="net-n" x="1291" y="201" width="18" height="18" rx="3"/>
+          <rect class="net-n" x="1331" y="201" width="18" height="18" rx="3"/>
+          <rect class="net-n" x="1371" y="201" width="18" height="18" rx="3"/>
+          <text class="dots" x="1405" y="116">⋯</text>
+          <text class="dots" x="1405" y="166">⋯</text>
+          <text class="dots" x="1405" y="216">⋯</text>
+        </g>
+
+        <!-- ===== Échange : User <-> Q&A ===== -->
+        <g class="fragment" data-fragment-index="1">
+          <text class="msg-m" x="370" y="92" text-anchor="middle"><tspan class="n">1.</tspan> Bonjour, mon nom est James</text>
+          <line class="flow" x1="180" y1="112" x2="560" y2="112" marker-end="url(#arrow2)"/>
+        </g>
+        <g class="fragment" data-fragment-index="4">
+          <text class="msg-m" x="370" y="170" text-anchor="middle"><tspan class="n">4.</tspan> Bonjour James, comment puis-je vous aider&nbsp;?</text>
+          <line class="flow" x1="560" y1="190" x2="180" y2="190" marker-end="url(#arrow2)"/>
+        </g>
+        <g class="fragment" data-fragment-index="5">
+          <text class="msg-m" x="370" y="248" text-anchor="middle"><tspan class="n">5.</tspan> Quel est mon nom&nbsp;?</text>
+          <line class="flow" x1="180" y1="268" x2="560" y2="268" marker-end="url(#arrow2)"/>
+        </g>
+        <g class="fragment" data-fragment-index="8">
+          <text class="msg-m" x="370" y="326" text-anchor="middle"><tspan class="n">8.</tspan> Votre nom est James</text>
+          <line class="flow" x1="560" y1="346" x2="180" y2="346" marker-end="url(#arrow2)"/>
+        </g>
+
+        <!-- ===== Échange : Q&A <-> Modèle ===== -->
+        <g class="fragment" data-fragment-index="2">
+          <text class="msg-sm" x="770" y="92"><tspan class="n">2.</tspan> [...] User : Bonjour, mon nom est James. System :</text>
+          <line class="flow" x1="770" y1="110" x2="1255" y2="110" marker-end="url(#arrow2)"/>
+        </g>
+        <g class="fragment" data-fragment-index="3">
+          <text class="msg-sm" x="770" y="176"><tspan class="n">3.</tspan> Bonjour James, comment puis-je vous aider ?</text>
+          <line class="flow" x1="1255" y1="194" x2="770" y2="194" marker-end="url(#arrow2)"/>
+        </g>
+        <g class="fragment" data-fragment-index="6">
+          <text class="msg-sm" x="770" y="258"><tspan class="n">6.</tspan> [...] User : Bonjour, mon nom est James.</text>
+          <text class="msg-sm" x="792" y="279">System : Bonjour James, comment puis-je vous aider ?</text>
+          <text class="msg-sm" x="792" y="300"><tspan class="q">User : Quel est mon nom ? System :</tspan></text>
+          <line class="flow" x1="770" y1="322" x2="1255" y2="322" marker-end="url(#arrow2)"/>
+        </g>
+        <g class="fragment" data-fragment-index="7">
+          <text class="msg-sm" x="900" y="386"><tspan class="n">7.</tspan> Votre nom est James</text>
+          <line class="flow" x1="1255" y1="404" x2="880" y2="404" marker-end="url(#arrow2)"/>
+        </g>
+      </svg>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ BIEN DISTINGUER ============ -->
+    <section class="content-slide">
+      <h2>Bien distinguer</h2>
+
+      <div class="phases">
+        <div class="phase left">
+          <h3>La quête de systèmes anthropomorphes</h3>
+          <span class="state">concerne les interfaces homme-machine</span>
+          <img src="img/anthropo_ui.png" alt="Interface anthropomorphe">
+        </div>
+
+        <div class="vs">≠</div>
+
+        <div class="phase right">
+          <h3>Le machine learning, l'IA générative</h3>
+          <span class="state">exécution de tâches cognitives complexes</span>
+          <ul>
+            <li class="fragment">Génération de texte</li>
+            <li class="fragment">Réponse à des instructions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ TON / ORIENTATION (RLHF) ============ -->
+    <section class="content-slide">
+      <h2>Le ton, l'orientation spécifique des modèles conversationnels</h2>
+
+      <div class="cols" style="align-items:center;gap:2em">
+        <div style="flex:.82">
+          <ul style="font-size:.9em">
+            <li class="fragment">Plusieurs <strong>niveaux d'intervention</strong></li>
+            <li class="fragment">Le plus important&nbsp;: le <strong>« RL »</strong> <span class="muted">(apprentissage par renforcement)</span></li>
+            <li class="fragment">Ton et orientation <strong>incorporés dans le modèle</strong></li>
+          </ul>
+        </div>
+        <div style="flex:1.45">
+          <img src="img/RLHF_diagram.svg.webp" alt="Schéma RLHF — du modèle supervisé au modèle aligné"
+               style="display:block;width:100%;max-height:52vh;object-fit:contain;border:1px solid #dfe5ea;border-radius:8px;box-shadow:0 4px 14px rgba(0,56,110,.10)">
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ RLHF EN 3 ÉTAPES (image pleine) ============ -->
+    <section class="content-slide image-slide">
+      <img src="img/ML-14874_image001.jpg" class="full-img"
+           alt="RLHF en 3 étapes : Supervised Fine-Tuning, Reward Model, Optimize Policy (PPO)">
+      <p class="img-cite">
+        <a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener"><em>Training language models to follow instructions with human feedback</em></a>
+        — OpenAI · <a href="https://arxiv.org/abs/2203.02155" target="_blank" rel="noopener">arxiv.org/abs/2203.02155</a>
+      </p>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ NIVEAUX DE MODÉRATION ============ -->
+    <section class="content-slide">
+      <h2>Plusieurs niveaux de modération</h2>
+
+      <div class="mod-grid">
+        <div class="mod-card">
+          <span class="lvl">1</span>
+          <h3>La sélection des contenus d'entraînement</h3>
+          <p>Classification par IA, élimination de contenus haineux, etc.</p>
+        </div>
+        <div class="mod-card">
+          <span class="lvl">2</span>
+          <h3>La création des jeux de données SFT</h3>
+          <p>Contenus collectés / sélectionnés / créés « à la main »</p>
+        </div>
+        <div class="mod-card strong">
+          <span class="lvl">3</span>
+          <h3>Le <em>reinforcement learning</em></h3>
+          <p>Ton et modération incorporés dans le LLM</p>
+        </div>
+        <div class="mod-card">
+          <span class="lvl">4</span>
+          <h3>Les <em>guardrails</em></h3>
+          <p>Identification de contenus problématiques en sortie</p>
+        </div>
+        <div class="mod-card">
+          <span class="lvl">5</span>
+          <h3>Le prompt système</h3>
+          <p>Souvent très long</p>
+        </div>
+      </div>
+
+      <div class="mod-groups">
+        <div class="mod-group hard fragment"><span class="arr">↑</span> Impossibles à contourner <span class="muted" style="font-weight:400;color:#cfe0f2">(niveaux 1–3)</span></div>
+        <div class="mod-group soft fragment"><span class="arr">↑</span> Évitables <span style="font-weight:400;color:#7a5a14">(niveaux 4–5)</span></div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ LLM VS CHATBOT ============ -->
+    <section class="content-slide">
+      <h2>LLM <span class="muted" style="font-weight:400">vs</span> Chatbot</h2>
+
+      <div class="cons">
+        <div class="ci fragment" data-fragment-index="1"><span class="x">✗</span> Le Chatbot impose un cadre conversationnel</div>
+        <div class="ci fragment" data-fragment-index="2"><span class="x">✗</span> Vous ne contrôlez pas la version du modèle</div>
+        <div class="ci fragment" data-fragment-index="3"><span class="x">✗</span> Le fournisseur vous impose un prompt système</div>
+
+        <div class="sep fragment" data-fragment-index="4">détaillé plus loin</div>
+
+        <div class="ci dim fragment" data-fragment-index="4"><span class="x">✗</span> Vous ne pouvez pas automatiser les traitements</div>
+        <div class="ci dim fragment" data-fragment-index="4"><span class="x">✗</span> Vous ne contrôlez pas les paramètres</div>
+        <div class="ci dim fragment" data-fragment-index="4"><span class="x">✗</span> Dans certains cas, vous exposez vos données à un acteur commercial</div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ FONDEMENT THÉORIQUE — 1. RÉFÉRENCE ============ -->
+    <section class="content-slide">
+      <h2>Fondement théorique de l'usage des LLM : « In-context learning »</h2>
+
+      <div class="ref-card">
+        <span class="pill">Article de référence</span>
+        <p class="ref-title"><a href="https://arxiv.org/abs/2005.14165" target="_blank" rel="noopener">Language Models are Few-Shot Learners</a></p>
+        <p class="ref-meta">Brown et al., 2020 · arXiv:2005.14165</p>
+      </div>
+
+      <p class="key-idea fragment">
+        <strong>Génération de texte</strong> <span class="ar">→</span> montée en généralité des modèles de ML
+      </p>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ FONDEMENT THÉORIQUE — 2. INNER / OUTER LOOP ============ -->
+    <section class="content-slide">
+      <div class="cols" style="align-items:flex-start;gap:2.4em;margin-top:.2em">
+        <div style="flex:.82">
+          <img src="img/in-context-learning.png" alt="Zero-shot, one-shot, few-shot : les trois réglages de l'in-context learning"
+               style="display:block;width:100%;max-height:74vh;object-fit:contain;border:1px solid #dfe5ea;border-radius:8px;box-shadow:0 4px 14px rgba(0,56,110,.10)">
+        </div>
+
+        <div style="flex:1.18">
+          <div class="specs">
+            <div class="row fragment"><span class="k"><span class="pill">Inner loop</span></span><span class="v">le cycle d'<b>entraînement</b> du modèle <span class="muted">(lourd)</span></span></div>
+            <div class="row fragment"><span class="k"><span class="pill gold">Outer loop</span></span><span class="v">l'envoi de données <b>via le prompt</b> <span class="muted">(court)</span></span></div>
+          </div>
+
+          <p class="callout fragment" style="font-size:.82em;margin-top:.7em">
+            <span class="sym">★</span> <strong>Hypothèse GPT-3</strong> : la performance en
+            <em>in-context learning</em> est corrélée à la <strong>taille du modèle</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ IN-CONTEXT LEARNING ============ -->
+    <section class="content-slide">
+      <h2>Usage d'un LLM — cadre de compréhension</h2>
+
+      <div class="icl">
+        <!-- Mémoire paramétrique -->
+        <div class="icl-side left fragment" data-fragment-index="1">
+          <div class="icl-top">
+            <svg class="icl-ic" viewBox="0 0 80 80" aria-hidden="true">
+              <g stroke="#9ccc65" stroke-width="1">
+                <line x1="18" y1="24" x2="40" y2="40"/><line x1="18" y1="40" x2="40" y2="24"/>
+                <line x1="18" y1="40" x2="40" y2="56"/><line x1="18" y1="56" x2="40" y2="40"/>
+                <line x1="40" y1="24" x2="62" y2="40"/><line x1="40" y1="40" x2="62" y2="24"/>
+                <line x1="40" y1="40" x2="62" y2="56"/><line x1="40" y1="56" x2="62" y2="40"/>
+              </g>
+              <g fill="#dcedc8" stroke="#7cb342" stroke-width="1.5">
+                <circle cx="18" cy="24" r="5"/><circle cx="18" cy="40" r="5"/><circle cx="18" cy="56" r="5"/>
+                <circle cx="40" cy="24" r="5"/><circle cx="40" cy="40" r="5"/><circle cx="40" cy="56" r="5"/>
+                <circle cx="62" cy="24" r="5"/><circle cx="62" cy="40" r="5"/><circle cx="62" cy="56" r="5"/>
+              </g>
+            </svg>
+            <div class="obox">Informations / capacités acquises à l'entraînement</div>
+          </div>
+          <h3 class="icl-h">Mémoire paramétrique</h3>
+          <ul class="icl-b">
+            <li>Taille <b>++</b></li>
+            <li>Explicabilité <b>--</b></li>
+            <li>Contrôle <b>-</b></li>
+            <li>Fraîcheur <b>-</b></li>
+          </ul>
+        </div>
+
+        <!-- Exécution de tâches -->
+        <div class="icl-center fragment" data-fragment-index="3">
+          <svg class="icl-arrows" viewBox="0 0 220 96" aria-hidden="true">
+            <g fill="none" stroke="#E2922A" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M24,24 H74 Q92,24 92,44 V66"/>
+              <path d="M196,24 H146 Q128,24 128,44 V66"/>
+            </g>
+            <polygon points="76,64 108,64 92,92" fill="#E2922A"/>
+            <polygon points="112,64 144,64 128,92" fill="#E2922A"/>
+          </svg>
+          <div class="cbox">Exécution de tâches<small>Raisonnement, solution de problèmes</small></div>
+        </div>
+
+        <!-- Mémoire non-paramétrique -->
+        <div class="icl-side right fragment" data-fragment-index="2">
+          <div class="icl-top">
+            <div class="obox">Informations / capacités fournies par le contexte</div>
+            <svg class="icl-ic" viewBox="0 0 90 84" aria-hidden="true">
+              <path d="M10,8 H80 a8,8 0 0 1 8,8 V50 a8,8 0 0 1 -8,8 H44 L34,74 L30,58 H10 a8,8 0 0 1 -8,-8 V16 a8,8 0 0 1 8,-8 Z"
+                    fill="#fff" stroke="#5B2A9C" stroke-width="6" stroke-linejoin="round"/>
+              <polyline points="26,24 40,33 26,42" fill="none" stroke="#E2922A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="46" y1="42" x2="64" y2="42" stroke="#E2922A" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="icl-h">Mémoire non-paramétrique</h3>
+          <ul class="icl-b">
+            <li>Taille <b>-</b></li>
+            <li>Explicabilité <b>++</b></li>
+            <li>Fiabilité <b>++</b></li>
+            <li>Fraîcheur <b>++</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ FOUNDATION MODELS ============ -->
+    <section class="content-slide">
+      <h2>Pourquoi des « foundation models »&nbsp;?</h2>
+
+      <p class="callout" style="font-size:.88em;margin-top:.2em;padding:.35em .85em">
+        <span class="sym">→</span> Parce qu'on ne peut les entraîner soi-même&nbsp;!
+      </p>
+
+      <p style="margin:.25em 0 0"><strong>Ils diffèrent par&nbsp;:</strong></p>
+
+      <div class="specs">
+        <div class="row fragment"><span class="k"><span class="pill teal">Formats E/S</span></span><span class="v">texte, image, hybride…</span></div>
+        <div class="row fragment"><span class="k"><span class="pill">Taille</span></span><span class="v">en <b>milliards de paramètres</b> (1B → 1000B)</span></div>
+        <div class="row fragment"><span class="k"><span class="pill gold">Contexte</span></span><span class="v">en tokens — <b>jusqu'à 1 million</b></span></div>
+        <div class="row fragment"><span class="k"><span class="pill purple">Type de SFT</span></span><span class="v">base · instruct · chat · thinking</span></div>
+        <div class="row fragment"><span class="k"><span class="pill">Ouverture</span></span><span class="v"><b>open weights</b> / commercial</span></div>
+        <div class="row fragment"><span class="k"><span class="pill teal">Performance</span></span><span class="v">mesurée par des <b>benchmarks</b></span></div>
+      </div>
+
+      <a class="example-chip" href="https://console.cloud.google.com/agent-platform/publishers/qwen/model-garden/qwen3" target="_blank" rel="noopener">
+        <span class="lbl">Exemple</span> <strong>Qwen&nbsp;3</strong> <span class="ext">↗</span>
+      </a>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ BREF HISTORIQUE (FRISE) ============ -->
+    <section class="content-slide">
+      <h2>Bref historique</h2>
+
+      <div class="timeline">
+        <div class="tl-row fragment"><span class="tl-year">1957–1958</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>Perceptron</strong> <span class="who">· Rosenblatt</span></span></div>
+        <div class="tl-row cold fragment"><span class="tl-year">1974–1980</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>1<sup>er</sup> hiver de l'IA</strong> ❄</span></div>
+        <div class="tl-row fragment"><span class="tl-year">Années 1980</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>Réseaux de neurones profonds</strong> <span class="who">· Hinton, LeCun</span></span></div>
+        <div class="tl-row cold fragment"><span class="tl-year">1987–début 2000s</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>2<sup>e</sup> hiver de l'IA</strong> ❄</span></div>
+        <div class="tl-row fragment"><span class="tl-year">2003–2013</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>Modèles de langue</strong> <span class="who">· Bengio, Mikolov</span></span></div>
+        <div class="tl-row fragment"><span class="tl-year">2017</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>Transformer, attention</strong> <span class="who">· Vaswani et al.</span></span></div>
+        <div class="tl-row fragment"><span class="tl-year">2018–2020</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>Pré-entraînement et génératif</strong> <span class="who">· BERT, GPT-2, GPT-3</span></span></div>
+        <div class="tl-row fragment"><span class="tl-year">2022–2023</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>GPT-3, ChatGPT</strong> <span class="who">· OpenAI</span></span></div>
+        <div class="tl-row fragment"><span class="tl-year">2023–2024</span><span class="tl-marker"><span class="tl-dot"></span></span><span class="tl-ev"><strong>Diversification, modèles ouverts, multimodalité</strong> <span class="who">· Llama, Mistral, Claude, Gemini</span></span></div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ ACCÈS AUX MODÈLES (image pleine) ============ -->
+    <section class="content-slide image-slide">
+      <div style="display:flex;align-items:center;justify-content:center;height:100%">
+        <img src="img/acces.jpeg" class="full-img"
+             style="max-height:90vh"
+             alt="Accès aux modèles : contrôler une machine, envoyer/recevoir des tokens dans le cloud, accéder via un logiciel">
+      </div>
+    </section>
+
+    <!-- ============ 2. OBJECTIFS ============ -->
+    <section class="content-slide">
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <div class="cols">
+        <div>
+          <ul>
+            <li>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit sed do eiusmod.</li>
+            <li>Ut enim ad minim veniam, quis <strong>nostrud exercitation</strong> ullamco laboris.</li>
+            <li>Duis aute irure dolor in <strong>reprehenderit</strong> in voluptate <em>velit esse</em> cillum.</li>
+          </ul>
+        </div>
+        <div class="col-narrow">
+          <div class="card gold">
+            <h3>Lorem ipsum</h3>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 3. INTERCALAIRE DE SECTION ============ -->
+    <section class="section-slide" data-background-color="#ED9B27">
+      <span class="num">1.</span>
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
+    </section>
+
+    <!-- ============ 4. LES TROIS FAMILLES (cartes) ============ -->
+    <section class="content-slide">
+      <h2>Lorem ipsum → dolor sit → amet consectetur</h2>
+      <div class="cols">
+        <div class="card">
+          <h3><span class="pill">Lorem</span></h3>
+          <p>Lorem ipsum dolor sit amet&nbsp;: consectetur adipiscing elit, sed do eiusmod.</p>
+          <p class="muted" style="font-size:.72em">Tempor, incididunt, labore…</p>
+        </div>
+        <div class="card teal">
+          <h3><span class="pill teal">Ipsum</span></h3>
+          <p>Ut enim ad minim <em>veniam</em>, quis nostrud exercitation ullamco laboris.</p>
+          <p class="muted" style="font-size:.72em">Aliquip, commodo, consequat…</p>
+        </div>
+        <div class="card purple">
+          <h3><span class="pill purple">Dolor</span></h3>
+          <p>Duis aute irure <strong>dolor in reprehenderit</strong> in voluptate velit esse cillum.</p>
+          <p class="muted" style="font-size:.72em">Fugiat, nulla, pariatur…</p>
+        </div>
+      </div>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 5. EXEMPLE / CITATION ============ -->
+    <section class="content-slide">
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem&nbsp;:</p>
+      <blockquote>« Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
+        consectetur, adipisci velit, sed quia non numquam. »</blockquote>
+      <p class="muted">→ Ut enim ad minima veniam, quis nostrum <strong>exercitationem</strong> ullam corporis suscipit laboriosam.</p>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 6. EXEMPLE DE CODE (option démo) ============ -->
+    <section class="content-slide">
+      <h2>Lorem ipsum dolor sit amet</h2>
+      <p style="font-size:.85em">Consectetur adipiscing elit, sed do eiusmod tempor incididunt&nbsp;:</p>
+      <pre><code data-trim data-noescape class="language-python"># Lorem ipsum dolor sit amet
+lorem = Ipsum()
+dolor = lorem.consectetur(
+    adipiscing="elit",
+    tempor=512,
+    labore=[{"magna": "aliqua",
+             "veniam": "Ut enim ad minim."}],
+)
+print(dolor.exercitation[0].ullamco)</code></pre>
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ 7. DIAPO DE CLÔTURE ============ -->
+    <section class="title-slide" data-background-color="#00386E">
+      <div class="brand-logo-chip"><img src="assets/logo-paris1.png" alt="Université Paris 1 Panthéon-Sorbonne"></div>
+      <span class="kicker">Lorem ipsum</span>
+      <h1>Lorem ipsum dolor&nbsp;?</h1>
+      <p class="subtitle">Consectetur adipiscing elit, sed do eiusmod.</p>
+      <p class="meta">Cycle de formations IA pour les SHS · Université Paris 1 Panthéon-Sorbonne</p>
+    </section>
+
+  </div>
+</div>
+
+<!-- Configuration locale (identifiants du playground) — NON versionnée.
+     Copier `config.sample.js` en `config.local.js` puis renseigner les valeurs. -->
+<script src="config.local.js"></script>
+
+<script type="module">
+  import Reveal from './node_modules/reveal.js/dist/reveal.mjs';
+  import Highlight from './node_modules/reveal.js/dist/plugin/highlight.mjs';
+  import Notes from './node_modules/reveal.js/dist/plugin/notes.mjs';
+
+  const deck = new Reveal({
+    width: 1280,
+    height: 720,
+    margin: 0.04,
+    center: false,          // contenu aligné en haut → le pied de page reste ancré en bas
+    hash: true,
+    slideNumber: false,
+    transition: 'fade',
+    plugins: [Highlight, Notes],
+  });
+  deck.initialize().then(() => {
+    // Pour chaque diapo de contenu : insère le logo à gauche du pied de page
+    // et renseigne le numéro de diapo à droite (évite de répéter le HTML).
+    [...document.querySelectorAll('.slides > section')].forEach((s, i) => {
+      const footer = s.querySelector('.slide-footer');
+      if (!footer) return;
+      const logo = document.createElement('img');
+      logo.src = 'assets/logo-paris1.png';
+      logo.alt = 'Université Paris 1 Panthéon-Sorbonne';
+      footer.prepend(logo);
+      const num = footer.querySelector('.num');
+      if (num) num.textContent = (i + 1);
+    });
+
+    // Identifiants du playground injectés depuis config.local.js (hors VCS).
+    const cfg = window.SLIDE_CONFIG || {};
+    const link = document.getElementById('playground-link');
+    if (link && cfg.PLAYGROUND_IP) {
+      link.href = cfg.PLAYGROUND_IP;
+      link.textContent = '→ ' + cfg.PLAYGROUND_IP;
+    }
+    const pass = document.getElementById('playground-pass');
+    if (pass && cfg.PLAYGROUND_PASSWORD) {
+      pass.textContent = cfg.PLAYGROUND_PASSWORD;
+    }
+
+    // Avancer en cliquant n'importe où sur la diapo (révèle ligne par ligne,
+    // puis passe à la diapo suivante). Les liens et les flèches restent actifs.
+    document.querySelector('.reveal').addEventListener('click', (e) => {
+      if (e.target.closest('a, button, .controls, .progress, .slide-number, .navigate-left, .navigate-right')) return;
+      deck.next();
+    });
+  });
+</script>
+</body>
+</html>
