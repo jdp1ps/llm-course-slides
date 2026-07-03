@@ -11,6 +11,14 @@
   <link rel="stylesheet" href="node_modules/reveal.js/dist/plugin/highlight/monokai.css">
   <!-- Thème de marque Paris 1 (chargé en dernier pour primer) -->
   <link rel="stylesheet" href="css/paris1-theme.css">
+  <!-- Feuille d'export PDF : chargée uniquement avec ?print-pdf dans l'URL. -->
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet'; l.type = 'text/css'; l.href = 'css/pdf.css';
+      document.head.appendChild(l);
+    }
+  </script>
 </head>
 <body>
 <div class="reveal">
@@ -816,6 +824,8 @@ print(dolor.exercitation[0].ullamco)</code></pre>
     hash: true,
     slideNumber: false,
     transition: 'fade',
+    pdfSeparateFragments: false,   // export PDF : une page par diapo (fragments tous visibles)
+    pdfMaxPagesPerSlide: 1,        // une diapo = exactement une page (pas de débordement)
     plugins: [Highlight, Notes],
   });
   deck.initialize().then(() => {
