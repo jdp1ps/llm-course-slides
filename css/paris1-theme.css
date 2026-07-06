@@ -187,6 +187,394 @@
   max-width: 70%;
   margin-top: .6em;
 }
+/* Intercalaire avec illustration : titre à gauche, image encadrée à droite.
+   La mise en page vit dans un wrapper interne (.si-inner) car reveal.js écrase
+   le `display` de la <section> au runtime — un flex posé sur la section saute. */
+.reveal section.section-illus .si-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+  height: 100%;
+}
+.reveal section.section-illus .si-text { flex: 1 1 0; }
+.reveal section.section-illus .si-text h2 { margin: 0; }
+.reveal section.section-illus .si-illus {
+  flex: 0 0 auto;
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 26px rgba(0,0,0,.20);
+}
+.reveal section.section-illus .si-illus img {
+  display: block;
+  max-height: 66vh;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* Flux : donnée complexe → neurones → sortie limitée -------------------- */
+.reveal .mech-flow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1.4em;
+}
+.reveal .mech-zone {
+  flex: 1 1 0;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.reveal .mech-viz { width: 100%; height: 220px; overflow: visible; }
+.reveal .mech-cap {
+  margin-top: .5em;
+  font-size: .8em;
+  color: var(--p1-blue);
+  line-height: 1.3;
+  max-width: 280px;
+}
+.reveal .mech-arrow {
+  flex: 0 0 auto;
+  margin-top: 96px;
+  font-size: 2.4em;
+  line-height: 1;
+  color: var(--p1-gold);
+}
+/* éléments SVG */
+.reveal .mech-viz .sh   { fill: none; stroke: var(--p1-blue); stroke-width: 2.4; }
+.reveal .mech-viz .net-l { stroke: #8a8a8a; stroke-width: 1.4; }
+.reveal .mech-viz .net-n { stroke: #2b2b2b; stroke-width: 2; fill: #fff; }
+.reveal .mech-viz .whisk { stroke: #b6b6b6; stroke-width: 1.4; }
+.reveal .mech-viz .out-chip { fill: #fff; stroke: var(--p1-blue); stroke-width: 2; }
+.reveal .mech-viz .out-chip.sel { fill: var(--p1-gold); stroke: var(--p1-gold); }
+.reveal .mech-viz .out-num {
+  fill: var(--p1-blue); font-family: var(--p1-serif);
+  font-size: 24px; font-weight: 700;
+}
+
+/* exemples entrée → sortie (problèmes bien adaptés) -------------------- */
+.reveal .ex-list { max-width: 62em; margin: .7em auto 0; font-size: .88em; }
+.reveal .ex-row { display: flex; align-items: baseline; margin: .45em 0; }
+.reveal .ex-row .ex-cat {
+  flex: 0 0 13em; padding-right: 1em;
+  font-family: var(--p1-serif); font-weight: 700; color: var(--p1-blue);
+}
+.reveal .ex-row .ex-in  { flex: 1; text-align: right; padding-right: .8em; color: #333; }
+.reveal .ex-row .ex-in em { font-style: italic; }
+.reveal .ex-row .ex-ar  { flex: 0 0 auto; color: var(--p1-gold); font-weight: 700; }
+.reveal .ex-row .ex-out { flex: 1; text-align: left; padding-left: .8em; color: var(--p1-blue); font-weight: 600; }
+.reveal .ex-row.head { margin-bottom: .2em; border-bottom: 1px solid #e2e7ec; padding-bottom: .35em; }
+.reveal .ex-row.head .ex-in,
+.reveal .ex-row.head .ex-out {
+  font-family: var(--p1-sans); font-weight: 700; color: var(--p1-blue);
+  font-size: .78em; text-transform: uppercase; letter-spacing: .06em;
+}
+
+/* génération de texte : un double défi -------------------------------- */
+.reveal .gen-flow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1em;
+  margin-top: .5em;
+}
+.reveal .gen-col { flex: 0 0 30%; text-align: center; }
+.reveal .gen-lbl {
+  font-family: var(--p1-serif); font-weight: 700;
+  color: var(--p1-blue); font-size: 1.05em; margin-bottom: .3em;
+}
+.reveal .gen-tokens span {
+  display: inline-block; background: #eef2f6; border: 1px solid #d8e0e8;
+  border-radius: 5px; padding: .04em .4em; margin: .1em; color: #333; font-size: .78em;
+}
+.reveal .gen-tokens.out { color: var(--p1-blue); font-weight: 600; line-height: 1.22; font-size: .92em; }
+.reveal .gen-note { color: #555; font-style: italic; margin-top: .35em; font-size: .82em; }
+.reveal .gen-note strong { color: var(--p1-red); font-style: normal; }
+/* flèche horizontale centrale */
+.reveal .gen-center { flex: 1 1 auto; display: flex; align-items: center; margin-top: 3.4em; }
+.reveal .gen-hline { position: relative; flex: 1; height: 3px; background: #1a1a1a; }
+.reveal .gen-hline::after {
+  content: ''; position: absolute; right: -1px; top: -7px;
+  border-left: 15px solid #1a1a1a;
+  border-top: 8.5px solid transparent; border-bottom: 8.5px solid transparent;
+}
+/* solutions (apparition progressive) */
+.reveal .gen-sol { margin-top: .4em; }
+.reveal .gen-down { color: var(--p1-gold); font-size: 1.3em; line-height: .8; }
+.reveal .gen-sol-box {
+  display: inline-block; background: var(--p1-blue); color: #fff;
+  border-radius: 8px; padding: .3em .8em; font-weight: 600; font-size: .95em; margin-top: .15em;
+}
+.reveal .gen-sol-box b { color: var(--p1-gold); }
+
+/* N nombres = un point dans un espace à N dimensions ------------------ */
+.reveal .dim-cols { display: flex; margin-top: .6em; }
+.reveal .dim-col { flex: 1; padding: 0 1.1em; text-align: center; }
+.reveal .dim-col + .dim-col { border-left: 2px solid #e2e7ec; }
+.reveal .dim-head {
+  font-family: var(--p1-serif); font-weight: 700; color: var(--p1-blue); font-size: 1.15em;
+}
+.reveal .dim-tuple {
+  font-family: var(--p1-sans); font-weight: 700; color: #222;
+  font-size: 1.1em; margin: .3em 0 .1em;
+}
+.reveal .dim-eq { color: var(--p1-gold); font-weight: 800; font-size: 1.25em; line-height: .9; }
+.reveal .dim-desc { color: #444; font-size: .82em; margin: .1em auto .4em; line-height: 1.25; max-width: 14em; }
+.reveal .dim-desc b { color: var(--p1-blue); }
+.reveal .dim-viz { height: 190px; display: flex; align-items: center; justify-content: center; }
+.reveal .dim-viz svg { max-height: 100%; width: auto; }
+.reveal .dim-viz .ax   { stroke: #1a1a1a; stroke-width: 2.4; fill: none; }
+.reveal .dim-viz .dash { stroke: #8a8a8a; stroke-width: 1.6; stroke-dasharray: 5 5; fill: none; }
+.reveal .dim-viz .pt   { stroke: var(--p1-gold); stroke-width: 3.4; }
+.reveal .dim-viz .axlbl { fill: #333; font-family: var(--p1-sans); font-size: 15px; }
+.reveal .dim-q { font-family: var(--p1-serif); font-weight: 700; color: var(--p1-red); font-size: 5em; line-height: 1; }
+
+/* plongement lexical : proximité & structuration --------------------- */
+.reveal .emb-top { display: flex; align-items: stretch; justify-content: center; gap: .8em; margin-top: .1em; }
+.reveal .emb-card {
+  flex: 0 0 29%; border: 2px solid var(--p1-blue); border-radius: 10px;
+  padding: .3em .7em; text-align: center; display: flex; flex-direction: column; justify-content: center;
+}
+.reveal .emb-card.out { border-color: var(--p1-gold); }
+.reveal .emb-card b { color: var(--p1-blue); font-family: var(--p1-serif); font-size: 1.02em; margin-bottom: .1em; }
+.reveal .emb-card span { color: #222; font-size: .82em; line-height: 1.2; }
+.reveal .emb-card small { color: #666; font-size: .72em; }
+.reveal .emb-arrow { flex: 1 1 auto; align-self: center; text-align: center; padding: 0 .3em; }
+.reveal .emb-arrow .lbl b { color: var(--p1-blue); }
+.reveal .emb-arrow .lbl i { display: block; color: #555; font-size: .8em; font-style: italic; }
+.reveal .emb-arrow .ln { position: relative; height: 3px; background: #1a1a1a; margin-top: .35em; }
+.reveal .emb-arrow .ln::after {
+  content: ''; position: absolute; right: -1px; top: -7px;
+  border-left: 14px solid #1a1a1a; border-top: 8px solid transparent; border-bottom: 8px solid transparent;
+}
+.reveal .emb-q { text-align: center; margin: .3em 0 .05em; }
+.reveal .emb-q span {
+  display: inline-block; background: var(--p1-gold); color: #fff; font-weight: 700;
+  border-radius: 20px; padding: .18em 1.2em; font-size: .92em;
+}
+.reveal .emb-panels { display: flex; gap: 1.6em; margin-top: .1em; }
+.reveal .emb-panel { flex: 1; text-align: center; }
+.reveal .emb-ptitle {
+  display: inline-block; border: 2px solid var(--p1-blue); border-radius: 6px;
+  padding: .02em .8em; font-family: var(--p1-serif); font-weight: 700; color: var(--p1-blue);
+}
+.reveal .emb-panel svg { display: block; width: 100%; max-height: 150px; margin: .05em auto 0; }
+.reveal .emb-cap { color: #444; font-size: .8em; margin-top: .05em; }
+.reveal .emb-panel .pax { stroke: #555; stroke-width: 2; fill: none; }
+.reveal .emb-panel .wx  { stroke: var(--p1-gold); stroke-width: 3; }
+.reveal .emb-panel .wl  { fill: #222; font-family: var(--p1-sans); font-size: 13px; }
+.reveal .emb-panel .clu { fill: rgba(156,214,209,.16); stroke: #9CD6D1; stroke-width: 1.5; stroke-dasharray: 4 4; }
+.reveal .emb-panel .vec { stroke: var(--p1-blue); stroke-width: 2.6; fill: none; }
+
+/* bases théoriques : sémantique distributionnelle (Firth) ------------- */
+.reveal .lead-sub {
+  color: var(--p1-gold); font-family: var(--p1-serif); font-style: italic;
+  font-size: 1.15em; margin: -.3em 0 .4em;
+}
+.reveal .firth-row { display: flex; align-items: center; gap: 1.6em; margin: .15em 0 .5em; }
+.reveal .firth-photo { flex: 0 0 auto; text-align: center; }
+.reveal .firth-photo img {
+  height: 132px; width: auto; display: block; border-radius: 6px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.22);
+}
+.reveal .firth-photo span {
+  display: block; font-size: .66em; color: #666; margin-top: .25em;
+  font-variant: small-caps; letter-spacing: .04em;
+}
+.reveal .firth-quote { flex: 1; }
+.reveal .hyp-label {
+  font-family: var(--p1-sans); font-weight: 700; color: var(--p1-blue);
+  text-transform: uppercase; letter-spacing: .05em; font-size: .8em; margin-bottom: .25em;
+}
+.reveal .firth-quote blockquote {
+  font-family: var(--p1-serif); font-style: italic; color: var(--p1-blue);
+  font-size: 1.3em; margin: 0; line-height: 1.2;
+  border-left: 4px solid var(--p1-gold); padding: .25em .6em; background: #f4f6f9; box-shadow: none;
+}
+.reveal .firth-quote cite {
+  display: block; font-style: normal; color: #666; font-size: .82em;
+  margin-top: .25em; padding-left: .7em;
+}
+/* schéma en 3 parties : embedding = condensé = signification */
+.reveal .eq3 { display: flex; align-items: stretch; justify-content: center; gap: .55em; margin-top: .2em; }
+.reveal .eq3-box {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  border-radius: 10px; padding: .4em .6em; font-size: .82em; line-height: 1.22;
+}
+.reveal .eq3-box.a { background: var(--p1-blue); color: #fff; font-weight: 600; flex: 0 0 23%; }
+.reveal .eq3-box.b { background: #eef2f6; color: #222; border: 1.5px solid #cdd8e2; flex: 1; }
+.reveal .eq3-box.c { background: var(--p1-gold); color: #fff; font-weight: 800; flex: 0 0 15%; font-size: 1em; }
+.reveal .eq3-op { align-self: center; color: var(--p1-gold); font-weight: 800; font-size: 1.7em; }
+
+/* exercice : arithmétique sémantique (word2vec) ----------------------- */
+.reveal .arith-links { text-align: center; margin: .1em 0 .3em; }
+.reveal .arith-links .intro { color: #333; font-size: .9em; }
+.reveal a.arith-chip {
+  display: inline-block; background: var(--p1-blue); color: #fff; border: none;
+  border-radius: 8px; padding: .28em .8em; margin: .2em .25em 0; font-weight: 600; font-size: .82em;
+}
+.reveal a.arith-chip .flag { opacity: .75; font-weight: 400; }
+.reveal .arith-diagram { display: block; width: 100%; max-height: 205px; margin: .3em auto 0; }
+.reveal .arith-diagram .wx { stroke: var(--p1-gold); stroke-width: 3.4; }
+.reveal .arith-diagram .wl { fill: #222; font-family: var(--p1-sans); font-size: 24px; }
+.reveal .arith-diagram .qm { fill: var(--p1-red); font-family: var(--p1-serif); font-weight: 700; font-size: 40px; }
+.reveal .arith-diagram .vec { stroke: var(--p1-blue); stroke-width: 3; fill: none; }
+.reveal .arith-eq {
+  text-align: center; font-family: var(--p1-serif); font-size: 1.3em; margin-top: 0; color: #222;
+}
+.reveal .arith-eq b { color: var(--p1-blue); }
+.reveal .arith-eq .q { color: var(--p1-red); font-weight: 800; }
+.reveal .arith-cta { text-align: center; margin-top: .3em; }
+.reveal .arith-cta span {
+  display: inline-block; background: var(--p1-gold); color: #fff; font-weight: 700;
+  border-radius: 22px; padding: .26em 1.4em; font-size: .98em;
+}
+
+/* limite de l'embedding statique : polysémie de « bateau » ----------- */
+.reveal .poly { position: relative; height: 300px; margin-top: .5em; }
+.reveal .poly-word {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%); z-index: 2;
+  background: var(--p1-blue); color: #fff; font-family: var(--p1-serif); font-weight: 700;
+  font-size: 1.2em; width: 3.5em; height: 3.5em; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,56,110,.3);
+}
+.reveal .poly-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.reveal .poly-lines line { stroke: #c3ccd6; stroke-width: 2; vector-effect: non-scaling-stroke; }
+.reveal .poly-senses { position: absolute; bottom: 0; left: 0; right: 0; display: flex; gap: 1em; }
+.reveal .poly-sense {
+  flex: 1; text-align: center; background: #eef2f6; border: 1px solid #d8e0e8; border-radius: 10px;
+  padding: .55em .6em; font-style: italic; color: #333; font-size: .84em; line-height: 1.25;
+  min-height: 3.4em; display: flex; align-items: center; justify-content: center;
+}
+.reveal .poly-sense b { color: var(--p1-blue); font-style: normal; }
+.reveal .poly-punch { text-align: center; margin-top: .5em; font-size: 1.05em; color: #333; }
+.reveal .poly-punch b { color: var(--p1-red); }
+
+/* l'algorithme de l'attention (2017) --------------------------------- */
+.reveal h2 .yr { color: var(--p1-gold); }
+.reveal .att-flow { display: flex; align-items: stretch; justify-content: center; gap: .9em; margin-top: .9em; }
+.reveal .att-cap {
+  flex: 1.15; background: #eef2f6; border: 1.5px solid #cdd8e2; border-radius: 12px;
+  padding: .7em .9em; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.reveal .att-cap .ico { font-size: 1.35em; margin-bottom: .15em; }
+.reveal .att-cap p { margin: 0; color: #222; font-size: .9em; line-height: 1.3; }
+.reveal .att-cap b { color: var(--p1-blue); }
+.reveal .att-core { flex: 0 0 auto; align-self: center; text-align: center; padding: 0 .3em; }
+.reveal .att-badge {
+  background: var(--p1-gold); color: #fff; font-weight: 800; border-radius: 12px;
+  padding: .5em 1em; font-size: 1.15em;
+}
+.reveal .att-sub { font-style: italic; color: #666; font-size: .78em; margin-top: .35em; max-width: 10em; margin-left: auto; margin-right: auto; }
+.reveal .att-arrow { align-self: center; color: var(--p1-gold); font-size: 2.1em; font-weight: 800; flex: 0 0 auto; }
+
+/* BERT : le grand classique ------------------------------------------ */
+.reveal .bert-row { display: flex; align-items: center; gap: 1.8em; margin-top: .5em; }
+.reveal .bert-main { flex: 1; }
+.reveal .bert-meta { margin-bottom: .5em; }
+.reveal .bert-meta .pill { margin-right: .35em; }
+.reveal .bert-acr { font-family: var(--p1-serif); font-size: 1.2em; color: #333; margin: 0 0 .7em; line-height: 1.3; }
+.reveal .bert-acr b { color: var(--p1-blue); font-weight: 800; }
+.reveal .bert-illus { flex: 0 0 auto; }
+.reveal .bert-illus img { height: 300px; width: auto; display: block; }
+.reveal .bert-variants { margin-top: .8em; display: flex; flex-wrap: wrap; align-items: center; gap: .35em; }
+.reveal .bert-variants .vlabel { font-weight: 700; color: var(--p1-blue); font-size: .82em; margin-right: .1em; }
+.reveal .bert-variants .chip {
+  display: inline-block; background: #eef2f6; border: 1px solid #d1dbe4; border-radius: 6px;
+  padding: .18em .5em; font-size: .76em; color: #26323d; font-weight: 600;
+}
+.reveal .bert-variants .chip b { color: var(--p1-blue); }
+.reveal .bert-variants .more { color: #888; font-size: 1.1em; }
+
+/* arbre des usages : projeter des textes dans des espaces sémantiques -- */
+.reveal .usemap { position: relative; height: 470px; margin-top: .1em; }
+.reveal .um-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.reveal .um-lines line { stroke: #aeb9c4; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+.reveal .um-lines path { fill: #aeb9c4; }
+.reveal .usemap .tree-branches { margin-top: 76px; }
+.reveal .tree-branches { display: flex; gap: 2em; align-items: flex-start; position: relative; z-index: 1; }
+.reveal .tree-branch { flex: 1; text-align: center; }
+.reveal .tree-branch.wide { flex: 1.8; }
+.reveal .tree-node {
+  display: inline-block; background: #eef2f6; border: 2px solid var(--p1-blue); color: var(--p1-blue);
+  font-family: var(--p1-serif); font-weight: 700; font-size: 1.2em; border-radius: 9px; padding: .35em 1em;
+}
+.reveal .ml-tag {
+  display: inline-block; background: var(--p1-gold); color: #fff; font-family: var(--p1-sans);
+  font-size: .52em; font-weight: 700; border-radius: 10px; padding: .25em .7em; margin-left: .5em;
+  vertical-align: middle; text-transform: uppercase; letter-spacing: .04em;
+}
+.reveal .tree-leaves { display: table; margin: .9em auto 0; padding: 0; list-style: none; text-align: left; }
+.reveal .tree-leaves li { margin: .55em 0; color: #26323d; font-size: 1.1em; }
+.reveal .tree-leaves li::before { content: "›"; color: var(--p1-gold); margin-right: .5em; font-weight: 800; }
+.reveal .tree-sub { display: flex; gap: 1.2em; margin-top: 2.4em; }
+.reveal .tree-leafcard {
+  flex: 1; background: #fff; border: 1.5px solid #cdd8e2; border-radius: 9px; padding: .7em .8em; text-align: center;
+}
+.reveal .tree-leafcard b { display: block; color: var(--p1-blue); font-size: 1.05em; margin-bottom: .3em; }
+.reveal .tree-leafcard span { font-size: .85em; color: #555; line-height: 1.3; }
+
+/* génération = classification (boucle de tokens) --------------------- */
+.reveal .gc-wrap { display: flex; gap: 2em; margin-top: .7em; align-items: flex-start; }
+.reveal .gc-steps { flex: 1.5; }
+.reveal .gc-row { display: flex; align-items: center; gap: .7em; margin-bottom: .35em; }
+.reveal .gc-row > * { flex-shrink: 0; }
+.reveal .gc-cur {
+  display: inline-block; background: #eef2f6; border: 1.5px solid #cdd8e2; border-radius: 8px;
+  padding: .35em .8em; font-family: var(--p1-serif); font-weight: 600; color: var(--p1-blue); white-space: nowrap;
+}
+.reveal .gc-arrow { color: var(--p1-gold); font-weight: 800; font-size: 1.25em; }
+.reveal .gc-classer {
+  display: inline-block; width: 8.4em; box-sizing: border-box;
+  background: var(--p1-blue); color: #fff; border-radius: 8px;
+  padding: .3em .5em; text-align: center; font-size: .78em; font-weight: 600; line-height: 1.15;
+}
+.reveal .gc-tok {
+  display: inline-block; background: var(--p1-gold); color: #fff; border-radius: 8px;
+  padding: .35em .8em; font-weight: 700;
+}
+.reveal .gc-cands { font-size: .78em; color: #7a7a7a; margin: 0 0 .6em; }
+.reveal .gc-cands b { color: var(--p1-blue); }
+.reveal .gc-final {
+  margin-top: .5em; font-family: var(--p1-serif); font-size: 1.3em; color: var(--p1-blue); font-weight: 700;
+}
+.reveal .gc-final .a { color: var(--p1-gold); margin-right: .3em; }
+.reveal .gc-vocab { flex: 1; background: #fbf6ee; border: 1.5px solid var(--p1-gold); border-radius: 12px; padding: .7em 1em; }
+.reveal .gc-vocab h3 { margin: 0 0 .4em; font-size: .82em; color: var(--p1-blue); font-family: var(--p1-serif); line-height: 1.3; font-weight: 700; }
+.reveal .gc-vocab .big { color: var(--p1-red); font-weight: 800; font-size: 1.35em; }
+.reveal .gc-vocab ul { list-style: none; margin: 0; padding: 0; }
+.reveal .gc-vocab li { margin: .24em 0; color: #26323d; font-size: .88em; }
+.reveal .gc-vocab li::before { content: "•"; color: var(--p1-gold); font-weight: 800; margin-right: .5em; }
+
+/* tokens : liste fixe, granularités, tokenisation -------------------- */
+.reveal .tk-intro { font-size: 1.08em; margin: .05em 0 .4em; color: #333; }
+.reveal .tk-intro b { color: var(--p1-blue); }
+.reveal .tk-intro .hot { color: var(--p1-red); border-bottom: 2px solid var(--p1-gold); font-weight: 700; }
+.reveal .tk-wrap { display: flex; gap: 2em; align-items: flex-start; }
+.reveal .tk-scale { flex: 0 0 40%; }
+.reveal .tk-h { font-size: .8em; color: var(--p1-blue); font-weight: 700; margin: 0 0 .4em; text-transform: uppercase; letter-spacing: .05em; }
+.reveal .tk-level { border-left: 5px solid #ccc; background: #f4f6f9; border-radius: 0 8px 8px 0; padding: .28em .8em; margin-bottom: .32em; }
+.reveal .tk-level .lv-t { display: block; font-weight: 700; color: var(--p1-blue); font-size: .88em; }
+.reveal .tk-level .lv-e { font-size: .76em; color: #777; font-family: monospace; }
+.reveal .tk-level.word { border-color: var(--p1-teal); }
+.reveal .tk-level.sub { border-color: var(--p1-gold); }
+.reveal .tk-level.letter { border-color: var(--p1-red); }
+.reveal .tk-example { flex: 1; }
+.reveal .tk-src { font-family: var(--p1-serif); font-style: italic; color: #333; margin-bottom: .45em; font-size: .98em; }
+.reveal .tk-tokens { display: flex; flex-wrap: wrap; align-items: center; gap: .28em; }
+.reveal .tk-tok { display: inline-block; border: 2px solid; border-radius: 6px; padding: .2em .44em; font-family: monospace; font-weight: 700; font-size: .84em; }
+.reveal .tk-tok.word { border-color: var(--p1-teal); background: #eefaf8; color: var(--p1-blue); }
+.reveal .tk-tok.sub { border-color: var(--p1-gold); background: #fbf6ee; color: #9a6200; }
+.reveal .tk-tok.letter { border-color: var(--p1-red); background: #fdeeee; color: #b02a25; }
+.reveal .tk-grp { display: inline-flex; gap: .18em; padding: 0 .15em .2em; border-bottom: 3px solid var(--p1-gold); }
+.reveal .tk-grp.letters { border-bottom-color: var(--p1-red); }
+.reveal .tk-note { margin-top: .5em; font-size: .82em; color: #444; line-height: 1.35; }
+.reveal .tk-note b { color: var(--p1-blue); }
 
 /* --- 3. Diapo de contenu : barre de titre, filet doré --------------- */
 .reveal section.content-slide h2 {
