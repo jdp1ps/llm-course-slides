@@ -1287,8 +1287,7 @@
               <li>
                 <div class="ot-node">Réduction 2D</div>
                 <ul>
-                  <li><div class="ot-leaf">Visualiser</div></li>
-                  <li><div class="ot-leaf">Cartographier</div></li>
+                  <li><div class="ot-leaf">Visualiser&nbsp;/ Cartographier</div></li>
                 </ul>
               </li>
               <li>
@@ -1317,6 +1316,263 @@
                alt="Chercheurs sur un échafaudage observant à la longue-vue un vaste corpus de livres et documents, relié à un graphe de connaissances">
         </div>
       </div>
+    </section>
+
+    <!-- ============ SPATIALISATION / CLUSTERING ============ -->
+    <section class="content-slide">
+      <h2>Spatialisation &amp; <em>clustering</em></h2>
+
+      <ul class="clu-intro">
+        <li><b>Projeter</b> les énoncés dans un espace sémantique</li>
+        <li><b>Regarder</b> comment ils se regroupent &amp; les caractéristiques des groupes</li>
+      </ul>
+
+      <div class="clu-fig">
+        <svg viewBox="0 0 1152 360" preserveAspectRatio="xMidYMid meet" aria-label="Nuage d'énoncés projetés dans un espace sémantique, formant des groupes annotés par leurs mots-clés, un critère de classement, un centroïde et une évolution temporelle">
+          <defs><g id="cluX"><path d="M-8,-8 L8,8 M-8,8 L8,-8"/></g></defs>
+
+          <!-- cluster A : mots-clés -->
+          <g class="fragment">
+            <path class="lead" d="M215,52 V72"/>
+            <text class="anno" x="215" y="38" text-anchor="middle">mots‑clés</text>
+            <use class="pt" href="#cluX" x="150" y="98"/>
+            <use class="pt" href="#cluX" x="210" y="88"/>
+            <use class="pt" href="#cluX" x="262" y="108"/>
+            <use class="pt" href="#cluX" x="178" y="128"/>
+            <use class="pt" href="#cluX" x="232" y="140"/>
+            <use class="pt" href="#cluX" x="148" y="160"/>
+            <use class="pt" href="#cluX" x="205" y="165"/>
+            <use class="pt" href="#cluX" x="268" y="136"/>
+          </g>
+
+          <!-- cluster B : critère de classement (coupe bleu / or) -->
+          <g class="fragment">
+            <path class="cut" d="M438,205 L628,192"/>
+            <use class="pt" href="#cluX" x="455" y="150"/>
+            <use class="pt" href="#cluX" x="515" y="140"/>
+            <use class="pt" href="#cluX" x="575" y="158"/>
+            <use class="pt" href="#cluX" x="490" y="180"/>
+            <use class="pt" href="#cluX" x="548" y="184"/>
+            <use class="pt" href="#cluX" x="608" y="176"/>
+            <use class="pt o" href="#cluX" x="478" y="224"/>
+            <use class="pt o" href="#cluX" x="540" y="230"/>
+            <use class="pt o" href="#cluX" x="600" y="228"/>
+            <use class="pt o" href="#cluX" x="462" y="262"/>
+            <use class="pt o" href="#cluX" x="528" y="272"/>
+            <use class="pt o" href="#cluX" x="596" y="264"/>
+            <use class="pt o" href="#cluX" x="548" y="296"/>
+            <text class="anno o" x="535" y="346" text-anchor="middle">critère de classement</text>
+          </g>
+
+          <!-- cluster C : centroïde -->
+          <g class="fragment">
+            <circle class="centroid" cx="866" cy="176" r="17"/>
+            <path class="lead" d="M884,168 C930,140 958,128 976,116"/>
+            <text class="anno" x="986" y="110" text-anchor="start">centroïde</text>
+            <use class="pt" href="#cluX" x="795" y="140"/>
+            <use class="pt" href="#cluX" x="855" y="130"/>
+            <use class="pt" href="#cluX" x="915" y="150"/>
+            <use class="pt" href="#cluX" x="812" y="178"/>
+            <use class="pt" href="#cluX" x="866" y="176"/>
+            <use class="pt" href="#cluX" x="922" y="184"/>
+            <use class="pt" href="#cluX" x="788" y="214"/>
+            <use class="pt" href="#cluX" x="872" y="218"/>
+            <use class="pt" href="#cluX" x="932" y="214"/>
+          </g>
+
+          <!-- axe d'évolution temporelle -->
+          <g class="fragment">
+            <path class="axis" d="M772,318 H1112"/>
+            <path class="axis-h" d="M1112,318 l-16,-8 v16 z"/>
+            <text class="anno time" x="942" y="346" text-anchor="middle">évolution temporelle</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ CLASSIFICATION : DEUX PIPELINES (IMAGES 1980's / TEXTES 2010's) ============ -->
+    <section class="content-slide">
+      <h2>Classification</h2>
+
+      <div class="cls-flow">
+
+        <!-- pipeline 1 : machine learning « classique » sur images -->
+        <div class="cls-row fragment">
+          <div class="cls-label">Machine&nbsp;learning<small>1980's</small></div>
+
+          <div class="cls-stage">
+            <div class="cls-pile">
+              <svg class="ico-photo" viewBox="0 0 48 38"><rect class="frame" x="1.5" y="1.5" width="45" height="35" rx="3.5"/><circle class="sun" cx="13" cy="12" r="4"/><path class="hill" d="M5 33 L19 19 L28 27 L35 21 L43 33 Z"/></svg>
+              <svg class="ico-photo" viewBox="0 0 48 38"><rect class="frame" x="1.5" y="1.5" width="45" height="35" rx="3.5"/><circle class="sun" cx="13" cy="12" r="4"/><path class="hill" d="M5 33 L19 19 L28 27 L35 21 L43 33 Z"/></svg>
+              <svg class="ico-photo" viewBox="0 0 48 38"><rect class="frame" x="1.5" y="1.5" width="45" height="35" rx="3.5"/><circle class="sun" cx="13" cy="12" r="4"/><path class="hill" d="M5 33 L19 19 L28 27 L35 21 L43 33 Z"/></svg>
+            </div>
+            <div class="cls-cap">images</div>
+          </div>
+
+          <div class="cls-arrow">→</div>
+
+          <div class="cls-stage">
+            <svg class="ico-nn" viewBox="0 0 120 84" aria-hidden="true">
+              <line class="net-l" x1="18" y1="18" x2="60" y2="30"/><line class="net-l" x1="18" y1="18" x2="60" y2="54"/>
+              <line class="net-l" x1="18" y1="42" x2="60" y2="30"/><line class="net-l" x1="18" y1="42" x2="60" y2="54"/>
+              <line class="net-l" x1="18" y1="66" x2="60" y2="30"/><line class="net-l" x1="18" y1="66" x2="60" y2="54"/>
+              <line class="net-l" x1="60" y1="30" x2="102" y2="42"/><line class="net-l" x1="60" y1="54" x2="102" y2="42"/>
+              <circle class="net-n" cx="18" cy="18" r="7"/><circle class="net-n" cx="18" cy="42" r="7"/><circle class="net-n" cx="18" cy="66" r="7"/>
+              <circle class="net-n" cx="60" cy="30" r="7"/><circle class="net-n" cx="60" cy="54" r="7"/>
+              <circle class="net-n" cx="102" cy="42" r="7"/>
+            </svg>
+            <div class="cls-cap">réseau de neurones</div>
+          </div>
+
+          <div class="cls-arrow">→</div>
+
+          <div class="cls-stage">
+            <div class="cls-out">
+              <div class="cls-chip sel">chat</div>
+              <div class="cls-chip">chien</div>
+              <div class="cls-chip">oiseau</div>
+            </div>
+            <div class="cls-cap">classification d'images &amp; autres structures numériques</div>
+          </div>
+        </div>
+
+        <!-- pipeline 2 : machine learning + embeddings sur textes -->
+        <div class="cls-row fragment">
+          <div class="cls-label">Machine&nbsp;learning<br>+ embeddings<small>2010's</small></div>
+
+          <div class="cls-stage">
+            <div class="cls-pile docs">
+              <svg class="ico-doc" viewBox="0 0 40 50"><rect class="page" x="3" y="2" width="34" height="46" rx="2.5"/><line x1="9" y1="14" x2="31" y2="14"/><line x1="9" y1="22" x2="31" y2="22"/><line x1="9" y1="30" x2="31" y2="30"/><line x1="9" y1="38" x2="25" y2="38"/></svg>
+              <svg class="ico-doc" viewBox="0 0 40 50"><rect class="page" x="3" y="2" width="34" height="46" rx="2.5"/><line x1="9" y1="14" x2="31" y2="14"/><line x1="9" y1="22" x2="31" y2="22"/><line x1="9" y1="30" x2="31" y2="30"/><line x1="9" y1="38" x2="25" y2="38"/></svg>
+              <svg class="ico-doc" viewBox="0 0 40 50"><rect class="page" x="3" y="2" width="34" height="46" rx="2.5"/><line x1="9" y1="14" x2="31" y2="14"/><line x1="9" y1="22" x2="31" y2="22"/><line x1="9" y1="30" x2="31" y2="30"/><line x1="9" y1="38" x2="25" y2="38"/></svg>
+            </div>
+            <div class="cls-cap">textes</div>
+          </div>
+
+          <div class="cls-arrow">→</div>
+
+          <div class="cls-stage">
+            <div class="cls-bert">Google<br>BERT<small>pré-entraîné</small></div>
+          </div>
+
+          <div class="cls-arrow">→</div>
+
+          <div class="cls-stage">
+            <svg class="ico-vec" viewBox="0 0 56 84" aria-hidden="true">
+              <rect x="9"  y="6"  width="15" height="11"/><rect x="9"  y="18.5" width="15" height="11"/><rect x="9"  y="31" width="15" height="11"/><rect x="9"  y="43.5" width="15" height="11"/><rect x="9"  y="56" width="15" height="11"/><rect x="9"  y="68.5" width="15" height="11"/>
+              <rect x="32" y="6"  width="15" height="11"/><rect x="32" y="18.5" width="15" height="11"/><rect x="32" y="31" width="15" height="11"/><rect x="32" y="43.5" width="15" height="11"/><rect x="32" y="56" width="15" height="11"/><rect x="32" y="68.5" width="15" height="11"/>
+            </svg>
+            <div class="cls-cap">vecteurs sémantiques</div>
+          </div>
+
+          <div class="cls-arrow">→</div>
+
+          <div class="cls-stage">
+            <svg class="ico-nn" viewBox="0 0 120 84" aria-hidden="true">
+              <line class="net-l" x1="18" y1="18" x2="60" y2="30"/><line class="net-l" x1="18" y1="18" x2="60" y2="54"/>
+              <line class="net-l" x1="18" y1="42" x2="60" y2="30"/><line class="net-l" x1="18" y1="42" x2="60" y2="54"/>
+              <line class="net-l" x1="18" y1="66" x2="60" y2="30"/><line class="net-l" x1="18" y1="66" x2="60" y2="54"/>
+              <line class="net-l" x1="60" y1="30" x2="102" y2="42"/><line class="net-l" x1="60" y1="54" x2="102" y2="42"/>
+              <circle class="net-n" cx="18" cy="18" r="7"/><circle class="net-n" cx="18" cy="42" r="7"/><circle class="net-n" cx="18" cy="66" r="7"/>
+              <circle class="net-n" cx="60" cy="30" r="7"/><circle class="net-n" cx="60" cy="54" r="7"/>
+              <circle class="net-n" cx="102" cy="42" r="7"/>
+            </svg>
+            <div class="cls-cap">réseau de neurones</div>
+          </div>
+
+          <div class="cls-arrow">→</div>
+
+          <div class="cls-stage">
+            <div class="cls-out">
+              <div class="cls-chip sel"><span class="n">1.</span> catég.&nbsp;1</div>
+              <div class="cls-chip"><span class="n">2.</span> catég.&nbsp;2</div>
+              <div class="cls-chip"><span class="n">3.</span> catég.&nbsp;3</div>
+            </div>
+            <div class="cls-cap">catégories</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ IN-CONTEXT LEARNING : PROMPT TEMPLATE → LLM → TABLEUR ============ -->
+    <section class="content-slide">
+      <h2>In-context learning</h2>
+      <p class="lead-sub">Exécution d'une instruction en langage naturel → sortie formatée</p>
+
+      <div class="ctx-stage">
+        <svg class="ctx-wires" viewBox="0 0 1180 468" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <marker id="ctxArr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path class="ah" d="M0,0 L10,5 L0,10 z"/>
+            </marker>
+          </defs>
+          <!-- corpus → prompt template (chaque texte remplit {text}) -->
+          <path class="wire fragment" data-fragment-index="2" d="M556,58 C480,128 448,150 392,150" marker-end="url(#ctxArr)"/>
+          <!-- prompt template → LLM -->
+          <path class="wire fragment" data-fragment-index="3" d="M250,284 C330,338 430,242 500,200" marker-end="url(#ctxArr)"/>
+          <!-- LLM → sortie structurée -->
+          <path class="wire fragment" data-fragment-index="4" d="M557,252 C557,264 557,272 557,282" marker-end="url(#ctxArr)"/>
+          <!-- sortie structurée → tableur -->
+          <path class="wire fragment" data-fragment-index="5" d="M690,332 C800,360 862,300 900,258" marker-end="url(#ctxArr)"/>
+        </svg>
+
+        <!-- prompt template -->
+        <div class="ctx-tpl fragment" data-fragment-index="2">
+          <div class="ctx-tpl-h">Prompt template</div>
+          <p>Indique si ce texte est de catégorie <b>1, 2 ou 3</b>, assigne-lui un score de <b>1 à 5</b>, puis justifie.</p>
+          <p>Texte : <span class="ph">{ text }</span></p>
+        </div>
+
+        <!-- corpus de documents -->
+        <div class="ctx-docs fragment" data-fragment-index="1">
+          <svg class="ico-doc" viewBox="0 0 40 50"><rect class="page" x="3" y="2" width="34" height="46" rx="2.5"/><line x1="9" y1="14" x2="31" y2="14"/><line x1="9" y1="22" x2="31" y2="22"/><line x1="9" y1="30" x2="31" y2="30"/><line x1="9" y1="38" x2="25" y2="38"/></svg>
+          <svg class="ico-doc" viewBox="0 0 40 50"><rect class="page" x="3" y="2" width="34" height="46" rx="2.5"/><line x1="9" y1="14" x2="31" y2="14"/><line x1="9" y1="22" x2="31" y2="22"/><line x1="9" y1="30" x2="31" y2="30"/><line x1="9" y1="38" x2="25" y2="38"/></svg>
+          <svg class="ico-doc" viewBox="0 0 40 50"><rect class="page" x="3" y="2" width="34" height="46" rx="2.5"/><line x1="9" y1="14" x2="31" y2="14"/><line x1="9" y1="22" x2="31" y2="22"/><line x1="9" y1="30" x2="31" y2="30"/><line x1="9" y1="38" x2="25" y2="38"/></svg>
+        </div>
+        <div class="ctx-cap fragment" data-fragment-index="1" style="left:566px; top:78px;">un corpus de textes</div>
+
+        <!-- LLM (engrenage) -->
+        <div class="ctx-llm fragment" data-fragment-index="3">
+          <svg class="ico-gear" viewBox="0 0 100 100" aria-hidden="true">
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(0 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(45 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(90 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(135 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(180 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(225 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(270 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(315 50 50)"/>
+            <circle class="body" cx="50" cy="50" r="31"/>
+            <circle class="hole" cx="50" cy="50" r="12"/>
+          </svg>
+          <div class="ctx-llm-lbl">LLM</div>
+        </div>
+
+        <!-- sortie structurée -->
+        <div class="ctx-out fragment" data-fragment-index="4">
+          <div>Catégorie : <b>2</b></div>
+          <div>Note : <b>5</b></div>
+          <div>Justification : <span class="just">…</span></div>
+        </div>
+
+        <!-- tableur excel -->
+        <div class="ctx-xls fragment" data-fragment-index="5">
+          <div class="ctx-xls-h">Excel</div>
+          <table>
+            <tr><th>cat.</th><th>note</th><th>justification</th></tr>
+            <tr class="new"><td>2</td><td>5</td><td>…</td></tr>
+            <tr><td>1</td><td>1</td><td>…</td></tr>
+            <tr><td>3</td><td>2</td><td>…</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
     </section>
 
     <!-- ============ 2. OBJECTIFS ============ -->
