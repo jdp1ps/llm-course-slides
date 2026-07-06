@@ -333,6 +333,7 @@
 .reveal .pill.gold   { background: var(--p1-gold);  color: var(--p1-blue); }
 .reveal .pill.purple { background: var(--p1-purple); }
 .reveal .pill.teal   { background: var(--p1-teal); color: var(--p1-blue); }
+.reveal .pill.small  { font-size: .62em; padding: .18em .65em; }
 
 .reveal .image-slide {
   display: flex; flex-direction: column;
@@ -639,3 +640,21 @@
 .reveal .progress { color: var(--p1-gold); height: 5px; }
 .reveal .controls { color: var(--p1-blue); }
 .reveal .slide-number { background: transparent; color: var(--p1-grey); }
+
+/* variante compacte des cartes (contenu dense, évite le débordement) --- */
+.reveal .card.compact { padding: .5em .75em; }
+.reveal .card.compact h3 { font-size: .95em; margin: 0 0 .3em; }
+.reveal .card.compact p,
+.reveal .card.compact li { font-size: .68em; line-height: 1.28; }
+.reveal .card.compact li { margin: .28em 0; }
+
+/* bouton de retour au menu (index.html) -------------------------------- */
+.menu-back {
+  position: fixed; top: 14px; left: 14px; z-index: 1000;
+  display: inline-block;
+  background: rgba(0,56,110,.82); color: #fff;
+  font-family: var(--p1-sans); font-weight: 700; font-size: 13px;
+  padding: .4em .85em; border-radius: 6px; border-bottom: none;
+  text-decoration: none; box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+.menu-back:hover { background: var(--p1-blue); color: #fff; }
