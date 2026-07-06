@@ -492,32 +492,60 @@
 .reveal .bert-variants .more { color: #888; font-size: 1.1em; }
 
 /* arbre des usages : projeter des textes dans des espaces sémantiques -- */
-.reveal .usemap { position: relative; height: 470px; margin-top: .1em; }
-.reveal .um-lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-.reveal .um-lines line { stroke: #aeb9c4; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
-.reveal .um-lines path { fill: #aeb9c4; }
-.reveal .usemap .tree-branches { margin-top: 76px; }
-.reveal .tree-branches { display: flex; gap: 2em; align-items: flex-start; position: relative; z-index: 1; }
-.reveal .tree-branch { flex: 1; text-align: center; }
-.reveal .tree-branch.wide { flex: 1.8; }
-.reveal .tree-node {
+/* org-chart des usages (arbre pur CSS) ------------------------------- */
+.reveal .orgtree { margin-top: 1.4em; font-size: .92em; }
+.reveal .orgtree ul {
+  position: relative; padding: 20px 0 0; margin: 0; list-style: none;
+  display: flex; justify-content: center; align-items: flex-start;
+}
+.reveal .orgtree > ul { padding-top: 0; }
+.reveal .orgtree li {
+  list-style: none; position: relative; padding: 20px 10px 0; text-align: center;
+}
+/* rail horizontal reliant les frères (neutralise le puce-diamant global) */
+.reveal .orgtree li::before,
+.reveal .orgtree li::after {
+  content: ''; position: absolute; top: 0; right: 50%; left: auto; width: 50%; height: 20px;
+  background: none; transform: none; border-radius: 0;
+  border-top: 2px solid #aeb9c4;
+}
+.reveal .orgtree li::after { right: auto; left: 50%; border-top: 2px solid #aeb9c4; }
+/* un enfant unique : pas de rail, juste la descente verticale */
+.reveal .orgtree li:only-child::before,
+.reveal .orgtree li:only-child::after { display: none; }
+/* extrémités : couper la moitié débordante, arrondir les coudes */
+.reveal .orgtree li:first-child::before,
+.reveal .orgtree li:last-child::after { border: 0; }
+.reveal .orgtree li:last-child::before {
+  border-right: 2px solid #aeb9c4; border-radius: 0 6px 0 0;
+}
+.reveal .orgtree li:first-child::after { border-radius: 6px 0 0 0; }
+/* descente verticale depuis un parent vers ses enfants */
+.reveal .orgtree ul ul::before {
+  content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 20px;
+  background: #aeb9c4;
+}
+/* nœuds */
+.reveal .ot-node {
   display: inline-block; background: #eef2f6; border: 2px solid var(--p1-blue); color: var(--p1-blue);
-  font-family: var(--p1-serif); font-weight: 700; font-size: 1.2em; border-radius: 9px; padding: .35em 1em;
+  font-family: var(--p1-serif); font-weight: 700; font-size: 1.02em; border-radius: 9px; padding: .3em .9em;
+}
+.reveal .ot-node.root {
+  background: var(--p1-blue); color: #fff; font-size: 1.15em; padding: .38em 1.1em;
+  box-shadow: 0 3px 10px rgba(0,56,110,.22);
 }
 .reveal .ml-tag {
   display: inline-block; background: var(--p1-gold); color: #fff; font-family: var(--p1-sans);
-  font-size: .52em; font-weight: 700; border-radius: 10px; padding: .25em .7em; margin-left: .5em;
+  font-size: .5em; font-weight: 700; border-radius: 10px; padding: .25em .6em; margin-left: .45em;
   vertical-align: middle; text-transform: uppercase; letter-spacing: .04em;
 }
-.reveal .tree-leaves { display: table; margin: .9em auto 0; padding: 0; list-style: none; text-align: left; }
-.reveal .tree-leaves li { margin: .55em 0; color: #26323d; font-size: 1.1em; }
-.reveal .tree-leaves li::before { content: "›"; color: var(--p1-gold); margin-right: .5em; font-weight: 800; }
-.reveal .tree-sub { display: flex; gap: 1.2em; margin-top: 2.4em; }
-.reveal .tree-leafcard {
-  flex: 1; background: #fff; border: 1.5px solid #cdd8e2; border-radius: 9px; padding: .7em .8em; text-align: center;
+/* feuilles */
+.reveal .ot-leaf {
+  display: inline-block; min-width: 6.5em; max-width: 12em; background: #fff;
+  border: 1.5px solid #cdd8e2; border-radius: 9px; padding: .5em .8em; text-align: center;
 }
-.reveal .tree-leafcard b { display: block; color: var(--p1-blue); font-size: 1.05em; margin-bottom: .3em; }
-.reveal .tree-leafcard span { font-size: .85em; color: #555; line-height: 1.3; }
+.reveal .ot-leaf b { display: block; color: var(--p1-blue); font-size: .95em; margin-bottom: .2em; }
+.reveal .ot-leaf span { display: block; font-size: .76em; color: #555; line-height: 1.28; }
 
 /* génération = classification (boucle de tokens) --------------------- */
 .reveal .gc-wrap { display: flex; gap: 2em; margin-top: .7em; align-items: flex-start; }
