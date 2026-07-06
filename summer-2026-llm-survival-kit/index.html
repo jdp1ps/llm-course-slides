@@ -5,17 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Kit de survie IA · Module 1 — Université Paris 1 Panthéon-Sorbonne</title>
 
-  <link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
-  <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
-  <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css" id="base-theme">
-  <link rel="stylesheet" href="node_modules/reveal.js/dist/plugin/highlight/monokai.css">
-  <!-- Thème de marque Paris 1 (chargé en dernier pour primer) -->
-  <link rel="stylesheet" href="css/paris1-theme.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/theme/white.css" id="base-theme">
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/plugin/highlight/monokai.css">
+  <!-- Charte de base commune (Paris 1) — chargée en dernier pour primer -->
+  <link rel="stylesheet" href="../shared/css/paris1-theme.css">
+  <!-- Styles spécifiques à ce deck -->
+  <link rel="stylesheet" href="css/deck.css">
   <!-- Feuille d'export PDF : chargée uniquement avec ?print-pdf dans l'URL. -->
   <script>
     if (window.location.search.match(/print-pdf/gi)) {
       var l = document.createElement('link');
-      l.rel = 'stylesheet'; l.type = 'text/css'; l.href = 'css/pdf.css';
+      l.rel = 'stylesheet'; l.type = 'text/css'; l.href = '../shared/css/pdf.css';
       document.head.appendChild(l);
     }
   </script>
@@ -26,7 +28,7 @@
 
     <!-- ============ 1. DIAPO DE TITRE ============ -->
     <section class="title-slide" data-background-color="#00386E">
-      <div class="brand-logo-chip"><img src="assets/logo-paris1.png" alt="Université Paris 1 Panthéon-Sorbonne"></div>
+      <div class="brand-logo-chip"><img src="../shared/assets/logo-paris1.png" alt="Université Paris 1 Panthéon-Sorbonne"></div>
       <span class="kicker">Cycle de formations IA pour les SHS · Module&nbsp;1</span>
       <h1>Modèles de langage, modèles conversationnels, modèles&nbsp;agentiques</h1>
       <p class="subtitle">Kit de survie pour le chercheur en sciences humaines et sociales<br>
@@ -1575,92 +1577,6 @@
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
     </section>
 
-    <!-- ============ 2. OBJECTIFS ============ -->
-    <section class="content-slide">
-      <h2>Lorem ipsum dolor sit amet</h2>
-      <div class="cols">
-        <div>
-          <ul>
-            <li>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing</strong> elit sed do eiusmod.</li>
-            <li>Ut enim ad minim veniam, quis <strong>nostrud exercitation</strong> ullamco laboris.</li>
-            <li>Duis aute irure dolor in <strong>reprehenderit</strong> in voluptate <em>velit esse</em> cillum.</li>
-          </ul>
-        </div>
-        <div class="col-narrow">
-          <div class="card gold">
-            <h3>Lorem ipsum</h3>
-            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.</p>
-          </div>
-        </div>
-      </div>
-      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
-    </section>
-
-    <!-- ============ 3. INTERCALAIRE DE SECTION ============ -->
-    <section class="section-slide" data-background-color="#ED9B27">
-      <span class="num">1.</span>
-      <h2>Lorem ipsum dolor sit amet</h2>
-      <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
-    </section>
-
-    <!-- ============ 4. LES TROIS FAMILLES (cartes) ============ -->
-    <section class="content-slide">
-      <h2>Lorem ipsum → dolor sit → amet consectetur</h2>
-      <div class="cols">
-        <div class="card">
-          <h3><span class="pill">Lorem</span></h3>
-          <p>Lorem ipsum dolor sit amet&nbsp;: consectetur adipiscing elit, sed do eiusmod.</p>
-          <p class="muted" style="font-size:.72em">Tempor, incididunt, labore…</p>
-        </div>
-        <div class="card teal">
-          <h3><span class="pill teal">Ipsum</span></h3>
-          <p>Ut enim ad minim <em>veniam</em>, quis nostrud exercitation ullamco laboris.</p>
-          <p class="muted" style="font-size:.72em">Aliquip, commodo, consequat…</p>
-        </div>
-        <div class="card purple">
-          <h3><span class="pill purple">Dolor</span></h3>
-          <p>Duis aute irure <strong>dolor in reprehenderit</strong> in voluptate velit esse cillum.</p>
-          <p class="muted" style="font-size:.72em">Fugiat, nulla, pariatur…</p>
-        </div>
-      </div>
-      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
-    </section>
-
-    <!-- ============ 5. EXEMPLE / CITATION ============ -->
-    <section class="content-slide">
-      <h2>Lorem ipsum dolor sit amet</h2>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem&nbsp;:</p>
-      <blockquote>« Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-        consectetur, adipisci velit, sed quia non numquam. »</blockquote>
-      <p class="muted">→ Ut enim ad minima veniam, quis nostrum <strong>exercitationem</strong> ullam corporis suscipit laboriosam.</p>
-      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
-    </section>
-
-    <!-- ============ 6. EXEMPLE DE CODE (option démo) ============ -->
-    <section class="content-slide">
-      <h2>Lorem ipsum dolor sit amet</h2>
-      <p style="font-size:.85em">Consectetur adipiscing elit, sed do eiusmod tempor incididunt&nbsp;:</p>
-      <pre><code data-trim data-noescape class="language-python"># Lorem ipsum dolor sit amet
-lorem = Ipsum()
-dolor = lorem.consectetur(
-    adipiscing="elit",
-    tempor=512,
-    labore=[{"magna": "aliqua",
-             "veniam": "Ut enim ad minim."}],
-)
-print(dolor.exercitation[0].ullamco)</code></pre>
-      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
-    </section>
-
-    <!-- ============ 7. DIAPO DE CLÔTURE ============ -->
-    <section class="title-slide" data-background-color="#00386E">
-      <div class="brand-logo-chip"><img src="assets/logo-paris1.png" alt="Université Paris 1 Panthéon-Sorbonne"></div>
-      <span class="kicker">Lorem ipsum</span>
-      <h1>Lorem ipsum dolor&nbsp;?</h1>
-      <p class="subtitle">Consectetur adipiscing elit, sed do eiusmod.</p>
-      <p class="meta">Cycle de formations IA pour les SHS · Université Paris 1 Panthéon-Sorbonne</p>
-    </section>
-
   </div>
 </div>
 
@@ -1669,55 +1585,8 @@ print(dolor.exercitation[0].ullamco)</code></pre>
 <script src="config.local.js"></script>
 
 <script type="module">
-  import Reveal from './node_modules/reveal.js/dist/reveal.mjs';
-  import Highlight from './node_modules/reveal.js/dist/plugin/highlight.mjs';
-  import Notes from './node_modules/reveal.js/dist/plugin/notes.mjs';
-
-  const deck = new Reveal({
-    width: 1280,
-    height: 720,
-    margin: 0.04,
-    center: false,          // contenu aligné en haut → le pied de page reste ancré en bas
-    hash: true,
-    slideNumber: false,
-    transition: 'fade',
-    pdfSeparateFragments: false,   // export PDF : une page par diapo (fragments tous visibles)
-    pdfMaxPagesPerSlide: 1,        // une diapo = exactement une page (pas de débordement)
-    plugins: [Highlight, Notes],
-  });
-  deck.initialize().then(() => {
-    // Pour chaque diapo de contenu : insère le logo à gauche du pied de page
-    // et renseigne le numéro de diapo à droite (évite de répéter le HTML).
-    [...document.querySelectorAll('.slides > section')].forEach((s, i) => {
-      const footer = s.querySelector('.slide-footer');
-      if (!footer) return;
-      const logo = document.createElement('img');
-      logo.src = 'assets/logo-paris1.png';
-      logo.alt = 'Université Paris 1 Panthéon-Sorbonne';
-      footer.prepend(logo);
-      const num = footer.querySelector('.num');
-      if (num) num.textContent = (i + 1);
-    });
-
-    // Identifiants du playground injectés depuis config.local.js (hors VCS).
-    const cfg = window.SLIDE_CONFIG || {};
-    const link = document.getElementById('playground-link');
-    if (link && cfg.PLAYGROUND_IP) {
-      link.href = cfg.PLAYGROUND_IP;
-      link.textContent = '→ ' + cfg.PLAYGROUND_IP;
-    }
-    const pass = document.getElementById('playground-pass');
-    if (pass && cfg.PLAYGROUND_PASSWORD) {
-      pass.textContent = cfg.PLAYGROUND_PASSWORD;
-    }
-
-    // Avancer en cliquant n'importe où sur la diapo (révèle ligne par ligne,
-    // puis passe à la diapo suivante). Les liens et les flèches restent actifs.
-    document.querySelector('.reveal').addEventListener('click', (e) => {
-      if (e.target.closest('a, button, .controls, .progress, .slide-number, .navigate-left, .navigate-right')) return;
-      deck.next();
-    });
-  });
+  import { initDeck } from '../shared/js/deck.mjs';
+  initDeck();
 </script>
 </body>
 </html>

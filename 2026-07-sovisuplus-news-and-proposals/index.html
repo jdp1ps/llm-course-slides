@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sovisu+ : dernières évolutions, nouvelles propositions — DRIS</title>
+
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/reset.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/theme/white.css" id="base-theme">
+  <link rel="stylesheet" href="../node_modules/reveal.js/dist/plugin/highlight/monokai.css">
+  <!-- Charte de base commune (Paris 1) — chargée en dernier pour primer -->
+  <link rel="stylesheet" href="../shared/css/paris1-theme.css">
+  <!-- Styles spécifiques à ce deck -->
+  <link rel="stylesheet" href="css/deck.css">
+  <!-- Feuille d'export PDF : chargée uniquement avec ?print-pdf dans l'URL. -->
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet'; l.type = 'text/css'; l.href = '../shared/css/pdf.css';
+      document.head.appendChild(l);
+    }
+  </script>
+</head>
+<body>
+<div class="reveal">
+  <div class="slides">
+
+    <!-- ============ DIAPO DE TITRE ============ -->
+    <section class="title-slide" data-background-color="#00386E">
+      <div class="brand-logo-chip"><img src="../shared/assets/logo-paris1.png" alt="Université Paris 1 Panthéon-Sorbonne"></div>
+      <span class="kicker">DRIS — Direction Recherche Innovation, Société</span>
+      <h1>Sovisu+<br>dernières évolutions,<br>nouvelles propositions</h1>
+      <p class="subtitle">Description et découverte des expertises</p>
+      <p class="meta">Juillet 2026</p>
+    </section>
+
+    <!-- ============ L'EXISTANT : EXPERT FINDER SYSTEM ============ -->
+    <section class="content-slide">
+      <h2>Retour d'expérience : Expert Finder System 2023</h2>
+      <p class="lead-sub">Recherche d'expertise assistée par IA · Paris 1 Panthéon-Sorbonne</p>
+
+      <div class="efs">
+        <div class="efs-points">
+          <div class="efs-grp pros fragment">
+            <h3>Atouts</h3>
+            <ul>
+              <li>Recherche d'expertises par IA</li>
+              <li>Basé sur HAL · science ouverte</li>
+            </ul>
+          </div>
+          <div class="efs-grp cons fragment">
+            <h3>Limites</h3>
+            <ul>
+              <li>Aucun contrôle des chercheurs</li>
+              <li>Seulement les publications HAL</li>
+              <li>Pas de traçabilité des demandes</li>
+            </ul>
+          </div>
+        </div>
+
+        <figure class="efs-shot">
+          <a class="efs-link" href="https://recherche.pantheonsorbonne.fr/structures-recherche/rechercher-expertise" target="_blank" rel="noopener">Voir en&nbsp;ligne</a>
+          <img src="img/efs_2023.png" alt="Interface de l'Expert Finder System : recherche d'expertise assistée par IA, avec nuage de noms de chercheurs">
+          <figcaption>Expert Finder System · Paris 1 (2023)</figcaption>
+        </figure>
+      </div>
+
+      <div class="slide-footer"><span class="center">Sovisu+ · DRIS — Université Paris 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ AVEC LE CONSORTIUM CRISALID : DEUX INTERFACES ============ -->
+    <section class="content-slide">
+      <img class="crisalid-logo" src="img/ESUPCRISalid.png" alt="Logo du consortium CRISalid">
+      <h2>Avec le consortium CRISalid</h2>
+      <p class="lead-sub">Objectif : deux interfaces</p>
+
+      <div class="two-tools">
+        <!-- interface 1 : outil interne -->
+        <div class="tool interne">
+          <div class="tool-h">Un outil interne</div>
+          <div class="interne-top">
+            <div class="cbubble">Chatbot</div>
+            <div class="kg-wrap">
+              <svg class="kg" viewBox="0 0 260 162" aria-label="graphe de connaissance : chercheur, laboratoire, projet, publication">
+                <line x1="55" y1="48" x2="205" y2="48"/>
+                <line x1="55" y1="48" x2="130" y2="88"/>
+                <line x1="205" y1="48" x2="130" y2="88"/>
+                <line x1="130" y1="88" x2="130" y2="140"/>
+                <circle cx="55" cy="48" r="8"/>
+                <circle cx="205" cy="48" r="8"/>
+                <circle cx="130" cy="88" r="8"/>
+                <circle cx="130" cy="140" r="8"/>
+                <text x="55" y="33" text-anchor="middle">chercheur</text>
+                <text x="205" y="33" text-anchor="middle">laboratoire</text>
+                <text x="145" y="92" text-anchor="start">projet</text>
+                <text x="130" y="157" text-anchor="middle">publication</text>
+              </svg>
+              <p class="kg-cap">graphe de connaissance<br>institutionnel</p>
+            </div>
+          </div>
+          <ul class="uses">
+            <li>Recherche d'experts</li>
+            <li>Cartes &amp; dataviz</li>
+            <li>Analyses complexes</li>
+          </ul>
+          <a class="circle-link" href="https://crisalid-agents-dev.univ-paris1.fr" target="_blank" rel="noopener">Prototype en&nbsp;ligne</a>
+        </div>
+
+        <!-- interface 2 : outil public -->
+        <div class="tool public">
+          <div class="tool-h">Un outil public</div>
+          <div class="public-top">
+            <div class="idyia"><small>Projet</small>Idyia</div>
+            <svg class="globe" viewBox="0 0 112 100" aria-hidden="true">
+              <g class="grid">
+                <circle cx="46" cy="46" r="38"/>
+                <ellipse cx="46" cy="46" rx="15" ry="38"/>
+                <ellipse cx="46" cy="46" rx="38" ry="15"/>
+                <line x1="8" y1="46" x2="84" y2="46"/>
+                <line x1="46" y1="8" x2="46" y2="84"/>
+              </g>
+              <path class="cursor" transform="translate(54,48)" d="M0,0 L0,30 L8.5,22 L13.5,34 L18,32 L12.8,20.2 L23,20.2 Z"/>
+            </svg>
+          </div>
+          <p class="efs-open"><b>Expert Finder System</b> ouvert au public</p>
+          <ul class="uses">
+            <li>IA non-conversationnelle</li>
+            <li>Suivi des demandes<br>de mise en relation</li>
+          </ul>
+          <a class="circle-link" href="https://www.figma.com/make/9kqMPVIxYs3kWgyWivuR8q/Idyia-V3?code-node-id=0-9&amp;p=f&amp;t=aMLni0kcZSJXVOV3-0&amp;fullscreen=1" target="_blank" rel="noopener">Maquette en&nbsp;ligne</a>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Sovisu+ · DRIS — Université Paris 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ LE CHATBOT « CRISALID-AGENTS » ============ -->
+    <section class="content-slide">
+      <h2>Le chatbot «&nbsp;crisalid-agents&nbsp;»</h2>
+
+      <div class="ca-flow">
+        <!-- interface conversationnelle -->
+        <div class="ca-stage ca-iface">
+          <div class="cbubble">Une interface conversationnelle</div>
+          <div class="ca-down">↓</div>
+          <ul class="ca-outputs">
+            <li>Analyses</li>
+            <li>Indicateurs</li>
+            <li>Dataviz</li>
+            <li>Rapports</li>
+          </ul>
+        </div>
+
+        <div class="ca-arrow">→</div>
+
+        <!-- des agents / IAaaS souveraine -->
+        <div class="ca-stage ca-agents">
+          <svg class="ico-gear" viewBox="0 0 100 100" aria-hidden="true">
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(0 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(45 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(90 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(135 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(180 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(225 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(270 50 50)"/>
+            <rect class="tooth" x="43" y="2" width="14" height="20" rx="2" transform="rotate(315 50 50)"/>
+            <circle class="body" cx="50" cy="50" r="31"/>
+            <circle class="hole" cx="50" cy="50" r="12"/>
+          </svg>
+          <div class="ca-h">Des agents</div>
+          <div class="ca-down">↓</div>
+          <div class="ca-iaas">
+            <b>ILaaS</b>
+            <span>Intelligence artificielle souveraine</span>
+            <div class="ca-sov">
+              <svg viewBox="0 0 48 48" aria-label="institution">
+                <path class="ico" d="M24 6 L44 17 L4 17 Z"/>
+                <line class="ico" x1="11" y1="19" x2="11" y2="38"/>
+                <line class="ico" x1="19.7" y1="19" x2="19.7" y2="38"/>
+                <line class="ico" x1="28.3" y1="19" x2="28.3" y2="38"/>
+                <line class="ico" x1="37" y1="19" x2="37" y2="38"/>
+                <line class="ico" x1="5" y1="42" x2="43" y2="42"/>
+              </svg>
+              <svg viewBox="0 0 48 48" aria-label="serveur souverain">
+                <rect class="ico" x="9" y="9" width="30" height="13" rx="2"/>
+                <rect class="ico" x="9" y="26" width="30" height="13" rx="2"/>
+                <circle class="fill" cx="15" cy="15.5" r="2"/>
+                <circle class="fill" cx="15" cy="32.5" r="2"/>
+                <line class="ico" x1="22" y1="15.5" x2="33" y2="15.5"/>
+                <line class="ico" x1="22" y1="32.5" x2="33" y2="32.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-arrow">→</div>
+
+        <!-- graphe de connaissance -->
+        <div class="ca-stage ca-graph">
+          <svg class="kg2" viewBox="0 0 120 100" aria-label="graphe de connaissance">
+            <line x1="30" y1="30" x2="82" y2="20"/>
+            <line x1="30" y1="30" x2="58" y2="60"/>
+            <line x1="82" y1="20" x2="58" y2="60"/>
+            <line x1="58" y1="60" x2="96" y2="74"/>
+            <circle cx="30" cy="30" r="8"/>
+            <circle cx="82" cy="20" r="8"/>
+            <circle cx="58" cy="60" r="8"/>
+            <circle cx="96" cy="74" r="8"/>
+          </svg>
+          <div class="ca-h">Graphe de<br>connaissance</div>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Sovisu+ · DRIS — Université Paris 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ DES ATELIERS AVEC LES CHERCHEURS ============ -->
+    <section class="content-slide">
+      <h2>Des ateliers avec des chercheurs et des chercheuses</h2>
+
+      <div class="atelier">
+        <div class="atelier-left">
+          <blockquote class="prompt">«&nbsp;Décrivez vos expertises / thème, objets de recherche&nbsp;»</blockquote>
+          <div class="atelier-arrow">↓</div>
+          <div class="result-label">Résultat</div>
+          <div class="result-title">Des cartes mentales</div>
+          <div class="atelier-tags">
+            <span>Spécialisation</span>
+            <span>Évolution</span>
+            <span>Connexion</span>
+          </div>
+        </div>
+
+        <figure class="atelier-img">
+          <img src="img/dt.jpeg" alt="Atelier de chercheurs et chercheuses co-construisant des cartes mentales autour de concepts, thèmes et lieux de recherche">
+        </figure>
+      </div>
+
+      <div class="slide-footer"><span class="center">Sovisu+ · DRIS — Université Paris 1</span><span class="num"></span></div>
+    </section>
+
+  </div>
+</div>
+
+<script type="module">
+  import { initDeck } from '../shared/js/deck.mjs';
+  initDeck();
+</script>
+</body>
+</html>

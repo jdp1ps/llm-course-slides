@@ -2,11 +2,11 @@ node_modules/
 *.log
 .DS_Store
 
-# PDF exporté (artefact généré)
-slides-module1.pdf
+# PDF exportés (artefacts générés)
+*.pdf
 
-# Configuration locale (identifiants du playground)
-config.local.js
+# Configuration locale par deck (identifiants du playground)
+**/config.local.js
 
 .idea
 .claude

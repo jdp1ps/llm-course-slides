@@ -1,0 +1,340 @@
+/* =========================================================================
+   Theme « Université Paris 1 Panthéon-Sorbonne » pour reveal.js
+   Reconstitué à partir de model.pptx (charte officielle Paris 1).
+   Couleurs : dk1 #00386E · gold #ED9B27 · teal #9CD6D1 · red #F94D49
+              purple #58239C · blue #3C99DE · green #2E4D49
+   Typo : titres en serif (Times-like), corps en Arial/Helvetica.
+   ========================================================================= */
+
+:root {
+  --p1-blue:   #00386E;   /* bleu primaire / fond titre        */
+  --p1-blue-2: #06294e;   /* bleu encore plus profond          */
+  --p1-gold:   #ED9B27;   /* or — fond des intercalaires        */
+  --p1-teal:   #9CD6D1;
+  --p1-red:    #F94D49;
+  --p1-purple: #58239C;
+  --p1-skyblue:#3C99DE;
+  --p1-green:  #2E4D49;
+  --p1-ink:    #1c2733;   /* texte courant                      */
+  --p1-grey:   #5b6b7a;
+  --p1-light:  #f4f6f8;
+
+  --p1-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", Georgia, serif;
+  --p1-sans:  Arial, "Helvetica Neue", Helvetica, "Segoe UI", sans-serif;
+}
+
+/* ----------------------------- base --------------------------------- */
+.reveal-viewport { background: #ffffff; }
+
+.reveal {
+  font-family: var(--p1-sans);
+  font-size: 34px;
+  color: var(--p1-ink);
+  font-weight: 400;
+}
+
+.reveal .slides { text-align: left; }
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  font-family: var(--p1-serif);
+  color: var(--p1-blue);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0 0 .4em 0;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.reveal h1 { font-size: 1.9em; }
+.reveal h2 { font-size: 1.45em; }
+.reveal h3 { font-size: 1.15em; color: var(--p1-blue-2); }
+
+.reveal p { line-height: 1.4; margin: 0 0 .6em 0; }
+.reveal strong { color: var(--p1-blue); }
+.reveal em { color: var(--p1-purple); font-style: italic; }
+.reveal a { color: var(--p1-skyblue); text-decoration: none; border-bottom: 1px solid currentColor; }
+.reveal a:hover { color: var(--p1-blue); }
+
+/* utilitaires de texte ------------------------------------------------- */
+.reveal .muted { color: var(--p1-grey); }
+.reveal .big   { font-size: 1.5em; color: var(--p1-blue); font-family: var(--p1-serif); }
+.reveal .lead-sub {
+  color: var(--p1-gold); font-family: var(--p1-serif); font-style: italic;
+  font-size: 1.15em; margin: -.3em 0 .4em;
+}
+
+/* lists ---------------------------------------------------------------- */
+.reveal ul, .reveal ol { display: block; margin: 0 0 0 1.1em; }
+.reveal ul { list-style: none; }
+.reveal ul li { position: relative; padding-left: .2em; margin: .42em 0; }
+.reveal ul li::before {
+  content: "";
+  position: absolute; left: -.9em; top: .55em;
+  width: .42em; height: .42em;
+  background: var(--p1-gold);
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+.reveal ul ul li::before { background: var(--p1-teal); }
+.reveal ol li { margin: .42em 0; }
+.reveal li { line-height: 1.35; }
+
+/* code ----------------------------------------------------------------- */
+.reveal code { font-family: "SF Mono", "Fira Code", Consolas, monospace; }
+.reveal :not(pre) > code {
+  background: var(--p1-light);
+  color: var(--p1-blue);
+  padding: .08em .35em;
+  border-radius: 4px;
+  font-size: .85em;
+}
+.reveal pre {
+  width: 100%;
+  font-size: .52em;
+  box-shadow: 0 6px 20px rgba(0, 56, 110, .18);
+  border-radius: 8px;
+  margin: .6em 0;
+}
+.reveal pre code {
+  border-radius: 8px;
+  padding: 1em 1.2em;
+  max-height: 460px;
+  border-top: 4px solid var(--p1-gold);
+}
+
+/* blockquote ----------------------------------------------------------- */
+.reveal blockquote {
+  width: auto;
+  background: var(--p1-light);
+  border-left: 5px solid var(--p1-teal);
+  padding: .6em 1em;
+  font-style: italic;
+  box-shadow: none;
+  border-radius: 0 6px 6px 0;
+}
+
+/* tables --------------------------------------------------------------- */
+.reveal table { border-collapse: collapse; font-size: .82em; }
+.reveal table th {
+  background: var(--p1-blue); color: #fff;
+  font-family: var(--p1-sans); font-weight: 700;
+  padding: .4em .7em; text-align: left;
+}
+.reveal table td { padding: .35em .7em; border-bottom: 1px solid #dfe5ea; }
+.reveal table tr:nth-child(even) td { background: var(--p1-light); }
+
+/* =====================================================================
+   ARCHÉTYPES DE DIAPOSITIVES
+   ===================================================================== */
+
+/* --- 1. Diapo de titre : fond bleu, titre serif blanc, sous-titre or --- */
+.reveal section.title-slide { text-align: left; }
+.reveal section.title-slide h1 {
+  color: #fff;
+  font-size: 2.2em;
+  margin-bottom: .25em;
+}
+.reveal section.title-slide .subtitle {
+  color: var(--p1-gold);
+  font-family: var(--p1-sans);
+  font-size: .85em;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.reveal section.title-slide .meta {
+  color: rgba(255,255,255,.75);
+  font-family: var(--p1-sans);
+  font-size: .6em;
+  margin-top: 1.4em;
+}
+.reveal section.title-slide .kicker {
+  display: inline-block;
+  font-family: var(--p1-sans);
+  font-size: .55em;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--p1-blue);
+  background: var(--p1-gold);
+  padding: .35em .9em;
+  border-radius: 3px;
+  margin-bottom: 1em;
+}
+
+/* --- 2. Intercalaire de section : fond or, numéro + titre blanc serif --- */
+.reveal section.section-slide { text-align: left; }
+.reveal section.section-slide h2 {
+  color: #fff;
+  font-size: 2em;
+}
+.reveal section.section-slide .num {
+  font-family: var(--p1-serif);
+  color: rgba(255,255,255,.85);
+  font-size: 3em;
+  line-height: 1;
+  display: block;
+  margin-bottom: .1em;
+}
+.reveal section.section-slide .lead {
+  color: var(--p1-blue);
+  font-family: var(--p1-sans);
+  font-size: .8em;
+  max-width: 70%;
+  margin-top: .6em;
+}
+/* Intercalaire avec illustration : titre à gauche, image encadrée à droite.
+   La mise en page vit dans un wrapper interne (.si-inner) car reveal.js écrase
+   le `display` de la <section> au runtime — un flex posé sur la section saute. */
+.reveal section.section-illus .si-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3em;
+  height: 100%;
+}
+.reveal section.section-illus .si-text { flex: 1 1 0; }
+.reveal section.section-illus .si-text h2 { margin: 0; }
+.reveal section.section-illus .si-illus {
+  flex: 0 0 auto;
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 26px rgba(0,0,0,.20);
+}
+.reveal section.section-illus .si-illus img {
+  display: block;
+  max-height: 66vh;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* --- 3. Diapo de contenu : barre de titre, filet doré --------------- */
+.reveal section.content-slide h2 {
+  border-bottom: 3px solid var(--p1-gold);
+  padding-bottom: .25em;
+  margin-bottom: .7em;
+}
+
+/* liste de définitions (terme + définition) ---------------------------- */
+.reveal .deflist { margin: 0; }
+.reveal .deflist .def {
+  border-left: 4px solid var(--p1-gold);
+  padding: .05em 0 .05em 1em;
+  margin: .7em 0;
+}
+.reveal .deflist dt {
+  font-family: var(--p1-serif);
+  color: var(--p1-blue);
+  font-size: 1.2em; font-weight: 600;
+  margin-bottom: .1em;
+}
+.reveal .deflist dd { margin: 0; line-height: 1.4; }
+
+/* encadré « point-clé » (→ …) ----------------------------------------- */
+.reveal .callout {
+  background: #fdf4e3;
+  border-left: 4px solid var(--p1-gold);
+  border-radius: 0 6px 6px 0;
+  padding: .5em .85em;
+  font-size: .92em;
+  line-height: 1.5;
+}
+.reveal .callout .sym {
+  font-family: var(--p1-serif);
+  font-weight: 700;
+  color: var(--p1-blue);
+  font-size: 1.3em;
+  margin-right: .15em;
+}
+
+/* liste de questions numérotées ---------------------------------------- */
+.reveal ol.qlist { list-style: none; margin: 0; counter-reset: q; }
+.reveal ol.qlist li {
+  counter-increment: q;
+  position: relative;
+  padding-left: 2.1em;
+  margin: .75em 0;
+  line-height: 1.35;
+}
+.reveal ol.qlist li::before {
+  content: counter(q);
+  position: absolute; left: 0; top: .05em;
+  width: 1.5em; height: 1.5em;
+  background: var(--p1-blue); color: #fff;
+  font-family: var(--p1-serif); font-weight: 700; font-size: .95em;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* deux colonnes -------------------------------------------------------- */
+.reveal .cols { display: flex; gap: 1.4em; align-items: flex-start; }
+.reveal .cols > * { flex: 1; min-width: 0; }
+.reveal .col-narrow { flex: .55; }
+
+/* cartes / encadrés ---------------------------------------------------- */
+.reveal .card {
+  background: #fff;
+  border: 1px solid #dfe5ea;
+  border-top: 4px solid var(--p1-blue);
+  border-radius: 8px;
+  padding: .7em .9em;
+  box-shadow: 0 4px 14px rgba(0,56,110,.08);
+}
+.reveal .card.gold  { border-top-color: var(--p1-gold); }
+.reveal .card.teal  { border-top-color: var(--p1-teal); }
+.reveal .card.red   { border-top-color: var(--p1-red); }
+.reveal .card.purple{ border-top-color: var(--p1-purple); }
+.reveal .card h3 { margin-top: 0; font-size: 1em; }
+.reveal .card p, .reveal .card li { font-size: .82em; }
+
+/* =====================================================================
+   MISE EN PAGE — center:false dans Reveal, donc on gère la hauteur ici.
+   Chaque diapo occupe toute la hauteur ; le contenu part du haut, ce qui
+   laisse le pied de page ancré en bas sans chevaucher le texte.
+   ===================================================================== */
+.reveal .slides > section {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 58px 64px 78px;
+  top: 0 !important;
+}
+/* Titre et intercalaires : contenu centré verticalement */
+.reveal section.title-slide,
+.reveal section.section-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 72px; padding-right: 72px;
+}
+
+/* logo Paris 1 sur fond clair (diapos de contenu) */
+.reveal .brand-logo { position: absolute; top: 30px; right: 48px; height: 46px; }
+/* logo Paris 1 sur fond bleu (diapo titre) — posé sur une pastille blanche */
+.reveal .brand-logo-chip {
+  position: absolute; top: 40px; right: 48px;
+  background: #fff; border-radius: 8px; padding: 10px 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,.18);
+}
+.reveal .brand-logo-chip img { height: 44px; display: block; }
+
+/* =====================================================================
+   PIED DE PAGE (date · institution · numéro) — masqué sur titre/section
+   ===================================================================== */
+.reveal .slide-footer {
+  position: absolute; bottom: 16px; left: 48px; right: 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid #e7ecf1;
+  font-family: var(--p1-sans);
+  font-size: 13px; color: var(--p1-grey);
+  pointer-events: none;
+}
+.reveal .slide-footer img { height: 26px; display: block; }
+.reveal .slide-footer .center { color: var(--p1-grey); }
+.reveal .slide-footer .org { font-weight: 700; color: var(--p1-blue); }
+.reveal .slide-footer .num { min-width: 1.5em; text-align: right; }
+
+/* progress / controls en couleurs de la charte ------------------------- */
+.reveal .progress { color: var(--p1-gold); height: 5px; }
+.reveal .controls { color: var(--p1-blue); }
+.reveal .slide-number { background: transparent; color: var(--p1-grey); }
