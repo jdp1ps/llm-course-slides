@@ -11,9 +11,16 @@
   <link rel="stylesheet" href="node_modules/reveal.js/dist/plugin/highlight/monokai.css">
   <!-- Thème de marque Paris 1 (chargé en dernier pour primer) -->
   <link rel="stylesheet" href="css/paris1-theme.css">
+  <!-- Feuille d'export PDF : chargée uniquement avec ?print-pdf dans l'URL. -->
+  <script>
+    if (window.location.search.match(/print-pdf/gi)) {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet'; l.type = 'text/css'; l.href = 'css/pdf.css';
+      document.head.appendChild(l);
+    }
+  </script>
 </head>
 <body>
-<a class="menu-back" href="index.html">← Menu</a>
 <div class="reveal">
   <div class="slides">
 
@@ -711,6 +718,607 @@
       </div>
     </section>
 
+    <!-- ============ INTERCALAIRE — SÉANCE 2 ============ -->
+    <section class="section-slide" data-background-color="#ED9B27">
+      <span class="num">2.</span>
+      <h2>Séance&nbsp;2 : Modalités d'usage des LLM en recherche</h2>
+    </section>
+
+    <!-- ============ INTERTITRE — MÉCANIQUE INTERNE ============ -->
+    <section class="section-slide section-illus" data-background-color="#ED9B27">
+      <div class="si-inner">
+        <div class="si-text">
+          <h2>Incursion dans la mécanique interne</h2>
+        </div>
+        <div class="si-illus">
+          <img src="img/llm_demontage.png"
+               alt="Technicien démontant une machine « LLM » : serveurs, engrenages, circuits, molécules">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCHÉMA : CADRE GÉNÉRAL DU MACHINE LEARNING (rappel) ============ -->
+    <section class="content-slide">
+      <h2>Le cadre général du machine learning</h2>
+
+      <div class="ml-schema">
+        <div class="ml-box">Entrée<small>les données</small></div>
+        <div class="ml-arrow">→</div>
+        <div class="ml-box model">Modèle</div>
+        <div class="ml-arrow">→</div>
+        <div class="ml-box">Sortie<small>un choix</small></div>
+      </div>
+
+      <div class="ml-params fragment">
+        <div class="down">↓</div>
+        <span class="tag">Paramètres</span>
+      </div>
+
+      <div class="ml-ex">
+        <div class="ml-ex-row head"><span class="in">Entrée</span><span class="ar"></span><span class="out">Sortie</span></div>
+        <div class="ml-ex-row fragment"><span class="in">une image</span><span class="ar">→</span><span class="out">une classification</span></div>
+        <div class="ml-ex-row fragment"><span class="in">un son</span><span class="ar">→</span><span class="out">un phonème</span></div>
+        <div class="ml-ex-row fragment"><span class="in">un texte</span><span class="ar">→</span><span class="out">le prochain mot</span></div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ FLUX : DONNÉE COMPLEXE → NEURONES → SORTIE LIMITÉE ============ -->
+    <section class="content-slide">
+      <h2>Que fait un réseau de neurones&nbsp;?</h2>
+
+      <div class="mech-flow">
+        <!-- Zone 1 : données complexes -->
+        <div class="mech-zone fragment" data-fragment-index="1">
+          <svg class="mech-viz" viewBox="0 0 200 180" preserveAspectRatio="xMidYMid meet">
+            <polygon class="sh" points="62,26 28,96 96,96"/>
+            <circle  class="sh" cx="128" cy="62" r="34"/>
+            <rect    class="sh" x="52" y="72" width="72" height="72"/>
+            <rect    class="sh" x="96" y="100" width="66" height="66"/>
+          </svg>
+          <p class="mech-cap">des données numériques contenant des <strong>structures&nbsp;complexes</strong></p>
+        </div>
+
+        <div class="mech-arrow fragment" data-fragment-index="2">→</div>
+
+        <!-- Zone 2 : neurones -->
+        <div class="mech-zone fragment" data-fragment-index="2">
+          <svg class="mech-viz" viewBox="0 0 210 180" preserveAspectRatio="xMidYMid meet">
+            <!-- entrées (« whiskers ») -->
+            <line class="whisk" x1="12" y1="36" x2="45" y2="50"/>
+            <line class="whisk" x1="12" y1="50" x2="45" y2="50"/>
+            <line class="whisk" x1="12" y1="64" x2="45" y2="50"/>
+            <line class="whisk" x1="12" y1="76" x2="45" y2="90"/>
+            <line class="whisk" x1="12" y1="90" x2="45" y2="90"/>
+            <line class="whisk" x1="12" y1="104" x2="45" y2="90"/>
+            <line class="whisk" x1="12" y1="116" x2="45" y2="130"/>
+            <line class="whisk" x1="12" y1="130" x2="45" y2="130"/>
+            <line class="whisk" x1="12" y1="144" x2="45" y2="130"/>
+            <!-- connexions -->
+            <line class="net-l" x1="55" y1="50" x2="120" y2="70"/>
+            <line class="net-l" x1="55" y1="50" x2="120" y2="112"/>
+            <line class="net-l" x1="55" y1="90" x2="120" y2="70"/>
+            <line class="net-l" x1="55" y1="90" x2="120" y2="112"/>
+            <line class="net-l" x1="55" y1="130" x2="120" y2="70"/>
+            <line class="net-l" x1="55" y1="130" x2="120" y2="112"/>
+            <line class="net-l" x1="120" y1="70" x2="180" y2="91"/>
+            <line class="net-l" x1="120" y1="112" x2="180" y2="91"/>
+            <!-- neurones -->
+            <circle class="net-n" cx="55" cy="50" r="11"/>
+            <circle class="net-n" cx="55" cy="90" r="11"/>
+            <circle class="net-n" cx="55" cy="130" r="11"/>
+            <circle class="net-n" cx="120" cy="70" r="11"/>
+            <circle class="net-n" cx="120" cy="112" r="11"/>
+            <circle class="net-n" cx="180" cy="91" r="11"/>
+          </svg>
+          <p class="mech-cap"><strong>Neurones</strong> : découvrir une <strong>relation statistique</strong> entre l'entrée et la sortie</p>
+        </div>
+
+        <div class="mech-arrow fragment" data-fragment-index="3">→</div>
+
+        <!-- Zone 3 : sortie limitée -->
+        <div class="mech-zone fragment" data-fragment-index="3">
+          <svg class="mech-viz" viewBox="0 0 200 180" preserveAspectRatio="xMidYMid meet">
+            <text class="out-num" x="14" y="36">0.</text>
+            <rect class="out-chip" x="46" y="17" width="140" height="30" rx="15"/>
+            <text class="out-num" x="14" y="74">1.</text>
+            <rect class="out-chip sel" x="46" y="55" width="140" height="30" rx="15"/>
+            <text class="out-num" x="14" y="112">2.</text>
+            <rect class="out-chip" x="46" y="93" width="140" height="30" rx="15"/>
+            <text class="out-num" x="14" y="150">3.</text>
+            <rect class="out-chip" x="46" y="131" width="140" height="30" rx="15"/>
+          </svg>
+          <p class="mech-cap">un <strong>nombre limité</strong> de modalités de sortie</p>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ EXEMPLES : PROBLÈMES BIEN ADAPTÉS ============ -->
+    <section class="content-slide">
+      <h2>Des problèmes qui s'y prêtent bien</h2>
+
+      <div class="ex-list">
+        <div class="ex-row head">
+          <span class="ex-cat"></span>
+          <span class="ex-in">Entrée</span>
+          <span class="ex-ar"></span>
+          <span class="ex-out">Sortie</span>
+        </div>
+        <div class="ex-row fragment">
+          <span class="ex-cat">Classification d'images</span>
+          <span class="ex-in">image numérisée <em>x</em>×<em>y</em> pixels</span>
+          <span class="ex-ar">→</span>
+          <span class="ex-out">catégorie d'objet</span>
+        </div>
+        <div class="ex-row fragment">
+          <span class="ex-cat">Identification de son</span>
+          <span class="ex-in">son numérisé</span>
+          <span class="ex-ar">→</span>
+          <span class="ex-out">instrument, catégorie de son</span>
+        </div>
+        <div class="ex-row fragment">
+          <span class="ex-cat">Diagnostic</span>
+          <span class="ex-in">imagerie médicale numérique</span>
+          <span class="ex-ar">→</span>
+          <span class="ex-out">diagnostic oui&nbsp;/&nbsp;non</span>
+        </div>
+        <div class="ex-row fragment">
+          <span class="ex-cat">Données météo</span>
+          <span class="ex-in">série de relevés : température, pression, vent, humidité</span>
+          <span class="ex-ar">→</span>
+          <span class="ex-out">précipitations à venir</span>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ GÉNÉRATION DE TEXTE : UN DOUBLE DÉFI ============ -->
+    <section class="content-slide">
+      <h2>Génération de texte : un double défi</h2>
+
+      <div class="gen-flow">
+        <!-- Entrée -->
+        <div class="gen-col">
+          <div class="gen-lbl">Entrée</div>
+          <div class="gen-tokens">
+            <span>mot</span> <span>mot</span> <span>mot</span><br>
+            <span>mot</span> <span>mot</span><br>
+            <span>mot</span> <span>mot</span> <span>mot</span>
+          </div>
+          <div class="gen-note">données textuelles</div>
+          <div class="gen-sol fragment" data-fragment-index="1">
+            <div class="gen-down">↓</div>
+            <div class="gen-sol-box">Solution : <b>embeddings</b></div>
+          </div>
+        </div>
+
+        <!-- Flèche centrale -->
+        <div class="gen-center"><div class="gen-hline"></div></div>
+
+        <!-- Sortie -->
+        <div class="gen-col">
+          <div class="gen-lbl">Sortie</div>
+          <div class="gen-tokens out">mot&nbsp;1<br>mot&nbsp;2<br>mot&nbsp;3<br>…</div>
+          <div class="gen-note">nombre de possibilités <strong>immense</strong></div>
+          <div class="gen-sol fragment" data-fragment-index="2">
+            <div class="gen-down">↓</div>
+            <div class="gen-sol-box">Solution : <b>tokenisation</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ VECTEUR = POINT DANS UN ESPACE À N DIMENSIONS ============ -->
+    <section class="content-slide">
+      <h2>Un vecteur = un point dans un espace</h2>
+
+      <div class="dim-cols">
+        <!-- 2 nombres -->
+        <div class="dim-col fragment" data-fragment-index="1">
+          <div class="dim-head">Deux nombres</div>
+          <div class="dim-tuple">(127.2, 8.6)</div>
+          <div class="dim-eq">=</div>
+          <div class="dim-desc">un point dans un espace à <b>2 dimensions</b></div>
+          <div class="dim-viz">
+            <svg viewBox="0 0 200 175" preserveAspectRatio="xMidYMid meet">
+              <defs><marker id="ah1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/></marker></defs>
+              <line class="ax" x1="35" y1="140" x2="35" y2="20" marker-end="url(#ah1)"/>
+              <line class="ax" x1="35" y1="140" x2="188" y2="140" marker-end="url(#ah1)"/>
+              <line class="dash" x1="35" y1="60" x2="150" y2="60"/>
+              <line class="dash" x1="150" y1="60" x2="150" y2="140"/>
+              <line class="pt" x1="144" y1="54" x2="156" y2="66"/>
+              <line class="pt" x1="156" y1="54" x2="144" y2="66"/>
+              <text class="axlbl" x="6" y="65">8,6</text>
+              <text class="axlbl" x="128" y="162">127,2</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 3 nombres -->
+        <div class="dim-col fragment" data-fragment-index="2">
+          <div class="dim-head">Trois nombres</div>
+          <div class="dim-tuple">(14.5, 20.3, 7.6)</div>
+          <div class="dim-eq">=</div>
+          <div class="dim-desc">un point dans un espace à <b>3 dimensions</b></div>
+          <div class="dim-viz">
+            <svg viewBox="0 0 200 185" preserveAspectRatio="xMidYMid meet">
+              <defs><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1a1a1a"/></marker></defs>
+              <line class="ax" x1="70" y1="122" x2="70" y2="24" marker-end="url(#ah2)"/>
+              <line class="ax" x1="70" y1="122" x2="186" y2="122" marker-end="url(#ah2)"/>
+              <line class="ax" x1="70" y1="122" x2="18" y2="172" marker-end="url(#ah2)"/>
+              <line class="pt" x1="116" y1="64" x2="130" y2="78"/>
+              <line class="pt" x1="130" y1="64" x2="116" y2="78"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 4 nombres -->
+        <div class="dim-col fragment" data-fragment-index="3">
+          <div class="dim-head">Quatre nombres</div>
+          <div class="dim-tuple">(… , … , … , …)</div>
+          <div class="dim-eq">=</div>
+          <div class="dim-desc">un point dans un espace à <b>4 dimensions</b></div>
+          <div class="dim-viz"><span class="dim-q">?</span></div>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ PLONGEMENT LEXICAL : PROXIMITÉ & STRUCTURATION ============ -->
+    <section class="content-slide">
+      <h2>Plongement lexical : un vecteur qui représente le sens</h2>
+
+      <div class="emb-top">
+        <div class="emb-card">
+          <b>Entrée</b>
+          <span>énoncé en langage naturel</span>
+          <small>(mot, phrase, paragraphe)</small>
+        </div>
+        <div class="emb-arrow">
+          <div class="lbl"><b>embedding</b><i>plongement lexical</i></div>
+          <div class="ln"></div>
+        </div>
+        <div class="emb-card out">
+          <b>Sortie</b>
+          <span>un vecteur représentant son sens</span>
+        </div>
+      </div>
+
+      <div class="emb-q"><span>En quel sens&nbsp;?</span></div>
+
+      <div class="emb-panels">
+        <!-- Proximité -->
+        <div class="emb-panel fragment" data-fragment-index="1">
+          <div class="emb-ptitle">Proximité</div>
+          <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+            <defs><marker id="arrP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+            <line class="pax" x1="28" y1="175" x2="28" y2="12" marker-end="url(#arrP)"/>
+            <line class="pax" x1="28" y1="175" x2="288" y2="175" marker-end="url(#arrP)"/>
+            <!-- amas « bateaux » -->
+            <ellipse class="clu" cx="98" cy="62" rx="60" ry="40"/>
+            <line class="wx" x1="64" y1="40" x2="74" y2="50"/><line class="wx" x1="74" y1="40" x2="64" y2="50"/>
+            <text class="wl" x="80" y="48">bateau</text>
+            <line class="wx" x1="96" y1="70" x2="106" y2="80"/><line class="wx" x1="106" y1="70" x2="96" y2="80"/>
+            <text class="wl" x="112" y="79">voilier</text>
+            <line class="wx" x1="66" y1="82" x2="76" y2="92"/><line class="wx" x1="76" y1="82" x2="66" y2="92"/>
+            <text class="wl" x="82" y="91">cargo</text>
+            <!-- amas « livres » -->
+            <ellipse class="clu" cx="208" cy="135" rx="62" ry="38"/>
+            <line class="wx" x1="176" y1="112" x2="186" y2="122"/><line class="wx" x1="186" y1="112" x2="176" y2="122"/>
+            <text class="wl" x="192" y="121">livre</text>
+            <line class="wx" x1="214" y1="132" x2="224" y2="142"/><line class="wx" x1="224" y1="132" x2="214" y2="142"/>
+            <text class="wl" x="230" y="141">papier</text>
+            <line class="wx" x1="180" y1="150" x2="190" y2="160"/><line class="wx" x1="190" y1="150" x2="180" y2="160"/>
+            <text class="wl" x="196" y="159">ouvrage</text>
+          </svg>
+          <div class="emb-cap">des sens proches → des points proches</div>
+        </div>
+
+        <!-- Structuration -->
+        <div class="emb-panel fragment" data-fragment-index="2">
+          <div class="emb-ptitle">Structuration</div>
+          <svg viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <marker id="arrS" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+              <marker id="arrV" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00386E"/></marker>
+            </defs>
+            <line class="pax" x1="28" y1="180" x2="28" y2="12" marker-end="url(#arrS)"/>
+            <line class="pax" x1="28" y1="180" x2="288" y2="180" marker-end="url(#arrS)"/>
+            <!-- King → Queen -->
+            <line class="vec" x1="72" y1="146" x2="158" y2="88" marker-end="url(#arrV)"/>
+            <line class="wx" x1="61" y1="143" x2="71" y2="153"/><line class="wx" x1="71" y1="143" x2="61" y2="153"/>
+            <text class="wl" x="34" y="163">King</text>
+            <line class="wx" x1="160" y1="80" x2="170" y2="90"/><line class="wx" x1="170" y1="80" x2="160" y2="90"/>
+            <text class="wl" x="176" y="84">Queen</text>
+            <!-- Homme → Femme (parallèle) -->
+            <line class="vec" x1="120" y1="164" x2="206" y2="106" marker-end="url(#arrV)"/>
+            <line class="wx" x1="109" y1="161" x2="119" y2="171"/><line class="wx" x1="119" y1="161" x2="109" y2="171"/>
+            <text class="wl" x="84" y="181">Homme</text>
+            <line class="wx" x1="208" y1="98" x2="218" y2="108"/><line class="wx" x1="218" y1="98" x2="208" y2="108"/>
+            <text class="wl" x="224" y="102">Femme</text>
+          </svg>
+          <div class="emb-cap">des relations régulières : roi→reine ≈ homme→femme</div>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ EXERCICE : EXPLORER UN ESPACE LATENT (word2vec) ============ -->
+    <section class="content-slide">
+      <h2>Explorons un « espace latent » sémantique</h2>
+      <p class="lead-sub">« une forme d'arithmétique sémantique »</p>
+
+      <div class="arith-links">
+        <span class="intro">Connectez-vous à</span><br>
+        <a class="arith-chip" href="http://nlp.polytechnique.fr/word2vec#french" target="_blank" rel="noopener">nlp.polytechnique.fr/word2vec <span class="flag">(français)</span></a>
+        <a class="arith-chip" href="https://vectors.nlpl.eu/explore/embeddings/en/" target="_blank" rel="noopener">vectors.nlpl.eu <span class="flag">(anglais)</span></a>
+      </div>
+
+      <svg class="arith-diagram" viewBox="0 78 640 172" preserveAspectRatio="xMidYMid meet">
+        <defs><marker id="arrA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00386E"/></marker></defs>
+        <!-- cuisine → manger -->
+        <line class="vec" x1="98" y1="196" x2="222" y2="120" marker-end="url(#arrA)"/>
+        <line class="wx" x1="82" y1="196" x2="94" y2="208"/><line class="wx" x1="94" y1="196" x2="82" y2="208"/>
+        <text class="wl" x="88" y="235" text-anchor="middle">cuisine</text>
+        <line class="wx" x1="224" y1="104" x2="236" y2="116"/><line class="wx" x1="236" y1="104" x2="224" y2="116"/>
+        <text class="wl" x="230" y="96" text-anchor="middle">manger</text>
+        <!-- chambre → ? (parallèle) -->
+        <line class="vec" x1="378" y1="200" x2="502" y2="124" marker-end="url(#arrA)"/>
+        <line class="wx" x1="362" y1="200" x2="374" y2="212"/><line class="wx" x1="374" y1="200" x2="362" y2="212"/>
+        <text class="wl" x="368" y="239" text-anchor="middle">chambre</text>
+        <line class="wx" x1="504" y1="108" x2="516" y2="120"/><line class="wx" x1="516" y1="108" x2="504" y2="120"/>
+        <text class="qm" x="528" y="122">?</text>
+      </svg>
+
+      <div class="arith-eq"><b>manger</b> − <b>cuisine</b> + <b>chambre</b> = <span class="q">?</span></div>
+
+      <div class="arith-cta fragment"><span>Trouvez des exemples qui marchent&nbsp;!</span></div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ BASES THÉORIQUES : SÉMANTIQUE DISTRIBUTIONNELLE ============ -->
+    <section class="content-slide">
+      <h2>Quelles bases théoriques&nbsp;?</h2>
+      <p class="lead-sub">La sémantique distributionnelle</p>
+
+      <div class="firth-row">
+        <div class="firth-photo">
+          <img src="img/firth.jpg" alt="Portrait de John Rupert Firth">
+          <span>John Rupert Firth</span>
+        </div>
+        <div class="firth-quote">
+          <div class="hyp-label">Hypothèse distributionnelle</div>
+          <blockquote>« You shall know a word by the company it keeps »</blockquote>
+          <cite>— J. R. Firth, 1957</cite>
+        </div>
+      </div>
+
+      <div class="eq3">
+        <div class="eq3-box a fragment" data-fragment-index="1">Embedding d'un mot / énoncé</div>
+        <div class="eq3-op fragment" data-fragment-index="2">=</div>
+        <div class="eq3-box b fragment" data-fragment-index="2">condensé de ses relations avec les autres mots<br>dans tous ses contextes d'apparition</div>
+        <div class="eq3-op fragment" data-fragment-index="3">=</div>
+        <div class="eq3-box c fragment" data-fragment-index="3">signification</div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ LIMITE DE L'EMBEDDING STATIQUE (polysémie « bateau ») ============ -->
+    <section class="content-slide">
+      <h2>Limite de l'embedding de 1<sup>re</sup> génération</h2>
+
+      <div class="poly">
+        <div class="poly-word">bateau</div>
+        <svg class="poly-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <line x1="50" y1="30" x2="12.5" y2="74"/>
+          <line x1="50" y1="30" x2="37.5" y2="74"/>
+          <line x1="50" y1="30" x2="62.5" y2="74"/>
+          <line x1="50" y1="30" x2="87.5" y2="74"/>
+        </svg>
+        <div class="poly-senses">
+          <div class="poly-sense"><span>« on est dans le même <b>bateau</b> »</span></div>
+          <div class="poly-sense"><span>« c'est un sujet <b>bateau</b>&nbsp;! »</span></div>
+          <div class="poly-sense"><span>« il est venu en <b>bateau</b> »</span></div>
+          <div class="poly-sense"><span>« il nous mène en <b>bateau</b> »</span></div>
+        </div>
+      </div>
+
+      <p class="poly-punch fragment">Des sens très différents — pourtant <b>un seul et même vecteur</b>, figé.</p>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ L'ALGORITHME DE L'ATTENTION (2017) ============ -->
+    <section class="content-slide">
+      <h2>L'algorithme de l'attention <span class="yr">(2017)</span></h2>
+      <p class="lead-sub">De l'embedding statique à l'embedding contextuel</p>
+
+      <div class="att-flow">
+        <div class="att-cap fragment" data-fragment-index="1">
+          <span class="ico">🎯</span>
+          <p>un embedding <b>spécifique à chaque occurrence</b> d'un mot dans son contexte</p>
+        </div>
+        <div class="att-arrow fragment" data-fragment-index="1">←</div>
+        <div class="att-core">
+          <div class="att-badge">Attention</div>
+          <div class="att-sub">« Attention is all you need », 2017</div>
+        </div>
+        <div class="att-arrow fragment" data-fragment-index="2">→</div>
+        <div class="att-cap fragment" data-fragment-index="2">
+          <span class="ico">📄</span>
+          <p>un embedding pour <b>un énoncé entier</b></p>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ BERT : LE GRAND CLASSIQUE ============ -->
+    <section class="content-slide">
+      <h2>Le grand classique : BERT</h2>
+
+      <div class="bert-row">
+        <div class="bert-main">
+          <div class="bert-meta"><span class="pill">2018</span><span class="pill gold">Google</span></div>
+          <p class="bert-acr"><b>B</b>idirectional <b>E</b>ncoder <b>R</b>epresentations from <b>T</b>ransformers</p>
+          <div class="specs">
+            <div class="row fragment">
+              <span class="k"><span class="pill teal">Entraînement</span></span>
+              <span class="v">recherche de <b>mots masqués</b> sur de grands corpus</span>
+            </div>
+            <div class="row fragment">
+              <span class="k"><span class="pill purple">Architecture</span></span>
+              <span class="v">transformer (<b>encoder</b>)</span>
+            </div>
+          </div>
+        </div>
+        <div class="bert-illus">
+          <img src="img/bert.jpg" alt="BERT (Google) — illustration Bert du Muppet Show">
+        </div>
+      </div>
+
+      <div class="bert-variants fragment">
+        <span class="vlabel">La famille&nbsp;:</span>
+        <span class="chip">Sentence-<b>BERT</b></span>
+        <span class="chip">Ro<b>BERT</b>a</span>
+        <span class="chip">Distil<b>BERT</b></span>
+        <span class="chip">AL<b>BERT</b></span>
+        <span class="chip">Camem<b>BERT</b></span>
+        <span class="more">…</span>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ GÉNÉRATION = CLASSIFICATION (boucle de tokens) ============ -->
+    <section class="content-slide">
+      <h2>Génération = classification</h2>
+
+      <div class="gc-wrap">
+        <div class="gc-steps">
+          <div class="gc-row">
+            <span class="gc-cur">Le chat</span>
+            <span class="gc-arrow">→</span>
+            <span class="gc-classer">classer le<br>prochain token</span>
+            <span class="gc-arrow">→</span>
+            <span class="gc-tok">se</span>
+          </div>
+          <div class="gc-cands">candidats&nbsp;: trouver · dort · lisait · <b>se</b> · ‑ation · …</div>
+
+          <div class="gc-row fragment">
+            <span class="gc-cur">Le chat se</span>
+            <span class="gc-arrow">→</span>
+            <span class="gc-classer">classer le<br>prochain token</span>
+            <span class="gc-arrow">→</span>
+            <span class="gc-tok">promenait</span>
+          </div>
+
+          <div class="gc-final fragment"><span class="a">➡</span>Le chat se promenait</div>
+        </div>
+
+        <div class="gc-vocab">
+          <h3><span class="big">Des millions</span> de «&nbsp;modalités&nbsp;» de sortie</h3>
+          <ul>
+            <li>langues</li>
+            <li>flexions</li>
+            <li>noms propres</li>
+            <li>vocabulaire médical</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ LA SOLUTION : LES TOKENS ============ -->
+    <section class="content-slide">
+      <h2>La solution : les tokens</h2>
+      <p class="tk-intro">Une <b>liste de tokens</b>, de taille <span class="hot">fixe et limitée</span></p>
+
+      <div class="tk-wrap">
+        <div class="tk-scale">
+          <div class="tk-h">Plusieurs granularités</div>
+          <div class="tk-level word"><span class="lv-t">Mots courants</span><span class="lv-e">cat · saw · drink · in</span></div>
+          <div class="tk-level sub"><span class="lv-t">Racines · préfixes · suffixes</span><span class="lv-e">de‑ · ‑ization · ‑ment</span></div>
+          <div class="tk-level letter"><span class="lv-t">Lettres &amp; symboles</span><span class="lv-e">Z · g · r · u · b</span></div>
+        </div>
+
+        <div class="tk-example">
+          <div class="tk-h">Exemple de tokenisation</div>
+          <div class="tk-src">« The cat saw decontextualization in Zgrub »</div>
+          <div class="tk-tokens">
+            <span class="tk-tok word">The</span>
+            <span class="tk-tok word">cat</span>
+            <span class="tk-tok word">saw</span>
+            <span class="tk-grp">
+              <span class="tk-tok sub">de</span><span class="tk-tok sub">context</span><span class="tk-tok sub">ual</span><span class="tk-tok sub">ization</span>
+            </span>
+            <span class="tk-tok word">in</span>
+            <span class="tk-grp letters">
+              <span class="tk-tok letter">Z</span><span class="tk-tok letter">g</span><span class="tk-tok letter">r</span><span class="tk-tok letter">u</span><span class="tk-tok letter">b</span>
+            </span>
+          </div>
+          <div class="tk-note"><b>mot courant</b> = 1 token · <b>mot rare</b> = sous‑mots · <b>mot inconnu</b> = lettres</div>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ USAGES : PROJETER DES TEXTES DANS DES ESPACES SÉMANTIQUES ============ -->
+    <section class="content-slide">
+      <h2>Projeter des textes dans des espaces sémantiques</h2>
+
+      <div class="orgtree">
+        <ul>
+          <li>
+            <div class="ot-node root">Un texte&nbsp;→&nbsp;un vecteur</div>
+            <ul>
+              <li>
+                <div class="ot-node">Réduction 2D</div>
+                <ul>
+                  <li><div class="ot-leaf">Visualiser</div></li>
+                  <li><div class="ot-leaf">Cartographier</div></li>
+                </ul>
+              </li>
+              <li>
+                <div class="ot-node">Classer <span class="ml-tag">machine learning</span></div>
+                <ul>
+                  <li><div class="ot-leaf"><b>Entraîner un classifieur</b><span>sur des textes étiquetés</span></div></li>
+                  <li><div class="ot-leaf"><b>Générer</b><span>in-context learning · tâches en langage naturel</span></div></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ INTERTITRE — APPLICATION AU DISTANT READING ============ -->
+    <section class="section-slide section-illus" data-background-color="#ED9B27">
+      <div class="si-inner">
+        <div class="si-text">
+          <h2>Application au distant reading</h2>
+        </div>
+        <div class="si-illus">
+          <img src="img/distant_reading.jpeg"
+               alt="Chercheurs sur un échafaudage observant à la longue-vue un vaste corpus de livres et documents, relié à un graphe de connaissances">
+        </div>
+      </div>
+    </section>
+
     <!-- ============ 2. OBJECTIFS ============ -->
     <section class="content-slide">
       <h2>Lorem ipsum dolor sit amet</h2>
@@ -817,6 +1425,8 @@ print(dolor.exercitation[0].ullamco)</code></pre>
     hash: true,
     slideNumber: false,
     transition: 'fade',
+    pdfSeparateFragments: false,   // export PDF : une page par diapo (fragments tous visibles)
+    pdfMaxPagesPerSlide: 1,        // une diapo = exactement une page (pas de débordement)
     plugins: [Highlight, Notes],
   });
   deck.initialize().then(() => {

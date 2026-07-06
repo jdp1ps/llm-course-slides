@@ -4,7 +4,8 @@
   "description": "Cycle de formations IA pour les SHS — slides reveal.js (charte Université Paris 1 Panthéon-Sorbonne)",
   "scripts": {
     "start": "serve -l 8000 .",
-    "dev": "serve -l 8000 ."
+    "dev": "serve -l 8000 .",
+    "export:pdf": "node export-pdf.mjs"
   },
   "private": true,
   "dependencies": {

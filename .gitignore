@@ -2,6 +2,9 @@ node_modules/
 *.log
 .DS_Store
 
+# PDF exporté (artefact généré)
+slides-module1.pdf
+
 # Configuration locale (identifiants du playground)
 config.local.js
 
