@@ -1082,7 +1082,11 @@
 
       <div class="arith-eq"><b>manger</b> − <b>cuisine</b> + <b>chambre</b> = <span class="q">?</span></div>
 
-      <div class="arith-cta fragment"><span>Trouvez des exemples qui marchent&nbsp;!</span></div>
+      <div class="arith-cta fragment" data-fragment-index="1"><span>Trouvez des exemples qui marchent&nbsp;!</span></div>
+      <a class="arith-extra fragment" data-fragment-index="2" href="https://projector.tensorflow.org/" target="_blank" rel="noopener">
+        <span class="t">En complément&nbsp;↗</span>
+        <span class="u">projector.tensorflow.org</span>
+      </a>
 
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
     </section>
@@ -1159,6 +1163,7 @@
         <div class="att-cap fragment" data-fragment-index="2">
           <span class="ico">📄</span>
           <p>un embedding pour <b>un énoncé entier</b></p>
+          <a class="try-box" href="https://huggingface.co/tasks/sentence-similarity" target="_blank" rel="noopener">Essayez vous‑même&nbsp;↗</a>
         </div>
       </div>
 
@@ -1271,6 +1276,67 @@
             </span>
           </div>
           <div class="tk-note"><b>mot courant</b> = 1 token · <b>mot rare</b> = sous‑mots · <b>mot inconnu</b> = lettres</div>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ ESSAYEZ VOUS-MÊME : TOKENIZERS EN LIGNE ============ -->
+    <section class="content-slide">
+      <h2>Essayez vous‑même</h2>
+      <p class="lead-sub">Visualisez la tokenisation de vos propres textes</p>
+
+      <div class="try-links">
+        <a class="try-card" href="https://huggingface.co/spaces/Xenova/the-tokenizer-playground" target="_blank" rel="noopener">
+          <span class="try-num">1</span>
+          <span class="try-name">Hugging Face<br>Tokenizer Playground</span>
+          <span class="try-url">huggingface.co · Xenova</span>
+          <span class="try-go">Ouvrir&nbsp;↗</span>
+        </a>
+        <a class="try-card" href="https://platform.openai.com/tokenizer" target="_blank" rel="noopener">
+          <span class="try-num">2</span>
+          <span class="try-name">OpenAI<br>Tokenizer</span>
+          <span class="try-url">platform.openai.com/tokenizer</span>
+          <span class="try-go">Ouvrir&nbsp;↗</span>
+        </a>
+        <a class="try-card" href="https://gpt-tokenizer.dev/" target="_blank" rel="noopener">
+          <span class="try-num">3</span>
+          <span class="try-name">GPT Tokenizer<br>Playground</span>
+          <span class="try-url">gpt-tokenizer.dev</span>
+          <span class="try-go">Ouvrir&nbsp;↗</span>
+        </a>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ UN MOT SUR L'ÉCHANTILLONNAGE (TEMPÉRATURE, TOP-P/K) ============ -->
+    <section class="content-slide">
+      <h2>Un mot sur l'échantillonnage</h2>
+      <p class="lead-sub">température · top‑p · top‑k — vous les rencontrerez forcément</p>
+
+      <div class="samp-flow fragment" data-fragment-index="1">
+        <div class="samp-prompt">Le chat se…</div>
+        <div class="samp-arrow">→</div>
+        <div class="samp-logits"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="samp-softmax">softmax</div>
+        <div class="samp-arrow">→</div>
+        <div class="samp-dist">
+          <div class="dist-row top"><span class="w">promène</span><span class="track"><span class="bar" style="width:94%"></span></span><span class="pct">18 %</span></div>
+          <div class="dist-row"><span class="w">lèche</span><span class="track"><span class="bar" style="width:62%"></span></span><span class="pct">12 %</span></div>
+          <div class="dist-row"><span class="w">pose</span><span class="track"><span class="bar" style="width:36%"></span></span><span class="pct">7 %</span></div>
+          <div class="dist-row"><span class="w">rend</span><span class="track"><span class="bar" style="width:16%"></span></span><span class="pct">3 %</span></div>
+          <div class="dist-row"><span class="w">parapluie</span><span class="track"><span class="bar" style="width:0%"></span></span><span class="pct">0 %</span></div>
+        </div>
+      </div>
+
+      <div class="samp-params">
+        <div class="param temp fragment" data-fragment-index="2">
+          <b>Température</b>
+        </div>
+        <div class="param topp fragment" data-fragment-index="3">
+          <b>top‑p / top‑k</b>
         </div>
       </div>
 
