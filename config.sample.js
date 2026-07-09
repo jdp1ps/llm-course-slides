@@ -14,4 +14,8 @@ window.SLIDE_CONFIG = {
   // Mot de passe de connexion au playground.
   // Laisser vide pour afficher « (fourni en séance) ».
   PLAYGROUND_PASSWORD: '',
+
+  // Adresse de contact ENSO (Paris 1 / Sorbonne Alliance).
+  // Laisser vide pour afficher « nous contacter ».
+  ENSO_EMAIL: '',
 };
