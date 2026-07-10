@@ -82,7 +82,11 @@
         <div class="col-narrow">
           <div class="card gold fragment">
             <h3>Pour les SHS</h3>
-            <p>Gratuit, en français, pas besoin de coder, mutualisé entre équipes.</p>
+            <p>Gratuit, modèles multilingues, pas besoin de coder, mutualisé entre équipes.</p>
+          </div>
+          <div class="card purple compact fragment" style="margin-top:.5em">
+            <h3>Une discipline</h3>
+            <p>Ces méthodes relèvent du <strong>traitement automatique du langage (TAL)</strong> / <em>Natural Language Processing (NLP)</em>.</p>
           </div>
         </div>
       </div>
@@ -95,13 +99,13 @@
         <div>
           <ul>
             <li class="fragment"><strong>Étienne Ollion</strong> a utilisé cette méthode pour mesurer la part des publications scientifiques qui portent sur le genre.</li>
-            <li class="fragment">Résumés d'articles annotés à la main → classifieur entraîné → classement de l'ensemble du corpus.</li>
+            <li class="fragment">Résumés d'articles annotés à la main → classement de l'ensemble du corpus, via un classifieur entraîné.</li>
           </ul>
         </div>
         <div class="col-narrow">
           <div class="card purple fragment">
             <h3>Le principe</h3>
-            <p>Annoter un échantillon → entraîner un classifieur → l'appliquer à une <strong>échelle</strong> qu'une lecture humaine seule ne permettrait pas.</p>
+            <p>Annoter un échantillon, entraîner un classifieur → l'appliquer à une <strong>échelle</strong> qu'une lecture humaine seule ne permettrait pas.</p>
           </div>
         </div>
       </div>
@@ -111,7 +115,7 @@
     <section class="content-slide">
       <h2>Hébergement et accès</h2>
       <p class="key-idea" style="text-align:left;margin:0 0 .6em;max-width:100%">Instance déployée par notre équipe sur un <strong>serveur cloud</strong> → solution <strong>temporaire</strong>, en attendant un possible déploiement Paris 1.</p>
-      <p>Accès après la formation → <strong>sur réservation</strong> auprès de la cellule SIINR.</p>
+      <p>Accès après la formation, <strong>sur réservation</strong> auprès de la cellule SIINR.</p>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
 
@@ -124,12 +128,13 @@
 
     <section class="content-slide">
       <h2>Construire un jeu de données</h2>
+      <p class="key-idea" style="text-align:left;margin:0 0 .6em;max-width:100%">Point de départ : un corpus numérique ou numérisé.</p>
       <table>
         <thead><tr><th>Méthode</th><th>Avantages</th><th>Limites</th></tr></thead>
         <tbody>
           <tr class="fragment"><td>À la main (tableur)</td><td>Contrôle total, aucune compétence technique requise</td><td>Lent, difficile à faire tenir à l'échelle</td></tr>
           <tr class="fragment"><td>Avec du code (Python)</td><td>Flexible, reproductible, versionnable</td><td>Nécessite de coder</td></tr>
-          <tr class="fragment"><td>Low code (Claude, Langflow)</td><td>Accessible sans coder, rapide à prototyper</td><td>Moins de contrôle fin, dépendance à un outil tiers</td></tr>
+          <tr class="fragment"><td>Low code (Claude, GPT, Langflow)</td><td>Accessible sans coder, rapide à prototyper</td><td>Moins de contrôle fin, dépendance à un outil tiers</td></tr>
         </tbody>
       </table>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
@@ -141,15 +146,20 @@
       <div class="cols">
         <div>
           <ul>
-            <li class="fragment">Source : <strong>Internet Archive</strong> (archive.org) → indépendant de Gallica/BnF. Domaine public, OCR ancien et bruité.</li>
-            <li class="fragment"><em>Femina</em> (1901, 1908)</li>
+            <li class="fragment">Source : <strong>Internet Archive</strong> (archive.org). Domaine public, OCR ancien et bruité.</li>
+            <li class="fragment"><em>Femina</em> (1901, 1908) — <a href="https://archive.org/details/femina1-3" target="_blank" rel="noopener">url</a></li>
             <li class="fragment"><em>Journal des dames et des modes</em> (1913)</li>
+            <li class="fragment">Corpus téléchargé avec notre <strong>script</strong> dédié (API Internet Archive)</li>
           </ul>
         </div>
         <div class="col-narrow">
-          <div class="card gold fragment">
+          <div class="card gold compact fragment">
             <h3>Question de recherche</h3>
             <p>Quelle part de ces journaux est occupée par la <strong>publicité</strong>, face au contenu <strong>rédactionnel</strong> ?</p>
+          </div>
+          <div class="card purple compact fragment" style="margin-top:.5em">
+            <h3>Autre question possible</h3>
+            <p>Comment se fait la publicité dans ces journaux ? La classification sert alors à <strong>affiner le corpus</strong> plutôt qu'à répondre directement.</p>
           </div>
         </div>
       </div>
@@ -223,14 +233,14 @@
 
     <section class="content-slide">
       <h2>Préambule : les notebooks Jupyter</h2>
-      <p class="fragment">Un document interactif qui mélange texte explicatif et cellules de code, exécutées une par une : pas besoin de tout comprendre, on modifie quelques paramètres puis on exécute les cellules dans l'ordre.</p>
+      <p class="fragment">Un document interactif qui mélange texte explicatif et cellules de code, exécutées une par une : on modifie quelques paramètres puis on exécute les cellules dans l'ordre.</p>
       <table>
         <thead><tr><th>Option</th><th>Où ça tourne</th></tr></thead>
         <tbody>
           <tr class="fragment"><td><a href="https://mybinder.org" target="_blank" rel="noopener">Binder</a> <span class="muted">(aujourd'hui)</span></td><td>Dans le navigateur, sur des serveurs mutualisés gratuits, rien à installer.</td></tr>
           <tr class="fragment"><td><a href="https://colab.research.google.com" target="_blank" rel="noopener">Google Colab</a></td><td>Dans le navigateur, sur les serveurs de Google, rien à installer.</td></tr>
-          <tr class="fragment"><td><a href="https://www.anaconda.com/download" target="_blank" rel="noopener">Anaconda Navigator</a></td><td>Sur votre ordinateur, interface graphique, tout en local.</td></tr>
-          <tr class="fragment"><td><a href="https://github.com/jupyterlab/jupyterlab-desktop" target="_blank" rel="noopener">JupyterLab Desktop</a></td><td>Sur votre ordinateur, application autonome, tout en local.</td></tr>
+          <tr class="fragment"><td><a href="https://www.anaconda.com/download" target="_blank" rel="noopener">Anaconda Navigator</a></td><td>Sur votre ordinateur, interface graphique, tout en local. <span style="color:var(--p1-gold);font-weight:700">★ recommandé</span></td></tr>
+          <tr class="fragment"><td><a href="https://github.com/jupyterlab/jupyterlab-desktop" target="_blank" rel="noopener">JupyterLab Desktop</a></td><td>Sur votre ordinateur, application autonome, tout en local. <span style="color:var(--p1-gold);font-weight:700">★ recommandé</span></td></tr>
         </tbody>
       </table>
       <div class="callout fragment">
@@ -277,9 +287,9 @@
       <h2>Construction du corpus, étape par étape</h2>
       <ol>
         <li class="fragment"><strong>Script</strong> → télécharge le texte OCR brut de chaque volume (API Internet Archive, cache locale).</li>
-        <li class="fragment"><strong>Nettoyage</strong> léger : en-têtes légaux et bruit OCR supprimés.</li>
+        <li class="fragment"><strong>Nettoyage</strong> léger : en-têtes et bruit OCR supprimés.</li>
         <li class="fragment">Chaque volume → un fichier <code>.txt</code> séparé.</li>
-        <li class="fragment"><code>decoupage_corpus.ipynb</code> → segmente en extraits → deux fichiers distincts (à suivre).</li>
+        <li class="fragment"><code>decoupage_corpus.ipynb</code> → segmente en extraits → deux fichiers distincts.</li>
       </ol>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -353,7 +363,7 @@
             <li class="fragment">Peut aussi proposer les extraits à annoter en priorité → ceux qui aideront le plus le modèle (<strong>active learning</strong>, III.5).</li>
           </ul>
           <div class="callout fragment">
-            <span class="sym">→</span> Chercher un mot dans les extraits, c'est déjà faire dialoguer <strong>lecture distante</strong> (un motif sur tout le corpus) et <strong>lecture rapprochée</strong> (juger chaque extrait qui remonte).
+            <span class="sym">→</span> Annoter, c'est déjà faire dialoguer <strong>lecture distante</strong> (un motif sur tout le corpus) et <strong>lecture rapprochée</strong> (juger chaque extrait qui remonte).
           </div>
         </div>
         <div class="col-narrow fragment">
@@ -373,7 +383,7 @@
     <section class="content-slide">
       <h2>Rappel : les embeddings</h2>
       <ul>
-        <li class="fragment">Définition : représentation vectorielle dense d'un texte, où la proximité géométrique reflète une proximité sémantique. En français, on parle aussi de <strong>plongements lexicaux</strong>.</li>
+        <li class="fragment">Définition : <strong>représentation vectorielle</strong> dense d'un <strong>texte</strong>, où la proximité géométrique reflète une proximité sémantique. En français, on parle aussi de <strong>plongements lexicaux</strong>.</li>
         <li class="fragment">Ces représentations sont apprises lors du pré-entraînement (vu module 1).</li>
       </ul>
       <div class="callout fragment">
@@ -452,9 +462,41 @@
 
     <section class="content-slide">
       <h2>UMAP et HDBSCAN, en bref</h2>
-      <div class="deflist">
-        <div class="def fragment"><dt>Réduction de dimension (UMAP)</dt><dd>Des centaines de dimensions → un espace beaucoup plus petit, en gardant au mieux les proximités entre textes.</dd></div>
-        <div class="def fragment"><dt>Clustering (HDBSCAN)</dt><dd>Regroupe les textes proches, sans savoir à l'avance combien de groupes ni ce qu'ils représentent. Les textes isolés sont laissés de côté (les "outliers").</dd></div>
+      <div class="cols">
+        <div>
+          <div class="deflist">
+            <div class="def fragment"><dt>Réduction de dimension (UMAP)</dt><dd>Des centaines de dimensions → un espace beaucoup plus petit, en gardant au mieux les proximités entre textes.</dd></div>
+            <div class="def fragment"><dt>Clustering (HDBSCAN)</dt><dd>Regroupe les textes proches, sans savoir à l'avance combien de groupes ni ce qu'ils représentent. Les textes isolés sont laissés de côté (les "outliers").</dd></div>
+          </div>
+        </div>
+        <div class="col-narrow fragment">
+          <svg viewBox="0 0 380 200" style="width:100%;max-width:340px;display:block;margin:0 auto">
+            <circle cx="35" cy="30" r="3.2" fill="#9aa3ab"/><circle cx="55" cy="60" r="3.2" fill="#9aa3ab"/>
+            <circle cx="20" cy="70" r="3.2" fill="#9aa3ab"/><circle cx="60" cy="20" r="3.2" fill="#9aa3ab"/>
+            <circle cx="80" cy="45" r="3.2" fill="#9aa3ab"/><circle cx="40" cy="95" r="3.2" fill="#9aa3ab"/>
+            <circle cx="90" cy="80" r="3.2" fill="#9aa3ab"/><circle cx="15" cy="40" r="3.2" fill="#9aa3ab"/>
+            <circle cx="65" cy="110" r="3.2" fill="#9aa3ab"/><circle cx="30" cy="120" r="3.2" fill="#9aa3ab"/>
+            <circle cx="85" cy="15" r="3.2" fill="#9aa3ab"/><circle cx="10" cy="100" r="3.2" fill="#9aa3ab"/>
+            <circle cx="50" cy="140" r="3.2" fill="#9aa3ab"/><circle cx="95" cy="120" r="3.2" fill="#9aa3ab"/>
+            <circle cx="25" cy="150" r="3.2" fill="#9aa3ab"/><circle cx="70" cy="150" r="3.2" fill="#9aa3ab"/>
+            <text x="52" y="185" text-anchor="middle" font-size="10" fill="#5b6b7a">haute dimension</text>
+            <text x="165" y="105" text-anchor="middle" font-size="20" fill="#5b6b7a">→</text>
+            <text x="165" y="122" text-anchor="middle" font-size="8" fill="#5b6b7a">UMAP</text>
+            <text x="165" y="132" text-anchor="middle" font-size="8" fill="#5b6b7a">+ HDBSCAN</text>
+            <ellipse cx="255" cy="62" rx="38" ry="30" fill="rgba(0,56,110,.08)" stroke="#00386E" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <ellipse cx="345" cy="55" rx="30" ry="26" fill="rgba(237,155,39,.14)" stroke="#ED9B27" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <ellipse cx="290" cy="130" rx="38" ry="28" fill="rgba(88,35,156,.10)" stroke="#58239C" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="245" cy="52" r="4.5" fill="#00386E"/><circle cx="260" cy="56" r="4.5" fill="#00386E"/>
+            <circle cx="250" cy="70" r="4.5" fill="#00386E"/><circle cx="268" cy="65" r="4.5" fill="#00386E"/>
+            <circle cx="335" cy="48" r="4.5" fill="#ED9B27"/><circle cx="352" cy="45" r="4.5" fill="#ED9B27"/>
+            <circle cx="358" cy="62" r="4.5" fill="#ED9B27"/><circle cx="340" cy="65" r="4.5" fill="#ED9B27"/>
+            <circle cx="278" cy="122" r="4.5" fill="#58239C"/><circle cx="295" cy="118" r="4.5" fill="#58239C"/>
+            <circle cx="272" cy="138" r="4.5" fill="#58239C"/><circle cx="305" cy="135" r="4.5" fill="#58239C"/>
+            <circle cx="220" cy="20" r="3.5" fill="#9aa3ab"/><circle cx="365" cy="115" r="3.5" fill="#9aa3ab"/>
+            <circle cx="230" cy="150" r="3.5" fill="#9aa3ab"/>
+            <text x="290" y="185" text-anchor="middle" font-size="10" fill="#5b6b7a">clusters + outliers (gris)</text>
+          </svg>
+        </div>
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -474,7 +516,20 @@
 
     <section class="content-slide">
       <h2>Le topic modeling en SHS</h2>
-      <p class="muted">Espace réservé : exemples de projets à compléter.</p>
+      <div class="cols">
+        <div>
+          <ul>
+            <li class="fragment"><strong>Projet ANR PHILHERIT</strong> : BERT appliqué à environ 20 000 phrases → clusters thématiques et arguments récurrents.</li>
+            <li class="fragment"><strong>Projet Géode</strong> (EDdA, l'Encyclopédie) : classifieur entraîné à partir de la liste de domaines de l'Encyclopédie pour thématiser un corpus historique.</li>
+            <li class="fragment">Qualifier les topics avec un <strong>LLM conversationnel</strong>, ou combiner embeddings et LLM (cf. diapo précédente).</li>
+          </ul>
+          <p class="fragment" style="font-size:.7em"><a href="https://gitlab.liris.cnrs.fr/geode/EDdA-Classification" target="_blank" rel="noopener">gitlab.liris.cnrs.fr/geode/EDdA-Classification →</a></p>
+        </div>
+        <div class="col-narrow fragment">
+          <img src="img/bertopic-arxiv-datamapplot.png" alt="Visualisation interactive de topics ArXiv avec BERTopic" style="width:100%;border-radius:8px;box-shadow:0 4px 14px rgba(0,56,110,.15)">
+          <p class="img-cite">Topics d'un corpus ArXiv, visualisés avec BERTopic. Source : <a href="https://maartengr.github.io/BERTopic/getting_started/visualization/visualize_documents.html" target="_blank" rel="noopener">documentation BERTopic</a></p>
+        </div>
+      </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
 
@@ -496,10 +551,10 @@
       </div>
       <ul>
         <li class="fragment">Texte déjà encodé → <strong>couche de classification</strong> ajoutée par-dessus → un score par catégorie.</li>
-        <li class="fragment"><strong>Fine-tuning</strong> : poids pré-entraînés, ajustés à faible taux d'apprentissage. Tous les poids bougent, y compris l'attention.</li>
+        <li class="fragment"><strong>Fine-tuning</strong> : poids pré-entraînés, ajustés à faible taux d'apprentissage. Tous les poids peuvent bouger, y compris l'attention.</li>
       </ul>
       <div class="callout fragment">
-        <span class="sym">→</span> LLM génératif : distribution sur tout le vocabulaire, mot à mot. Classifieur BERT : un petit nombre de scores fixes, en une seule passe.
+        LLM génératif : distribution sur tout le vocabulaire, mot à mot. Classifieur BERT : un petit nombre de scores fixes, en une seule passe.
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -522,10 +577,10 @@
 
     <section class="content-slide">
       <h2>Les paramètres d'entraînement</h2>
-      <div class="deflist">
+      <div class="deflist" style="font-size:.85em">
         <div class="def fragment"><dt>Epoch</dt><dd>Nombre de fois où le modèle voit l'intégralité du jeu d'entraînement pendant le fine-tuning.</dd></div>
         <div class="def fragment"><dt>Learning rate</dt><dd>Amplitude de l'ajustement des poids à chaque étape. Trop élevé, l'entraînement est instable ; trop faible, il est très lent.</dd></div>
-        <div class="def fragment"><dt>Weight decay</dt><dd>Pénalise les poids trop grands → limite le <strong>sur-apprentissage</strong> (mémoriser au lieu de généraliser).</dd></div>
+        <div class="def fragment"><dt>Weight decay</dt><dd>Pénalise les poids de valeur trop élevée : un poids trop grand rend le modèle hypersensible à un détail précis du jeu d'entraînement. Le limiter encourage des réglages plus modérés, qui généralisent mieux → limite le <strong>sur-apprentissage</strong> (mémoriser au lieu de généraliser).</dd></div>
         <div class="def fragment"><dt>Context window</dt><dd>Nombre de tokens traités pour chaque extrait ; les textes plus longs sont tronqués.</dd></div>
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
@@ -549,10 +604,10 @@
       <h2>Cas d'usage classiques en SHS</h2>
       <ul>
         <li class="fragment">Analyse de sentiment</li>
-        <li class="fragment">Reconnaissance d'entités nommées</li>
         <li class="fragment">Classification thématique</li>
         <li class="fragment">Détection de discours de haine</li>
         <li class="fragment">Stance detection (positionnement dans un débat)</li>
+        <li class="fragment">Reconnaissance d'entités nommées (REN/NER)</li>
       </ul>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -562,10 +617,10 @@
       <ul>
         <li class="fragment">Option : même nombre de textes par catégorie dans le jeu d'entraînement.</li>
         <li class="fragment">Ça dépend du corpus : catégorie <strong>rare</strong> → forcer l'équilibre aide, mais réduit le volume total d'entraînement.</li>
-        <li class="fragment">Notre corpus : <strong>83,7 % Éditorial / 16,3 % Publicité</strong> → un déséquilibre normal, à ne pas forcer en reclassant des cas ambigus.</li>
+        <li class="fragment">Notre corpus : <strong>environ 83 % Éditorial / 16 % Publicité</strong> → un déséquilibre normal, à ne pas forcer en reclassant des cas ambigus.</li>
       </ul>
       <div class="callout fragment">
-        <span class="sym">→</span> Toujours regarder la performance <strong>par catégorie</strong>, pas seulement globalement : un modèle peut sembler bon tout en ratant une catégorie minoritaire.
+        Toujours regarder la performance <strong>par catégorie</strong>, pas seulement globalement : un modèle peut sembler bon tout en ratant une catégorie minoritaire.
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -626,17 +681,30 @@
         </div>
       </div>
       <div class="callout fragment">
-        <span class="sym">→</span> Dans ce cas : réduire le nombre d'epochs, ou augmenter le weight decay (partie III.2).
+        Dans ce cas : réduire le nombre d'epochs, ou augmenter le weight decay (partie III.2).
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
 
     <section class="content-slide">
       <h2>F1, précision, rappel : les définitions</h2>
-      <div class="deflist">
-        <div class="def fragment"><dt>Précision</dt><dd>Parmi les extraits prédits comme appartenant à une catégorie, la proportion qui l'est vraiment.</dd></div>
-        <div class="def fragment"><dt>Rappel</dt><dd>Parmi les extraits qui appartiennent vraiment à une catégorie, la proportion que le modèle a retrouvée.</dd></div>
-        <div class="def fragment"><dt>F1</dt><dd>Un seul chiffre qui résume les deux, utile pour comparer des modèles entre eux.</dd></div>
+      <div class="cols">
+        <div>
+          <div class="deflist">
+            <div class="def fragment"><dt>Précision</dt><dd>Parmi les extraits prédits comme appartenant à une catégorie, la proportion qui l'est vraiment.</dd></div>
+            <div class="def fragment"><dt>Rappel</dt><dd>Parmi les extraits qui appartiennent vraiment à une catégorie, la proportion que le modèle a retrouvée.</dd></div>
+            <div class="def fragment"><dt>F1</dt><dd>Un seul chiffre qui résume les deux, utile pour comparer des modèles entre eux.</dd></div>
+          </div>
+        </div>
+        <div class="col-narrow fragment">
+          <div class="card teal">
+            <h3>Calcul</h3>
+            <p style="font-size:.82em">VP = vrais positifs, FP = faux positifs, FN = faux négatifs.</p>
+            <p style="font-size:.82em"><code>Précision = VP / (VP + FP)</code></p>
+            <p style="font-size:.82em"><code>Rappel = VP / (VP + FN)</code></p>
+            <p style="font-size:.82em"><code>F1 = 2 × (Précision × Rappel) / (Précision + Rappel)</code></p>
+          </div>
+        </div>
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -664,7 +732,7 @@
       <div class="phases">
         <div class="phase left">
           <h3>Favoriser le rappel</h3>
-          <span class="state">ex. modération de contenu</span>
+          <span class="state">ex. construction de corpus</span>
           <ul><li class="fragment">Mieux vaut sur-détecter, quitte à avoir plus de faux positifs.</li></ul>
         </div>
         <div class="vs">?</div>
@@ -688,7 +756,7 @@
       </div>
       <p class="fragment" style="text-align:center">BERT, à l'inverse : <strong>texte brut</strong> (tokens), GPU recommandé, entraînement plus long.</p>
       <div class="callout fragment">
-        <span class="sym">→</span> Une <strong>feature</strong> : caractéristique numérique du texte (décompte de mots, longueur, embeddings...). Un modèle classique peut en combiner plusieurs à la fois.
+        Une <strong>feature</strong> : caractéristique numérique du texte (décompte de mots, longueur, embeddings...). Un modèle classique peut en combiner plusieurs à la fois.
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -714,11 +782,11 @@
     <section class="content-slide">
       <h2>Améliorer les performances du classifieur</h2>
       <ul>
-        <li class="fragment">Regarder la performance par catégorie : où le modèle se trompe-t-il le plus ?</li>
-        <li class="fragment">Annoter davantage, en priorité sur les catégories ou les cas où le modèle est le moins bon.</li>
-        <li class="fragment">Rééquilibrer les classes si une catégorie est sous-représentée (III.2).</li>
-        <li class="fragment">Ajuster la configuration d'entraînement (epochs, learning rate, weight decay).</li>
-        <li class="fragment">Essayer un autre modèle de base (III.2).</li>
+        <li class="fragment"><strong style="color:var(--p1-blue)">Regarder la performance par catégorie</strong> : où le modèle se trompe-t-il le plus ?</li>
+        <li class="fragment"><strong style="color:var(--p1-gold)">Annoter davantage</strong>, en priorité sur les catégories ou les cas où le modèle est le moins bon.</li>
+        <li class="fragment"><strong style="color:var(--p1-purple)">Rééquilibrer les classes</strong> si une catégorie est sous-représentée (III.2).</li>
+        <li class="fragment"><strong style="color:var(--p1-blue)">Ajuster la configuration d'entraînement</strong> (epochs, learning rate, weight decay).</li>
+        <li class="fragment"><strong style="color:var(--p1-gold)">Essayer un autre modèle de base</strong> (III.2).</li>
       </ul>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -732,7 +800,7 @@
         <li class="fragment">Nouvelles annotations → ré-entraînement → le cycle recommence.</li>
       </ul>
       <div class="callout fragment">
-        <span class="sym">→</span> Bon niveau de performance avec moins d'annotations. L'active learning <strong>oriente</strong> l'annotateur ou l'annotatrice, il ne le remplace pas.
+        Bon niveau de performance avec moins d'annotations. L'active learning <strong>oriente</strong> l'annotateur ou l'annotatrice, il ne le remplace pas.
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -766,12 +834,12 @@
     <section class="content-slide">
       <h2>Point de vigilance : où sont hébergés vos outils ?</h2>
       <div class="cons">
-        <div class="ci fragment"><span class="x">!</span> Notebook via Binder ou Colab → tourne sur des <strong>serveurs tiers</strong>, vos documents y transitent.</div>
-        <div class="ci fragment"><span class="x">!</span> Modèle via API → votre texte envoyé à un tiers (OpenAI, Anthropic...), sous ses propres conditions.</div>
-        <div class="ci fragment"><span class="x">!</span> Tout usage d'un LLM pose la même question, à l'échelle du volume envoyé.</div>
+        <div class="ci fragment"><span class="x">!</span><span>Notebook via Binder ou Colab → tourne sur des <strong>serveurs tiers</strong>, vos documents y transitent.</span></div>
+        <div class="ci fragment"><span class="x">!</span><span>Modèle via API → votre texte envoyé à un tiers (OpenAI, Anthropic...), sous ses propres conditions.</span></div>
+        <div class="ci fragment"><span class="x">!</span><span>Tout usage d'un LLM pose la même question, à l'échelle du volume envoyé.</span></div>
       </div>
       <div class="callout fragment">
-        <span class="sym">→</span> Données sensibles ou sous droits particuliers ? Se poser systématiquement la question de l'<strong>hébergement</strong> de l'outil : qui héberge, où, sous quelles conditions.
+        Données sensibles ou sous droits particuliers ? Se poser systématiquement la question de l'<strong>hébergement</strong> de l'outil : qui héberge, où, sous quelles conditions.
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -779,14 +847,18 @@
     <section class="content-slide image-slide">
       <h2 style="align-self:flex-start">La fédération ILaaS</h2>
       <img class="full-img" src="img/ilaas.png" alt="Fédération ILaaS" style="max-height:46vh">
-      <p style="font-size:.8em;text-align:center;max-width:92%">Établissements d'enseignement supérieur → mutualisent leur capacité <strong>GPU</strong> pour l'inférence. Une forme d'<strong>IA souveraine</strong>, sur des serveurs de l'administration.</p>
+      <ul style="font-size:.8em;text-align:left;max-width:70%;margin:0 auto">
+        <li class="fragment">Établissements d'ESR </li>
+        <li class="fragment">Mutualisation de capacités GPU pour l'inférence</li>
+        <li class="fragment"><strong>IA souveraine</strong>, sur les serveurs de l'administration</li>
+      </ul>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
 
     <section class="content-slide">
       <h2>Comparer les modèles avec compar:IA</h2>
       <p>Ministère de la Culture (beta.gouv.fr) → comparaison en <strong>aveugle</strong> de deux modèles sur une même question.</p>
-      <p>Tableau à consulter en direct : taille, ouverture, performances.</p>
+      <p>Tableau issu des résultats des comparaisons, avec des précisions sur les modèles (taille, ouverture...).</p>
       <p style="text-align:center;margin-top:1.2em"><a class="exp-link" href="https://comparia.beta.gouv.fr/modeles" target="_blank" rel="noopener">comparia.beta.gouv.fr/modeles →</a></p>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -811,13 +883,19 @@
         <div>
           <ul>
             <li class="fragment">Avec des humain·es : accord collectif sur des règles, discussion des cas limites.</li>
-            <li class="fragment">Avec un LLM : même travail, mais en <strong>aller-retour solitaire</strong> face à l'écran.</li>
+            <li class="fragment">Avec un LLM : même travail, mais en <strong>aller-retour solitaire</strong>.</li>
           </ul>
         </div>
         <div class="col-narrow">
           <div class="card gold fragment">
             <h3>À anticiper</h3>
-            <p>Écrire → observer les erreurs → corriger le prompt → recommencer. Ce temps d'itération est régulièrement <strong>sous-estimé</strong>.</p>
+            <ul>
+              <li class="fragment">→ Écrire</li>
+              <li class="fragment">→ observer les erreurs</li>
+              <li class="fragment">→ corriger le prompt</li>
+              <li class="fragment">→ recommencer</li>
+            </ul>
+            <p>Ce temps d'itération est régulièrement <strong>sous-estimé</strong>.</p>
           </div>
         </div>
       </div>
@@ -828,8 +906,8 @@
       <h2>Comparaison des performances</h2>
       <ul>
         <li class="fragment">Jupyter notebook de comparaison.</li>
-        <li class="fragment">Même jeu de test → accuracy/F1 du classifieur camemBERT <strong>vs</strong> LLM en few-shot.</li>
-        <li class="fragment">Coût (temps, argent, empreinte environnementale), pas seulement la performance brute.</li>
+        <li class="fragment">Même jeu de test → accuracy/F1 du classifieur BERT <strong>vs</strong> LLM en few-shot.</li>
+        <li class="fragment">Idéalement, mesurer aussi le coût (temps, argent, empreinte environnementale), pas seulement la performance.</li>
       </ul>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -837,12 +915,12 @@
     <section class="content-slide">
       <h2>Les LLM pour l'annotation</h2>
       <ul>
-        <li class="fragment">Human in the loop : l'idée d'ActiveTigger, c'est d'accélérer l'annotation, pas de la remplacer.</li>
-        <li class="fragment">LLM et active learning accélèrent l'annotation, mais l'humain vérifie derrière.</li>
-        <li class="fragment">Jeu de données entièrement annoté par des humains → résultats <strong>reproductibles</strong>, contrairement à un LLM (varie d'un run à l'autre, ou change de version).</li>
+        <li class="fragment"><em>Human in the loop</em> : l'idée d'ActiveTigger, c'est d'accélérer l'annotation, pas de la remplacer.</li>
+        <li class="fragment">LLM et <em>active learning</em> accélèrent l'annotation, mais l'humain vérifie derrière.</li>
+        <li class="fragment">Jeu de données entièrement annoté par des humains → résultats <strong>reproductibles</strong>. Plus difficile avec un LLM (varie d'un run à l'autre, ou change de version).</li>
       </ul>
       <div class="callout fragment">
-        <span class="sym">→</span> ActiveTigger n'intègre pas le réglage de top-p, top-k, ou température par l'utilisateur. Un point à garder en tête si vous déployez vos propres modèles génératifs.
+        ActiveTigger n'intègre pas le réglage de top-p, top-k, ou température par l'utilisateur. Un point à garder en tête si vous déployez vos propres modèles génératifs.
       </div>
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 2</span><span class="num"></span></div>
     </section>
@@ -863,6 +941,10 @@
       <h2>Ce qu'il faut retenir</h2>
       <div class="callout fragment">
         <span class="sym">→</span> BERT et LLM outillent et accélèrent l'annotation, mais ne remplacent pas le <strong>jugement scientifique humain</strong>, qui doit vérifier derrière.
+      </div>
+      <div class="card gold fragment">
+        <h3>Processus itératif</h3>
+        <p>Annoter, entraîner, évaluer, corriger, recommencer : ce cycle traverse tout le module, de l'active learning au prompt engineering.</p>
       </div>
       <div class="card teal fragment">
         <h3>Reproductibilité</h3>
