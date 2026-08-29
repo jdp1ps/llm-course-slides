@@ -878,6 +878,33 @@
       <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
     </section>
 
+    <!-- ============ APPLIQUER CETTE APPROCHE À DU TEXTE ? ============ -->
+    <section class="content-slide">
+      <h2>Appliquer cette approche à du texte&nbsp;?</h2>
+
+      <div class="txt-approach">
+        <div class="ta-card fragment" data-fragment-index="1">
+          <div class="ta-h">Classer / étiqueter du texte</div>
+          <ul class="ta-list">
+            <li><b>spam</b> / non spam</li>
+            <li><b>toxique</b> / non toxique</li>
+            <li>abonnements / SAV / …</li>
+          </ul>
+        </div>
+
+        <div class="ta-arrow fragment" data-fragment-index="2">→</div>
+
+        <div class="ta-card hot fragment" data-fragment-index="2">
+          <div class="ta-q">?</div>
+          <div class="ta-h">Choisir le prochain mot&nbsp;!</div>
+          <div class="ta-eq">Générer = classer</div>
+          <div class="ta-tag">«&nbsp;classification auto‑régressive&nbsp;»</div>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
     <!-- ============ GÉNÉRATION DE TEXTE : UN DOUBLE DÉFI ============ -->
     <section class="content-slide">
       <h2>Génération de texte : un double défi</h2>
@@ -1637,6 +1664,61 @@
             <tr><td>1</td><td>1</td><td>…</td></tr>
             <tr><td>3</td><td>2</td><td>…</td></tr>
           </table>
+        </div>
+      </div>
+
+      <div class="slide-footer"><span class="center">Cycle de formations IA pour les SHS · Module 1</span><span class="num"></span></div>
+    </section>
+
+    <!-- ============ LIMITES DU IN-CONTEXT LEARNING ============ -->
+    <section class="content-slide">
+      <h2>Limites du in‑context learning</h2>
+
+      <div class="limits">
+        <!-- 1. écologie -->
+        <div class="limit-col fragment">
+          <div class="limit-num">1</div>
+          <div class="limit-h">Aspect écologique</div>
+          <div class="limit-viz">
+            <svg class="ico-plant" viewBox="0 0 100 112" width="96" aria-hidden="true">
+              <g class="smoke">
+                <circle cx="46" cy="30" r="9"/>
+                <circle cx="57" cy="24" r="8"/>
+                <circle cx="45" cy="17" r="7"/>
+                <circle cx="55" cy="12" r="6"/>
+              </g>
+              <path class="tower" d="M30,104 C36,74 41,58 43,44 L57,44 C59,58 64,74 70,104 Z"/>
+              <ellipse class="tower" cx="50" cy="44" rx="7" ry="2.4"/>
+            </svg>
+          </div>
+          <p class="limit-txt">Grand corpus <span class="swap">↔</span> petit modèle<br><span class="em">Amortir le réentraînement</span></p>
+        </div>
+
+        <!-- 2. lost in the middle -->
+        <div class="limit-col fragment">
+          <div class="limit-num">2</div>
+          <div class="limit-h">Lost in the middle</div>
+          <div class="limit-viz">
+            <svg class="ico-umid" viewBox="0 0 120 90" width="150" aria-hidden="true">
+              <path class="axis" d="M12,8 V78 H112"/>
+              <path class="curve" d="M20,22 C42,80 78,80 100,22"/>
+              <circle class="dot" cx="20" cy="22" r="4"/>
+              <circle class="dot" cx="60" cy="64" r="4"/>
+              <circle class="dot" cx="100" cy="22" r="4"/>
+            </svg>
+          </div>
+          <p class="limit-txt"><span class="em">Performance sensible</span> à la position dans le contexte</p>
+          <a class="limit-link" href="https://arxiv.org/abs/2307.03172" target="_blank" rel="noopener">Liu et al. 2023&nbsp;↗</a>
+        </div>
+
+        <!-- 3. conjecture de Floridi -->
+        <div class="limit-col fragment">
+          <div class="limit-num">3</div>
+          <div class="limit-h">Conjecture de Floridi</div>
+          <div class="limit-viz">
+            <img src="img/floridi.jpeg" alt="Courbe du compromis certitude épistémique / portée du mapping (Floridi) : relation hyperbolique décroissante">
+          </div>
+          <p class="limit-txt">Compromis <span class="swap">certitude ↔ portée</span></p>
         </div>
       </div>
 
